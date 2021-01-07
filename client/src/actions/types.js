@@ -1,0 +1,16 @@
+export const GET_ERRORS = "GET_ERRORS";
+export const USER_LOADING = "USER_LOADING";
+export const SET_CURRENT_USER = "SET_CURRENT_USER";
+export const IS_VERIFIED = "IS_VERIFIED";
+export const PROJECTS = "PROJECTS";
+export const IDEAS = "IDEAS";
+export const ALL_PROJECTS = "ALL_PROJECTS";
+export const POST_SUCCESS = "POST_SUCCESS";
+export const ALL_IDEAS = "ALL_IDEAS";
+export const LIKE = "LIKE";
+export const GET_USER = "GET_USER";
+export const CURRENT_USER = "CURRENT_USER";
+export const SUBSCRIBERS_PROJECTS = "SUBSCRIBERS_PROJECTS";
+export const REQUEST_JOIN = "REQUEST_JOIN";
+export const MY_TEAMS = "MY_TEAMS";
+export const TEAM_DETAILS = "TEAM_DETAILS"
