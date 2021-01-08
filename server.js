@@ -63,3 +63,8 @@ if (process.env.NODE_ENV === 'production') {
 app.listen(port, () =>
   console.log(`Server is up and running on port ${port}!`)
 );
+
+// "start": "fuser -n tcp -k 5000 && nodemon server.js",
+//     "server": "fuser -n tcp -k 5000 && nodemon server.js",
+//     "client": "npm start --prefix client",
+//     "dev": "concurrently \"npm run server\" \"npm run client\" ",
