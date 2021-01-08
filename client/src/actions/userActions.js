@@ -1,5 +1,5 @@
-import axios from "axios";
-import { GET_USER, CURRENT_USER } from "./types";
+import axios from 'axios';
+import { GET_USER, CURRENT_USER } from './types';
 
 export const getUser = (userId) => (dispatch) => {
   axios
@@ -8,13 +8,18 @@ export const getUser = (userId) => (dispatch) => {
       dispatch(userdetails(result.data));
     })
     .catch((err) => {
-      console.log("error", err);
+      console.log('error', err);
     });
 };
 
 export const currentUser = (userId) => (dispatch) => {
   axios.get(`/api/user/currentUser/${userId}`, userId).then((result) => {
-    dispatch(currentuser(result.data));
+    const currentUserDetails = {
+      ...result.data.user,
+      userProjects: { ...result.data.userProjects },
+      userIdeas: { ...result.data.userIdeas },
+    };
+    dispatch(currentuser(currentUserDetails));
   });
 };
 

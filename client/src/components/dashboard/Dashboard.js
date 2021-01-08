@@ -11,19 +11,26 @@ class Dashboard extends Component {
     super(props);
     this.state = {
       currentUser: props.auth.user,
+      userProjects: [],
+      userIdeas: [],
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.currentUser(this.props.auth.user.id);
   }
 
   componentWillReceiveProps(nextProps, nextContext) {
+    console.log('user', nextProps.userDetails);
     if (this.state.currentUser !== nextProps.userDetails.loggedInUser) {
       this.setState({
         currentUser: nextProps.userDetails.loggedInUser,
+        userProjects: nextProps.userDetails.loggedInUser.userProjects,
+        userIdeas: nextProps.userDetails.loggedInUser.userIdeas,
       });
     }
+
+    // if(this.state.userProjects !== nextProps.)
   }
 
   openNav = () => {
@@ -34,8 +41,7 @@ class Dashboard extends Component {
     document.querySelector('.feed').style.marginLeft = '0';
   };
   render() {
-    const { user } = this.props.auth;
-    console.log(this.props);
+    console.log(Object.keys(this.state.userProjects).length);
     return (
       <div>
         <div>
@@ -228,7 +234,7 @@ class Dashboard extends Component {
                       borderRadius: '50%',
                     }}
                     src={this.state.currentUser.profilePic}
-                    alt='image'
+                    alt=''
                   />
                 </div>
                 <div
@@ -237,7 +243,9 @@ class Dashboard extends Component {
                 >
                   <span id='h1'>Hello,</span>
                   <br />
-                  <p id='h2'>{user.firstname.split(' ')[0]}</p>
+                  <p id='h2'>
+                    {this.state.currentUser.firstname.split(' ')[0]}
+                  </p>
                 </div>
               </div>
               <div className='details'>
@@ -247,7 +255,7 @@ class Dashboard extends Component {
                     className='p2'
                     style={{ borderLeft: '2px solid red', paddingLeft: '0' }}
                   >
-                    180
+                    {Object.keys(this.state.userProjects).length}
                   </p>
                 </div>
                 <div className='projects'>
@@ -256,7 +264,7 @@ class Dashboard extends Component {
                     className='p2'
                     style={{ borderLeft: '2px solid blue', paddingLeft: '0' }}
                   >
-                    110
+                    {Object.keys(this.state.userIdeas).length}
                   </p>
                 </div>
                 <div className='projects'>

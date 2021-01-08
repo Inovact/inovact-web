@@ -1,5 +1,6 @@
+import AliceCarousel from 'react-alice-carousel';
+import 'react-alice-carousel/lib/alice-carousel.css';
 import React, { Component } from 'react';
-import style from 'react-style-tag';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import axios from 'axios';
@@ -9,7 +10,6 @@ import { Link } from 'react-router-dom';
 import 'font-awesome/css/font-awesome.min.css';
 import Collapsible from 'react-collapsible';
 import { Tooltip } from '@material-ui/core';
-import CircularProgress from '@material-ui/core/CircularProgress';
 import { requestJoin } from '../../actions/teamActions';
 import Avatar from '@material-ui/core/Avatar';
 import beforeClap from '../../static/beforeClap.svg';
@@ -20,6 +20,7 @@ import AddIcon from '@material-ui/icons/Add';
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
 import Chip from '@material-ui/core/Chip';
 import { Zoom } from '@material-ui/core';
+import M from 'materialize-css';
 
 class Posts extends Component {
   constructor(props) {
@@ -27,26 +28,42 @@ class Posts extends Component {
     this.state = {
       newProjects: [],
       newIdeas: [],
+      allProjectImages: {},
+      commentText: '',
     };
   }
 
-  componentWillMount() {
-    this.props.getProject();
-    this.props.getIdeas();
-  }
+  componentWillMount = async () => {
+    await this.props.getProject();
+    await this.props.getIdeas();
+  };
 
-  componentWillReceiveProps(nextProps, nextContext) {
+  componentWillReceiveProps = async (nextProps, nextContext) => {
     if (this.props.projects.allProjects !== nextProps.projects.allProjects) {
-      this.setState({
+      await this.setState({
         newProjects: nextProps.projects.allProjects,
       });
+      let images = {};
+      if (nextProps.projects.allProjects) {
+        for (let i in nextProps.projects.allProjects) {
+          if (nextProps.projects.allProjects[i].images) {
+            images[
+              nextProps.projects.allProjects[i]._id
+            ] = nextProps.projects.allProjects[i].images.map((item) => {
+              return { orginal: item.url, thumbnail: item.url };
+            });
+          }
+        }
+      }
+      await this.setState({ allProjectImages: images });
     }
+
     if (this.props.ideas.allIdeas !== nextProps.ideas.allIdeas) {
       this.setState({
         newIdeas: nextProps.ideas.allIdeas,
       });
     }
-  }
+  };
   likeProject = (id) => {
     console.log(id);
     const postId = {
@@ -96,9 +113,11 @@ class Posts extends Component {
 
   commentProject = (text, postId) => {
     const comment = {
-      text: text,
+      text: this.state.commentText,
       postId: postId,
     };
+    this.setState({ commentText: '' });
+
     axios
       .put('/api/projects/comment', comment)
       .then((result) => {
@@ -112,6 +131,7 @@ class Posts extends Component {
         this.setState({
           newProjects: newData,
         });
+        M.toast({ html: 'Posted Successfully', style: 'color:red' });
       })
       .catch((err) => {
         console.log(err);
@@ -197,7 +217,8 @@ class Posts extends Component {
   };
 
   render() {
-    if (this.state.newProjects) {
+    console.log(this.state.allProjectImages);
+    if (this.state.newProjects && this.state.allProjectImages) {
       return (
         <div>
           <section className='projects'>
@@ -377,6 +398,32 @@ class Posts extends Component {
                           );
                         })}
                       </div>
+                      <div style={{ padding: '10px' }}>
+                        {this.state.allProjectImages[project._id]?.length >
+                          0 && (
+                          <AliceCarousel>
+                            {this.state.allProjectImages[project._id].map(
+                              (image) => {
+                                if (image.orginal) {
+                                  return (
+                                    <img
+                                      style={{
+                                        width: '100%',
+                                        objectFit: 'cover',
+                                      }}
+                                      src={image.orginal}
+                                      alt=''
+                                    />
+                                  );
+                                } else {
+                                  return <></>;
+                                }
+                              }
+                            )}
+                          </AliceCarousel>
+                        )}
+                      </div>
+
                       <div
                         style={{
                           display: 'flex',
@@ -544,6 +591,10 @@ class Posts extends Component {
                           type='text'
                           className='comment'
                           placeholder='add a comment'
+                          value={this.state.commentText}
+                          onChange={(event) => {
+                            this.setState({ commentText: event.target.value });
+                          }}
                         />
                       </form>
                       <style>
@@ -638,11 +689,19 @@ class Posts extends Component {
                         .teamBx{
                         position:relative;
                         display:grid;
-                        grid-template-columns: repeat(auto-fit, minmax(300px, 0.85fr));
+                        grid-template-columns: repeat(auto-fit, minmax(700px, 0.85fr));
                         align-items:start;
                         grid-gap:40px;
                         margin-top:50px;
                         transition:0.6s ;
+                        justify-content:center;
+                    }
+                    .image-gallery-slide-wrapper{
+                      position:static;
+                    }
+                    .image-gallery-thumbnail {
+                      width:800px !important;
+                      height:70% !important;
                     }
       
                         
@@ -651,7 +710,22 @@ class Posts extends Component {
         </div>
       );
     } else {
-      return <CircularProgress color='secondary' />;
+      // return <CircularProgress color='secondary' />;
+      return (
+        <div className='projects'>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Pariatur
+          atque veritatis quod perferendis necessitatibus dolores error omnis
+          blanditiis illum officiis ullam doloremque tenetur cupiditate iste
+          laudantium odio optio beatae nobis, minus delectus in! Amet libero
+          itaque nam aliquam beatae minima fugit doloremque, voluptatum commodi,
+          ea, soluta laborum numquam iusto? Nihil optio nostrum distinctio
+          repellat neque vel omnis nesciunt illum, tempore animi quod, accusamus
+          quam, veritatis velit sit quae. Quia tempora, provident magni iure
+          possimus odit est architecto magnam ea nostrum nisi, impedit at
+          facilis aliquam corporis hic eveniet error id distinctio, neque nam
+          consequuntur voluptates dolore aperiam? Aspernatur, numquam modi?
+        </div>
+      );
     }
   }
 }

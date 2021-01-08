@@ -108,7 +108,7 @@ export const loginUser = (userData) => (dispatch) => {
 };
 
 export const serialize = (rawToken) => (dispatch) => {
-  const token = rawToken.slice(10);
+  const token = rawToken;
   localStorage.setItem('jwtToken', token);
   setAuthToken(token);
   const decoded = jwt_decode(token);

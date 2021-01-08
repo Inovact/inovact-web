@@ -1,27 +1,29 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const team = require("../../models/teams");
-const requireLogin = require("../../middlewares/requireLogin");
-const nodemailer = require("nodemailer");
-const User = require("../../models/User");
-const projects = require("../../models/Project");
-const Token = require("../../models/Tokens");
-const crypto = require("crypto");
-const fs = require("fs");
-const handlebars = require("handlebars");
+const team = require('../../models/teams');
+const requireLogin = require('../../middlewares/requireLogin');
+const nodemailer = require('nodemailer');
+const User = require('../../models/User');
+const projects = require('../../models/Project');
+const Token = require('../../models/Tokens');
+const crypto = require('crypto');
+const fs = require('fs');
+const handlebars = require('handlebars');
+// import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
-router.get("/getteam/:projectId", requireLogin, (req, res) => {
+router.get('/getteam/:projectId', requireLogin, (req, res) => {
   team
-    .find({ projectid: req.params.projectId }, "-creationdate -__v")
-    .populate("members.userid", "firstname lastname")
+    .find({ projectid: req.params.projectId }, '-creationdate -__v')
+    .populate('members.userid', 'firstname lastname')
     .exec(function (err, team) {
-      res.send(JSON.stringify(team, null, "\t"));
+      res.send(JSON.stringify(team, null, '\t'));
     });
 });
 
-router.get("/getteams/:userId", requireLogin, (req, res) => {
+router.get('/getteams/:userId', requireLogin, (req, res) => {
   team
-    .find({ "members.userid": req.params.userId })
+    .find({ 'members.userid': req.params.userId })
     .then((result) => {
       res.json(result);
     })
@@ -31,7 +33,7 @@ router.get("/getteams/:userId", requireLogin, (req, res) => {
 });
 
 let readHTMLFile = function (path, callback) {
-  fs.readFile(path, { encoding: "utf-8" }, function (err, html) {
+  fs.readFile(path, { encoding: 'utf-8' }, function (err, html) {
     if (err) {
       throw err;
       callback(err);
@@ -41,24 +43,24 @@ let readHTMLFile = function (path, callback) {
   });
 };
 
-router.get("/invitemembers", async function (req, res) {
+router.get('/invitemembers', async function (req, res) {
   let members;
-  if (typeof req.body.members == "string") {
+  if (typeof req.body.members == 'string') {
     members = [req.body.members];
   } else {
     members = req.body.members;
   }
   const filter = { projectid: req.body.projectid };
   let project = await projects.findById(filter.projectid);
-  let admin = await User.findById({ _id: project.userId }, "firstname");
+  let admin = await User.findById({ _id: project.userId }, 'firstname');
 
-  let doc = await User.find().where("_id").in(members);
+  let doc = await User.find().where('_id').in(members);
 
   const transporter = nodemailer.createTransport({
-    service: "gmail",
+    service: 'gmail',
     auth: {
-      user: "carca.inc@gmail.com",
-      pass: "CarcaGoogle314",
+      user: 'carca.inc@gmail.com',
+      pass: 'CarcaGoogle314',
     },
   });
 
@@ -66,7 +68,7 @@ router.get("/invitemembers", async function (req, res) {
     let tokenC = new Token({
       _userId: doc[i]._id,
       projectId: project._id,
-      token: crypto.randomBytes(16).toString("hex"),
+      token: crypto.randomBytes(16).toString('hex'),
     });
 
     tokenC.save(function (err) {
@@ -74,7 +76,7 @@ router.get("/invitemembers", async function (req, res) {
         return res.status(500).json({ msg: err.message });
       }
 
-      readHTMLFile("static/acceptTeamInvitationTemplate.html", function (
+      readHTMLFile('static/acceptTeamInvitationTemplate.html', function (
         err,
         html
       ) {
@@ -93,15 +95,15 @@ router.get("/invitemembers", async function (req, res) {
         let htmlToSend = template(replacements);
 
         const mailOption = {
-          from: "afifahmed456123@gmail.com",
+          from: 'afifahmed456123@gmail.com',
           to: doc[i].email,
-          subject: "Invitation to collborate",
+          subject: 'Invitation to collborate',
           html: htmlToSend,
         };
 
         transporter.sendMail(mailOption, function (err, data) {
           if (err) {
-            console.log("error", err);
+            console.log('error', err);
           } else {
             res.status(200).json({ success: true });
           }
@@ -111,42 +113,54 @@ router.get("/invitemembers", async function (req, res) {
   }
 });
 
-router.get("/requestjoin/:projectId", requireLogin, (req, res) => {
+router.get('/requestjoin/:projectId', requireLogin, async (req, res) => {
   const projectId = req.params.projectId;
   const userId = req.user._id;
   const transporter = nodemailer.createTransport({
-    service: "gmail",
+    service: 'gmail',
     auth: {
-      user: "carca.inc@gmail.com",
-      pass: "CarcaGoogle314",
+      user: 'carca.inc@gmail.com',
+      pass: 'CarcaGoogle314',
     },
   });
 
-  projects.findById(projectId, function (err, project) {
-    team.findOne({ projectid: projectId }, "members", function (err, temp) {
+  await projects.findById(projectId, async function (err, project) {
+    const projectID = mongoose.Types.ObjectId(projectId);
+    await team.find({ projectid: projectID }).then(async (err, temp) => {
       let adminId;
-      for (let i = 0; i < temp.members.length; i++) {
-        if (temp.members[i].role === "admin") adminId = temp.members[i].userid;
+      console.log(temp);
+      if (temp) {
+        for (let i = 0; i < temp.members.length; i++) {
+          if (temp.members[i].role === 'admin')
+            adminId = temp.members[i].userid;
+        }
       }
-      User.findById(adminId, function (err, admin) {
+
+      await User.findById(adminId, async function (err, admin) {
         let tokenC = new Token({
           _userId: userId,
           projectId: projectId,
-          token: crypto.randomBytes(16).toString("hex"),
+          token: crypto.randomBytes(16).toString('hex'),
         });
 
-        tokenC.save(function (err) {
+        tokenC.save(async function (err) {
           if (err) {
             return res.status(500).json({ msg: err.message });
           }
 
-          readHTMLFile("static/requestJoinTemplate.html", function (err, html) {
+          readHTMLFile('static/requestJoinTemplate.html', async function (
+            err,
+            html
+          ) {
             if (err) {
               console.log(err);
               return res.status(500).send(err);
             }
             let template = handlebars.compile(html);
-            User.findById(userId, "firstname lastname", function (err, member) {
+            await User.findById(userId, 'firstname lastname', async function (
+              err,
+              member
+            ) {
               let replacements = {
                 firstname: admin.firstname,
                 lastname: admin.lastname,
@@ -159,15 +173,15 @@ router.get("/requestjoin/:projectId", requireLogin, (req, res) => {
               let htmlToSend = template(replacements);
 
               const mailOption = {
-                from: "afifahmed456123@gmail.com",
+                from: 'afifahmed456123@gmail.com',
                 to: admin.email,
-                subject: "Request to collaborate",
+                subject: 'Request to collaborate',
                 html: htmlToSend,
               };
 
               transporter.sendMail(mailOption, function (err, data) {
                 if (err) {
-                  console.log("error", err);
+                  console.log('error', err);
                 } else {
                   res.status(200).json({ success: true });
                 }
@@ -180,7 +194,7 @@ router.get("/requestjoin/:projectId", requireLogin, (req, res) => {
   });
 });
 
-router.get("/acceptinvite", function (req, res) {
+router.get('/acceptinvite', function (req, res) {
   Token.findOne(
     {
       token: req.query.token,
@@ -188,27 +202,27 @@ router.get("/acceptinvite", function (req, res) {
     function (err, token) {
       if (!token) {
         return res.status(400).send({
-          type: "Failed to join team",
-          msg: "we were unable to confirm",
+          type: 'Failed to join team',
+          msg: 'we were unable to confirm',
         });
       } else if (token.expired === true) {
         return res
           .status(400)
-          .send({ type: "Failed to join team", msg: "Ivitation has expired" });
+          .send({ type: 'Failed to join team', msg: 'Ivitation has expired' });
       }
 
       const filter = { projectid: token.projectId };
 
-      team.findOne(filter, "members", function (err, team) {
+      team.findOne(filter, 'members', function (err, team) {
         if (err) {
-          res.status(500).send("Could not find team");
+          res.status(500).send('Could not find team');
         }
         if (
           team.members.some(function (currValue) {
             return token.__userId === currValue.userid;
           })
         ) {
-          res.status(500).send("You are already in the team!");
+          res.status(500).send('You are already in the team!');
         }
 
         team.members.push({ userid: token._userId });
@@ -222,8 +236,11 @@ router.get("/acceptinvite", function (req, res) {
             if (err) {
               return res.status(500).send({ msg: err.mesage });
             }
-            const message = "Successfully joined the team!"
-            res.redirect("https://carca-version-1.herokuapp.com/confirmed?message=" + message);
+            const message = 'Successfully joined the team!';
+            res.redirect(
+              'https://carca-version-1.herokuapp.com/confirmed?message=' +
+                message
+            );
           });
         });
       });
@@ -232,7 +249,7 @@ router.get("/acceptinvite", function (req, res) {
 });
 
 // Need to redirect admnin to requestee's profile so that admin can view his profile and only then accpet his request
-router.get("/acceptrequest", function (req, res) {
+router.get('/acceptrequest', function (req, res) {
   Token.findOne(
     {
       token: req.query.token,
@@ -240,27 +257,27 @@ router.get("/acceptrequest", function (req, res) {
     function (err, token) {
       if (!token) {
         return res.status(400).send({
-          type: "Failed to join team",
-          msg: "we were unable to confirm",
+          type: 'Failed to join team',
+          msg: 'we were unable to confirm',
         });
       } else if (token.expired === true) {
         return res.status(400).send({
-          type: "Failed to accept request",
-          msg: "Request has expired",
+          type: 'Failed to accept request',
+          msg: 'Request has expired',
         });
       }
 
       const filter = { projectid: token.projectId };
 
-      team.findOne(filter, "members", function (err, team) {
+      team.findOne(filter, 'members', function (err, team) {
         if (err) {
-          res.status(500).send("Could not find team");
+          res.status(500).send('Could not find team');
         } else if (
           team.members.some(function (currValue) {
             return token.__userId === currValue.userid;
           })
         ) {
-          res.status(500).send("User is already in the team!");
+          res.status(500).send('User is already in the team!');
         }
 
         team.members.push({ userid: token._userId });
@@ -274,8 +291,11 @@ router.get("/acceptrequest", function (req, res) {
             if (err) {
               return res.status(500).send({ msg: err.message });
             }
-            const message = "Successfully added new member to the team!";
-            res.render("https://carca-version-1.herokuapp.com/confirmed?message=" + message)
+            const message = 'Successfully added new member to the team!';
+            res.render(
+              'https://carca-version-1.herokuapp.com/confirmed?message=' +
+                message
+            );
           });
         });
       });
@@ -283,18 +303,18 @@ router.get("/acceptrequest", function (req, res) {
   );
 });
 
-router.put("/deletemembers", requireLogin, async function (req, res) {
+router.put('/deletemembers', requireLogin, async function (req, res) {
   let users;
-  if (typeof req.body.members == "string") {
+  if (typeof req.body.members == 'string') {
     users = [req.body.users];
   } else {
     users = req.body.users;
   }
   const filter = { projectid: req.body.projectid };
 
-  let doc = await team.findOne(filter, "members", function (err, team) {
+  let doc = await team.findOne(filter, 'members', function (err, team) {
     if (err) {
-      res.status(500).send("Internal server error");
+      res.status(500).send('Internal server error');
     }
     for (let i = 0; i < users.length; i++) {
       team.members.userid(users[i]).remove();
@@ -304,7 +324,7 @@ router.put("/deletemembers", requireLogin, async function (req, res) {
   });
 });
 
-router.put("/editTeamName", requireLogin, async function (req, res) {
+router.put('/editTeamName', requireLogin, async function (req, res) {
   const filter = { _id: req.body.teamid };
   const update = { teamname: req.body.teamname };
 

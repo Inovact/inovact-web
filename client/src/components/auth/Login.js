@@ -1,21 +1,21 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { loginUser } from "../../actions/authActions";
-import { confirmUser } from "../../actions/authActions";
-import classnames from "classnames";
-import signupImage from "../assets/register/signup-image.jpeg";
-import googleIcon from "../assets/register/google-icon.png";
-import facebookIcon from "../assets/register/facebook-icon.png";
-import style from "react-style-tag";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { loginUser } from '../../actions/authActions';
+import { confirmUser } from '../../actions/authActions';
+import classnames from 'classnames';
+import signupImage from '../assets/register/signup-image.jpeg';
+import googleIcon from '../assets/register/google-icon.png';
+import facebookIcon from '../assets/register/facebook-icon.png';
+import style from 'react-style-tag';
 
 class Login extends Component {
   constructor() {
     super();
     this.state = {
-      email: "",
-      password: "",
+      email: '',
+      password: '',
       errors: {},
     };
   }
@@ -23,13 +23,13 @@ class Login extends Component {
   componentDidMount() {
     // If logged in and user navigates to Login page, should redirect them to dashboard
     if (this.props.auth.isAuthenticated) {
-      this.props.history.push("/Interests");
+      this.props.history.push('/Interests');
     }
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.auth.isAuthenticated) {
-      this.props.history.push("/Interests"); // push user to dashboard when they login
+      this.props.history.push('/Interests'); // push user to dashboard when they login
     }
     if (nextProps.errors) {
       this.setState({
@@ -55,59 +55,59 @@ class Login extends Component {
     let pleaseVerify;
 
     return (
-      <section className="section">
-        <div className="register-container">
-          <div className="user signinBx">
-            <div className="imgBx">
-              <img src={signupImage} alt="signup" />
+      <section className='section'>
+        <div className='register-container'>
+          <div className='user signinBx'>
+            <div className='imgBx'>
+              <img src={signupImage} alt='signup' />
             </div>
-            <div className="formBx">
+            <div className='formBx'>
               <form onSubmit={this.onSubmit}>
                 <h2>Sign In</h2>
                 <input
-                  style={{ padding: "0 10px", margin: "8px 0" }}
-                  type="text"
-                  id="email"
+                  style={{ padding: '0 10px', margin: '8px 0' }}
+                  type='text'
+                  id='email'
                   onChange={this.onChange}
                   error={errors.email}
-                  className={classnames("", {
+                  className={classnames('', {
                     invalid: errors.email || errors.emailnotfound,
                   })}
-                  placeholder="Email Address"
+                  placeholder='Email Address'
                 />
-                <span style={{ color: "red" }}>
+                <span style={{ color: 'red' }}>
                   {errors.email}
                   {errors.emailnotfound}
                 </span>
                 <input
-                  style={{ padding: "0 10px", margin: "8px 0" }}
-                  type="password"
-                  id="password"
+                  style={{ padding: '0 10px', margin: '8px 0' }}
+                  type='password'
+                  id='password'
                   onChange={this.onChange}
                   error={errors.password}
-                  className={classnames("", {
+                  className={classnames('', {
                     invalid: errors.password || errors.passwordincorrect,
                   })}
-                  placeholder="Password"
+                  placeholder='Password'
                 />
-                <span style={{ color: "red" }}>
+                <span style={{ color: 'red' }}>
                   {errors.password}
                   {errors.passwordincorrect}
                 </span>
-                <input type="submit" value="Login" />
-                <p className="signup" style={{ textAlign: "center" }}>
-                  Don't have an account ?<Link to="/register">Sign Up</Link>{" "}
+                <input type='submit' value='Login' />
+                <p className='signup' style={{ textAlign: 'center' }}>
+                  Don't have an account ?<Link to='/register'>Sign Up</Link>{' '}
                 </p>
-                <div className="other-signup">
-                  <span style={{ fontSize: "12px", color: "grey" }}>
+                <div className='other-signup'>
+                  <span style={{ fontSize: '12px', color: 'grey' }}>
                     or signup using
                   </span>
-                  <div className="signup-icons">
-                    <a href="https://carca-version-1.herokuapp.com/api/users/auth/google">
-                      <img src={googleIcon} alt="google" />
+                  <div className='signup-icons'>
+                    <a href='http://localhost:5000/api/users/auth/google'>
+                      <img src={googleIcon} alt='google' />
                     </a>
-                    <a href="https://carca-version-1.herokuapp.com/api/users/auth/facebook">
-                      <img src={facebookIcon} alt="facebook" />
+                    <a href='https://carca-version-1.herokuapp.com/api/users/auth/facebook'>
+                      <img src={facebookIcon} alt='facebook' />
                     </a>
                   </div>
                 </div>

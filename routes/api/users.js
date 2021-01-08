@@ -16,7 +16,7 @@ const User = require('../../models/User');
 const Token = require('../../models/Tokens');
 const fs = require('fs');
 const handlebars = require('handlebars');
-const requireLogin = require("../../middlewares/requireLogin");
+const requireLogin = require('../../middlewares/requireLogin');
 
 let readHTMLFile = function (path, callback) {
   fs.readFile(path, { encoding: 'utf-8' }, function (err, html) {
@@ -250,7 +250,7 @@ router.post('/login', (req, res) => {
           followers: user.followers,
           following: user.following,
           pic: user.profilePic,
-          interests: user.interests
+          interests: user.interests,
         };
         let tokenC = new Token({
           _userId: user._id,
@@ -310,14 +310,16 @@ router.get(
 
     const token = jwt.sign(payload, keys.secretOrKey, { expiresIn: 31556926 });
 
+    const token2 = 'Bearer ' + token;
+
     // const bearerToken = `Bearer ${token}`;
 
-    if (process.env.NODE_ENV === 'production') {
-      redirectURL =
-        'https://carca-version-1.herokuapp.com/serializeUser?jwtToken=' + token;
-    } else {
-      redirectURL = 'https://localhost:3000/serializeUser?jwtToken=' + token;
-    }
+    // if (process.env.NODE_ENV === 'production') {
+    //   redirectURL =
+    //     'https://carca-version-1.herokuapp.com/serializeUser?jwtToken=' + token;
+    // } else {
+    redirectURL = 'http://localhost:3000/serialize/' + token2;
+    // }
     res.redirect(redirectURL);
   }
 );
@@ -432,17 +434,19 @@ router.post('/search-users', (req, res) => {
     .catch((err) => console.log(err));
 });
 
-router.post('/interests', (req, res) => {
+router.post('/interests', requireLogin, (req, res) => {
   // parse the interests
-  const interests = req.body.interests.split(',')
+  const interests = req.body.interests.split(',');
 
-  User.findOneAndUpdate({email: req.body.email},
+  User.findOneAndUpdate(
+    { email: req.body.email },
     {
-      $push: { interests: interests }
-    }).then(() => {
-      res.writeHead(200);
-      res.send();
-    });
+      $push: { interests: interests },
+    }
+  ).then(() => {
+    res.writeHead(200);
+    res.send();
+  });
 });
 
 module.exports = router;

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import style from 'react-style-tag';
 import Container from './ProjectModal/Container';
-import PropTypes from 'prop-types';
+import PropTypes, { number } from 'prop-types';
 import { connect } from 'react-redux';
 import {
   postProject,
@@ -38,7 +38,12 @@ class Projects extends Component {
     this.state = {
       title: '',
       description: '',
-      status: '',
+      status: [
+        { id: 1, value: 'complete' },
+        { id: 2, value: 'incomplete' },
+        { id: 3, value: 'inprogress' },
+      ],
+      file: {},
       tags: [],
       projects: [],
       postSuccess: false,
@@ -62,8 +67,8 @@ class Projects extends Component {
         postSuccess: nextProps.projects.postSuccess,
         projects: nextProps.projects.projects,
       });
-      window.location.reload();
       M.toast({ html: 'Posted Successfully' });
+      window.location.reload();
     }
     if (nextProps.projects.projectExists) {
       this.setState({
@@ -104,13 +109,34 @@ class Projects extends Component {
     const triggerText = 'Create Project';
     const onSubmit = (event) => {
       event.preventDefault(event);
-      const newProject = {
-        title: event.target.title.value,
-        description: event.target.description.value,
-        status: event.target.status.value,
-        tags: event.target.tags.value,
-      };
-      this.props.postProject(newProject);
+      const data = new FormData();
+
+      const title = event.target.title.value;
+      const description = event.target.description.value;
+      const status = event.target.status.value;
+      const tags = event.target.tags.value;
+
+      const file = [];
+
+      for (let i in event.target.file[0].files) {
+        console.log(typeof i);
+        file.push(event.target.file[0].files[i]);
+      }
+
+      file.splice(-1, 2);
+      file.splice(file.length - 1, 1);
+
+      console.log({ file });
+      data.append('title', title);
+      data.append('description', description);
+      data.append('status', status);
+      data.append('tags', tags);
+
+      for (let j in file) {
+        data.append('file', file[j]);
+      }
+
+      this.props.postProject(data);
       this.props.userProject();
     };
 

@@ -1,14 +1,14 @@
-import React from "react";
-import style from "react-style-tag";
+import React from 'react';
+import style from 'react-style-tag';
 
 const TagsInput = (props) => {
   const [tags, setTags] = React.useState(props.tags);
   const addTags = (event) => {
-    if (event.keyCode === 188 && event.target.value !== "") {
+    if (event.keyCode === 188 && event.target.value !== '') {
       event.preventDefault();
       setTags([...tags, event.target.value]);
       props.selectedTags([...tags, event.target.value]);
-      event.target.value = "";
+      event.target.value = '';
     }
   };
 
@@ -17,45 +17,45 @@ const TagsInput = (props) => {
   };
   return (
     <div>
-      <div className="tags-input">
+      <div className='tags-input'>
         <ul
-          id="tags"
-          style={{ display: "flex", flexWrap: "wrap", padding: "0" }}
+          id='tags'
+          style={{ display: 'flex', flexWrap: 'wrap', padding: '0' }}
         >
           {tags.map((tag, index) => (
             <li
               style={{
-                width: "auto",
-                height: "32px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                color: "#fff",
-                padding: "0 8px",
-                fontSize: "14px",
-                listStyle: "none",
-                borderRadius: "6px",
-                margin: "0 8px 8px 0",
-                background: "orange",
+                width: 'auto',
+                height: '32px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: '#fff',
+                padding: '0 8px',
+                fontSize: '14px',
+                listStyle: 'none',
+                borderRadius: '6px',
+                margin: '0 8px 8px 0',
+                background: 'orange',
               }}
-              className="tag"
+              className='tag'
               key={index}
             >
-              <span className="tag-title">{tag}</span>
+              <span className='tag-title'>{tag}</span>
               <span
                 style={{
-                  display: "block",
-                  width: "16px",
-                  height: "16px",
-                  lineHeight: "16px",
-                  textAlign: "center",
-                  color: "#0052cc",
-                  background: "#fff",
-                  borderRadius: "50%",
-                  marginLeft: "8px",
-                  fontSize: "14px",
+                  display: 'block',
+                  width: '16px',
+                  height: '16px',
+                  lineHeight: '16px',
+                  textAlign: 'center',
+                  color: '#0052cc',
+                  background: '#fff',
+                  borderRadius: '50%',
+                  marginLeft: '8px',
+                  fontSize: '14px',
                 }}
-                className="tag-close-icon"
+                className='tag-close-icon'
                 onClick={() => removeTags(index)}
               >
                 x
@@ -64,9 +64,9 @@ const TagsInput = (props) => {
           ))}
         </ul>
         <input
-          type="text"
+          type='text'
           onKeyUp={(event) => addTags(event)}
-          placeholder="Press enter to add tags"
+          placeholder='Press comma(,) to add tags'
         />
       </div>
       <style>

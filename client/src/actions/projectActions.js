@@ -1,15 +1,18 @@
-import axios from "axios";
+import axios from 'axios';
 import {
   GET_ERRORS,
   PROJECTS,
   ALL_PROJECTS,
   POST_SUCCESS,
   SUBSCRIBERS_PROJECTS,
-} from "./types";
+} from './types';
+
+const baseURL = 'http://localhost:5000';
 
 export const postProject = (projectData) => (dispatch) => {
+  console.log({ projectData });
   axios
-    .post("/api/projects/createproject", projectData)
+    .post(`${baseURL}/api/projects/createproject`, projectData)
     .then((res) => {
       dispatch({
         type: POST_SUCCESS,
@@ -24,7 +27,7 @@ export const postProject = (projectData) => (dispatch) => {
 };
 
 export const subscribersProject = () => (dispatch) => {
-  axios.get("/api/projects/getsubprojects").then((result) => {
+  axios.get(`${baseURL}/api/projects/getsubprojects`).then((result) => {
     console.log(result);
     dispatch({
       type: SUBSCRIBERS_PROJECTS,
@@ -35,9 +38,8 @@ export const subscribersProject = () => (dispatch) => {
 
 export const getProject = () => (dispatch) => {
   axios
-    .get("/api/projects/getallprojects")
+    .get(`${baseURL}/api/projects/getallprojects`)
     .then((res) => {
-      console.log(res.data);
       dispatch(storeProjects(res.data));
     })
     .catch((err) => {
@@ -47,7 +49,7 @@ export const getProject = () => (dispatch) => {
 
 export const userProject = () => (dispatch) => {
   axios
-    .get("/api/projects/myprojects")
+    .get(`${baseURL}/api/projects/myprojects`)
     .then((res) => {
       dispatch(storeMyProjects(res.data));
     })
