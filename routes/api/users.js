@@ -209,8 +209,7 @@ router.get('/confirmation/:token', (req, res) => {
             }
             const message = 'Account has been verified successfully!';
             res.redirect(
-              'https://carca-version-1.herokuapp.com/confirmed?message=' +
-                message
+              'https://inovact.herokuapp.com/confirmed?message=' + message
             );
           });
         });
@@ -318,7 +317,7 @@ router.get(
     //   redirectURL =
     //     'https://carca-version-1.herokuapp.com/serializeUser?jwtToken=' + token;
     // } else {
-    redirectURL = 'http://localhost:3000/serialize/' + token2;
+    redirectURL = 'https://inovact.herokuapp.com/serialize/' + token2;
     // }
     res.redirect(redirectURL);
   }
@@ -352,7 +351,7 @@ router.get(
     // const bearerToken = `Bearer ${token}`;
 
     const redirectURL =
-      'https://carca-version-1.herokuapp.com/serializeUser?jwtToken=' + token;
+      'https://inovact.herokuapp.com/serializeUser?jwtToken=' + token;
 
     res.redirect(redirectURL);
   }
@@ -381,7 +380,7 @@ router.post('/reset-password', (req, res) => {
         to: user.email,
         subject: 'Password Reset',
         html: `<p>You requested for password reset</p>
-                <h5>Click<a href="https://carca-version-1.herokuapp.com/reset/${token}">here</a> reset your password</h5>`,
+                <h5>Click<a href="https://inovact.herokuapp.com/reset/${token}">here</a> reset your password</h5>`,
       };
 
       transporter.sendMail(mailOption, function (err, data) {
