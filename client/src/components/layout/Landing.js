@@ -65,13 +65,11 @@ const LandingNew = () => {
           <div className='mxw800p'>
             <h3>Who We Are</h3>
             <p>
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore u fugiat nulla
-              pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-              culpa qui officia deserunt mollit anim id est laborum."
+              We are a bunch of Engineering students who have strongly felt an
+              urge to help our fellow mates in the path of innovation and we
+              hell-bent in doing it. The platform helps our users to explore new
+              ideas , look for various opportunities and also showcase their
+              work to the community.
             </p>
             <a
               href='h'
