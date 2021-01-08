@@ -79,7 +79,7 @@ class Navbar extends Component {
             <div className='nav-header'>
               <div className='nav-title'>
                 <Link style={{ color: '#336699' }} to='/dashboard'>
-                  CARCA
+                  Inovact
                 </Link>
               </div>
             </div>
