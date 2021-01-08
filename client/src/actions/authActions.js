@@ -9,7 +9,7 @@ import {
 } from './types';
 
 // const baseURL = 'http://localhost:5000';
-const baseURL = 'http://https://gentle-tundra-19319.herokuapp.com';
+const baseURL = 'https://inovact.herokuapp.com';
 
 export const confirmUser = (userData) => (dispatch) => {
   axios

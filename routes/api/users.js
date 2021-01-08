@@ -311,12 +311,6 @@ router.get(
 
     const token2 = 'Bearer ' + token;
 
-    // const bearerToken = `Bearer ${token}`;
-
-    // if (process.env.NODE_ENV === 'production') {
-    //   redirectURL =
-    //     'https://carca-version-1.herokuapp.com/serializeUser?jwtToken=' + token;
-    // } else {
     redirectURL = 'https://inovact.herokuapp.com/serialize/' + token2;
     // }
     res.redirect(redirectURL);
