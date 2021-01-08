@@ -25,7 +25,7 @@ app.use(bodyParser.json());
 //DB Config
 const db = require('./config/keys').mongoURI;
 
-//config variables set
+//config variables set in heroku
 
 // connect to MongoDB
 mongoose
