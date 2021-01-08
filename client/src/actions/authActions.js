@@ -8,7 +8,8 @@ import {
   USER_LOADING,
 } from './types';
 
-const baseURL = 'http://localhost:5000';
+// const baseURL = 'http://localhost:5000';
+const baseURL = 'http://https://gentle-tundra-19319.herokuapp.com';
 
 export const confirmUser = (userData) => (dispatch) => {
   axios
@@ -27,7 +28,7 @@ export const confirmUser = (userData) => (dispatch) => {
 
 export const profileEdit = (userData) => (dispatch) => {
   axios
-    .put('/api/users/profileEdit', userData)
+    .put(`${baseURL}/api/users/profileEdit`, userData)
     .then((res) => {
       localStorage.removeItem('jwtToken');
 

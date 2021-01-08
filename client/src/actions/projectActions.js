@@ -64,7 +64,7 @@ export const userProject = () => (dispatch) => {
 
 export const deleteProject = (projectId) => (dispatch) => {
   axios
-    .delete(`/api/projects/deleteproject/${projectId}`)
+    .delete(`${baseURL}/api/projects/deleteproject/${projectId}`)
     .then((result) => {
       console.log(result);
     })

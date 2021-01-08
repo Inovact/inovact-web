@@ -1,9 +1,11 @@
-import axios from "axios";
-import { IDEAS, GET_ERRORS, ALL_IDEAS, POST_SUCCESS } from "./types";
+import axios from 'axios';
+import { IDEAS, GET_ERRORS, ALL_IDEAS, POST_SUCCESS } from './types';
+
+const baseURL = 'http://https://gentle-tundra-19319.herokuapp.com';
 
 export const postIdea = (ideaData) => (dispatch) => {
   axios
-    .post("/api/ideas/postidea", ideaData)
+    .post(`${baseURL}/api/ideas/postidea`, ideaData)
     .then((res) => {
       console.log(res);
       dispatch({
@@ -19,7 +21,7 @@ export const postIdea = (ideaData) => (dispatch) => {
 };
 export const getIdeas = () => (dispatch) => {
   axios
-    .get("/api/ideas/getallideas")
+    .get(`${baseURL}/api/ideas/getallideas`)
     .then((res) => {
       dispatch(storeIdeas(res.data));
     })
@@ -34,7 +36,7 @@ export const getIdeas = () => (dispatch) => {
 
 export const userIdeas = () => (dispatch) => {
   axios
-    .get("/api/ideas/myideas")
+    .get(`${baseURL}/api/ideas/myideas`)
     .then((res) => {
       console.log(res.data);
       dispatch(storeMyIdeas(res.data));
