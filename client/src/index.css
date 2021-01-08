@@ -97,3 +97,17 @@ p.lorem-text {
   width: 100%;
   object-fit: cover;
 }
+
+.alice-carousel__next-btn {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.alice-carousel__prev-btn {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.alice-carousel__dots {
+  margin: 0;
+}
