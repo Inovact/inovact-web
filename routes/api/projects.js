@@ -6,7 +6,6 @@ const team = require('../../models/teams');
 const Pusher = require('pusher');
 const Imagekit = require('imagekit');
 const keys = require('../../config/keys');
-const { doc } = require('prettier');
 const videoFileFilter = require('../../validation/videoFileValidator');
 const imageFileFilter = require('../../validation/imageFileValidator');
 const multer = require('multer');
