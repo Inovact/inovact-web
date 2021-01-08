@@ -165,9 +165,9 @@ router.post(
     });
 
     const imagekit = new Imagekit({
-      publicKey: keys.IMAGEKEIT_PUBLIC_KEY,
-      privateKey: keys.IMAGEKEIT_PRIVATE_KEY,
-      urlEndpoint: keys.IMAGEKIT_URI + 'project_documents',
+      publicKey: process.env.IMAGEKEIT_PUBLIC_KEY,
+      privateKey: process.env.IMAGEKEIT_PRIVATE_KEY,
+      urlEndpoint: process.env.IMAGEKIT_URI + 'project_documents',
     });
 
     images.forEach((image) => {
