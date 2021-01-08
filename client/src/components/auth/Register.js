@@ -185,10 +185,10 @@ class Register extends Component {
                       or signup using
                     </span>
                     <div className='signup-icons'>
-                      <a href='https://carca-version-1.herokuapp.com/api/users/auth/google'>
+                      <a href='https://inovact.herokuapp.com/api/users/auth/google'>
                         <img src={googleIcon} alt='' />
                       </a>
-                      <a href='https://carca-version-1.herokuapp.com/api/users/auth/facebook'>
+                      <a href='https://inovact.herokuapp.com/api/users/auth/facebook'>
                         <img src={facebookIcon} alt='' />
                       </a>
                     </div>
