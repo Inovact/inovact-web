@@ -90,7 +90,6 @@ class Projects extends Component {
   };
 
   dialogClose = (todo) => {
-    console.log(todo);
     if (todo === 'cancel' || todo === 'close') {
       this.setState({
         toggled: false,
@@ -106,7 +105,7 @@ class Projects extends Component {
 
   render() {
     const triggerText = 'Create Project';
-    const onSubmit = (event) => {
+    const onSubmit = async (event) => {
       event.preventDefault(event);
       const data = new FormData();
 
@@ -135,8 +134,8 @@ class Projects extends Component {
         data.append('file', file[j]);
       }
 
-      this.props.postProject(data);
-      this.props.userProject();
+      await this.props.postProject(data);
+      await this.props.userProject();
     };
 
     return (
