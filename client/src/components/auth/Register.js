@@ -1,24 +1,24 @@
-import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { registerUser } from "../../actions/authActions";
-import classnames from "classnames";
-import signupImage from "../assets/register/signup-image.jpeg";
-import googleIcon from "../assets/register/google-icon.png";
-import facebookIcon from "../assets/register/facebook-icon.png";
-import style from "react-style-tag";
+import React, { Component } from 'react';
+import { Link, withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { registerUser } from '../../actions/authActions';
+import classnames from 'classnames';
+import signupImage from '../assets/register/signup-image.jpeg';
+import googleIcon from '../assets/register/google-icon.png';
+import facebookIcon from '../assets/register/facebook-icon.png';
+import style from 'react-style-tag';
 
 class Register extends Component {
   constructor() {
     super();
     this.state = {
-      firstname: "",
-      lastname: "",
-      email: "",
-      password: "",
-      password2: "",
-      dob: "",
+      firstname: '',
+      lastname: '',
+      email: '',
+      password: '',
+      password2: '',
+      dob: '',
       errors: {},
     };
   }
@@ -26,7 +26,7 @@ class Register extends Component {
   componentDidMount() {
     // If logged in and user navigates to Register page, should redirect them to dashboard
     if (this.props.auth.isAuthenticated) {
-      this.props.history.push("/dashboard");
+      this.props.history.push('/dashboard');
     }
   }
 
@@ -70,118 +70,133 @@ class Register extends Component {
     console.log(this.props);
     return (
       <div>
-        <section className="section">
-          <div className="register-container">
-            <div className="user signupBx">
-              <div className="formBx" style={{ position: "relative" }}>
+        <section className='section'>
+          <div className='register-container'>
+            <div className='user signupBx'>
+              <div className='formBx' style={{ position: 'relative' }}>
                 <form onSubmit={this.onSubmit}>
                   <h2>Create an Account</h2>
                   <input
-                    style={{ padding: "0 10px", margin: "8px 0" }}
-                    type="text"
-                    name="firstname"
-                    id="firstname"
+                    style={{
+                      padding: '0 10px',
+                      margin: '8px 0',
+                      height: '18px',
+                    }}
+                    type='text'
+                    name='firstname'
+                    id='firstname'
                     onChange={this.onChange}
                     value={this.state.firstname}
                     error={errors.firstname}
-                    className={classnames("", { invalid: errors.firstname })}
-                    style={{ height: "18px" }}
-                    placeholder="First Name"
+                    className={classnames('', { invalid: errors.firstname })}
+                    placeholder='First Name'
                   />
-                  <span style={{ color: "red", fontSize: "12px" }}>
+                  <span style={{ color: 'red', fontSize: '12px' }}>
                     {errors.firstname}
                   </span>
                   <input
-                    style={{ padding: "0 10px", margin: "8px 0" }}
-                    type="text"
-                    name="lastname"
-                    id="lastname"
+                    style={{
+                      padding: '0 10px',
+                      margin: '8px 0',
+                      height: '18px',
+                    }}
+                    type='text'
+                    name='lastname'
+                    id='lastname'
                     onChange={this.onChange}
                     value={this.state.lastname}
                     error={errors.lastname}
-                    className={classnames("", { invalid: errors.lastname })}
-                    style={{ height: "18px" }}
-                    placeholder="Last Name"
+                    className={classnames('', { invalid: errors.lastname })}
+                    placeholder='Last Name'
                   />
-                  <span style={{ color: "red", fontSize: "12px" }}>
+                  <span style={{ color: 'red', fontSize: '12px' }}>
                     {errors.lastname}
                   </span>
                   <input
-                    style={{ padding: "0 10px", margin: "8px 0" }}
-                    type="text"
-                    name="email"
-                    id="email"
+                    style={{
+                      padding: '0 10px',
+                      margin: '8px 0',
+                      height: '18px',
+                    }}
+                    type='text'
+                    name='email'
+                    id='email'
                     onChange={this.onChange}
                     value={this.state.email}
                     error={errors.email}
-                    className={classnames("", { invalid: errors.email })}
-                    style={{ height: "18px" }}
-                    placeholder="Email Address"
+                    className={classnames('', { invalid: errors.email })}
+                    placeholder='Email Address'
                   />
-                  <span style={{ color: "red", fontSize: "12px" }}>
+                  <span style={{ color: 'red', fontSize: '12px' }}>
                     {errors.email}
                   </span>
                   <input
-                    style={{ padding: "0 10px", margin: "8px 0" }}
-                    type="password"
-                    name="password"
-                    id="password"
+                    style={{
+                      padding: '0 10px',
+                      margin: '8px 0',
+                      height: '18px',
+                    }}
+                    type='password'
+                    name='password'
+                    id='password'
                     onChange={this.onChange}
                     value={this.state.password}
                     error={errors.password}
-                    className={classnames("", { invalid: errors.password })}
-                    style={{ height: "18px" }}
-                    placeholder="Password"
+                    className={classnames('', { invalid: errors.password })}
+                    placeholder='Password'
                   />
-                  <span style={{ color: "red", fontSize: "12px" }}>
+                  <span style={{ color: 'red', fontSize: '12px' }}>
                     {errors.password}
                   </span>
                   <input
-                    style={{ padding: "0 10px", margin: "8px 0" }}
-                    type="password"
-                    name="password2"
-                    id="password2"
+                    style={{
+                      padding: '0 10px',
+                      margin: '8px 0',
+                      height: '18px',
+                    }}
+                    type='password'
+                    name='password2'
+                    id='password2'
                     onChange={this.onChange}
                     value={this.state.password2}
                     error={errors.password2}
-                    className={classnames("", { invalid: errors.password2 })}
-                    style={{ height: "18px" }}
-                    placeholder="Confirm Password"
+                    className={classnames('', { invalid: errors.password2 })}
+                    placeholder='Confirm Password'
                   />
-                  <span style={{ color: "red", fontSize: "12px" }}>
+                  <span style={{ color: 'red', fontSize: '12px' }}>
                     {errors.password2}
                   </span>
-                  <input type="submit" value="Sign Up" />
+                  <input type='submit' value='Sign Up' />
                   <p
-                    className="signup"
-                    style={{ textAlign: "center", fontSize: "11px" }}
+                    className='signup'
+                    style={{ textAlign: 'center', fontSize: '11px' }}
                   >
-                    Already have an account ?<Link to="/login">Sign In</Link>{" "}
+                    Already have an account ?<Link to='/login'>Sign In</Link>{' '}
                   </p>
-                  <div className="other-signup">
+                  <div className='other-signup'>
                     <span
                       style={{
-                        fontSize: "14px",
-                        alignItems: "center",
-                        marginRight: "1%",
-                        color: "grey",
+                        fontSize: '14px',
+                        alignItems: 'center',
+                        marginRight: '1%',
+                        color: 'grey',
                       }}
                     >
                       or signup using
                     </span>
-                    <div className="signup-icons">
-                      <a href="https://carca-version-1.herokuapp.com/api/users/auth/google">
-                        <img src={googleIcon} alt="" />
+                    <div className='signup-icons'>
+                      <a href='https://carca-version-1.herokuapp.com/api/users/auth/google'>
+                        <img src={googleIcon} alt='' />
                       </a>
-                      <a href="https://carca-version-1.herokuapp.com/api/users/auth/facebook">
-                        <img src={facebookIcon} alt="" />
+                      <a href='https://carca-version-1.herokuapp.com/api/users/auth/facebook'>
+                        <img src={facebookIcon} alt='' />
                       </a>
                     </div>
                   </div>
                 </form>
               </div>
-              <div className="imgBx">
-                <img src={signupImage} alt="" />
+              <div className='imgBx'>
+                <img src={signupImage} alt='' />
               </div>
             </div>
           </div>

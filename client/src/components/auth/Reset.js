@@ -1,19 +1,18 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { confirmUser } from "../../actions/authActions";
-import classnames from "classnames";
-import signupImage from "../assets/register/signup-image.jpeg";
-import M from 'materialize-css'
-import style from "react-style-tag";
-import axios from "axios";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { confirmUser } from '../../actions/authActions';
+import classnames from 'classnames';
+import signupImage from '../assets/register/signup-image.jpeg';
+import M from 'materialize-css';
+import style from 'react-style-tag';
+import axios from 'axios';
 
 class Reset extends Component {
   constructor() {
     super();
     this.state = {
-      email: "",
+      email: '',
       errors: {},
     };
   }
@@ -26,19 +25,19 @@ class Reset extends Component {
     const userData = {
       email: this.state.email,
     };
-    axios.post("/api/users/reset-password", userData).then((result) => {
+    axios.post('/api/users/reset-password', userData).then((result) => {
       if (result.data.error) {
         M.toast({
           html: result.data.error,
-          classes: "#fff red darken-3 rounded",
+          classes: '#fff red darken-3 rounded',
         });
       } else {
         console.log(result.data);
         M.toast({
-          html: "please check your email",
-          classes: "#fff green darken-3 rounded",
+          html: 'please check your email',
+          classes: '#fff green darken-3 rounded',
         });
-        this.props.history.push("/login");
+        this.props.history.push('/login');
       }
     });
   };
@@ -46,32 +45,32 @@ class Reset extends Component {
     const { errors } = this.state;
 
     return (
-      <section className="section">
-        <div className="register-container">
-          <div className="user signinBx">
-            <div className="imgBx">
-              <img src={signupImage} alt="signup" />
+      <section className='section'>
+        <div className='register-container'>
+          <div className='user signinBx'>
+            <div className='imgBx'>
+              <img src={signupImage} alt='signup' />
             </div>
-            <div className="formBx">
+            <div className='formBx'>
               <form onSubmit={this.onSubmit}>
                 <h2>Reset Password</h2>
                 <input
-                  style={{ padding: "0 10px", margin: "8px 0" }}
-                  type="text"
-                  id="email"
+                  style={{ padding: '0 10px', margin: '8px 0' }}
+                  type='text'
+                  id='email'
                   onChange={this.onChange}
                   error={errors.email}
-                  className={classnames("", {
+                  className={classnames('', {
                     invalid: errors.email || errors.emailnotfound,
                   })}
-                  placeholder="Email Address"
+                  placeholder='Email Address'
                 />
-                <span style={{ color: "red" }}>
+                <span style={{ color: 'red' }}>
                   {errors.email}
                   {errors.emailnotfound}
                 </span>
 
-                <input type="submit" value="Reset" />
+                <input type='submit' value='Reset' />
                 {/*<div className="other-signup">*/}
                 {/*  <span style={{ fontSize: "12px", color: "grey" }}>*/}
                 {/*    or signup using*/}

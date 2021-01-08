@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { REQUEST_JOIN, MY_TEAMS, TEAM_DETAILS } from './types';
+import { MY_TEAMS, TEAM_DETAILS } from './types';
 
 const baseUrl = 'http://localhost:5000';
 

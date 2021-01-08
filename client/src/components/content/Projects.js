@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import style from 'react-style-tag';
 import Container from './ProjectModal/Container';
-import PropTypes, { number } from 'prop-types';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
   postProject,
@@ -14,7 +14,6 @@ import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
 import { Tooltip } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
-import Alert from '@material-ui/lab/Alert';
 import M from 'materialize-css';
 import {
   Dialog,

@@ -1,17 +1,17 @@
-import React, { Component } from "react";
-import style from "react-style-tag";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import axios from "axios";
-import { getIdeas } from "../../actions/ideaActions";
-import { Link } from "react-router-dom";
-import "font-awesome/css/font-awesome.min.css";
-import Collapsible from "react-collapsible";
-import { Button, Tooltip } from "@material-ui/core";
-import Typography from "@material-ui/core/Typography";
-import CircularProgress from "@material-ui/core/CircularProgress";
-import Avatar from "@material-ui/core/Avatar";
-import Chip from "@material-ui/core/Chip";
+import React, { Component } from 'react';
+import style from 'react-style-tag';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import axios from 'axios';
+import { getIdeas } from '../../actions/ideaActions';
+import { Link } from 'react-router-dom';
+import 'font-awesome/css/font-awesome.min.css';
+import Collapsible from 'react-collapsible';
+import { Tooltip } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import Avatar from '@material-ui/core/Avatar';
+import Chip from '@material-ui/core/Chip';
 
 class Posts extends Component {
   constructor(props) {
@@ -39,7 +39,7 @@ class Posts extends Component {
       postId: id,
     };
     axios
-      .put("api/ideas/like", postId)
+      .put('api/ideas/like', postId)
       .then((result) => {
         const newData = this.state.newIdeas.map((item) => {
           if (item._id === result.data._id) {
@@ -63,7 +63,7 @@ class Posts extends Component {
       postId: id,
     };
     axios
-      .put("api/ideas/unlike", postId)
+      .put('api/ideas/unlike', postId)
       .then((result) => {
         console.log(result);
         const newData = this.state.newIdeas.map((item) => {
@@ -88,7 +88,7 @@ class Posts extends Component {
       postId: postId,
     };
     axios
-      .put("/api/ideas/comment", comment)
+      .put('/api/ideas/comment', comment)
       .then((result) => {
         console.log(result);
         const newData = this.state.newIdeas.map((item) => {
@@ -108,35 +108,35 @@ class Posts extends Component {
   };
 
   render() {
-    console.log("idea", this.state.newIdeas);
+    console.log('idea', this.state.newIdeas);
     if (this.state.newIdeas) {
       return (
         <div>
-          <section className="projects">
-            <div className="content">
-              <div className="teamBx" style={{ transition: "0.6s ease out" }}>
+          <section className='projects'>
+            <div className='content'>
+              <div className='teamBx' style={{ transition: '0.6s ease out' }}>
                 {this.state.newIdeas.map((idea) => (
                   <div
-                    className="card"
+                    className='card'
                     style={{
-                      transition: "0.6s ease out",
-                      boxShadow: "8px 4px 16px 0 rgba(0,0,0,0.2)",
-                      borderRadius: "12px",
+                      transition: '0.6s ease out',
+                      boxShadow: '8px 4px 16px 0 rgba(0,0,0,0.2)',
+                      borderRadius: '12px',
                     }}
                   >
                     <div
-                      className="card-image waves-effect waves-block waves-light"
+                      className='card-image waves-effect waves-block waves-light'
                       style={{
-                        display: "flex",
-                        justifyContent: "start",
-                        padding: "10px",
+                        display: 'flex',
+                        justifyContent: 'start',
+                        padding: '10px',
                       }}
                     >
                       <Avatar
                         style={{
-                          marginTop: "5px",
-                          marginLeft: "10px",
-                          backgroundColor: "#ff1f5a",
+                          marginTop: '5px',
+                          marginLeft: '10px',
+                          backgroundColor: '#ff1f5a',
                         }}
                       >
                         P
@@ -144,72 +144,72 @@ class Posts extends Component {
                       <Link
                         to={
                           idea.userId._id !== this.props.auth.user.id
-                            ? "/profileOther/" + idea.userId._id
-                            : "/projects"
+                            ? '/profileOther/' + idea.userId._id
+                            : '/projects'
                         }
                         style={{
-                          display: "flex",
-                          flexDirection: "column",
-                          marginLeft: "1rem",
-                          textDecoration: "none",
+                          display: 'flex',
+                          flexDirection: 'column',
+                          marginLeft: '1rem',
+                          textDecoration: 'none',
                         }}
                       >
                         <span>
                           <Tooltip
                             title={
                               <React.Fragment>
-                                <Typography color="inherit">
+                                <Typography color='inherit'>
                                   Tooltip with HTML
                                 </Typography>
                                 <h6>{idea.userId.firstname}</h6>
                               </React.Fragment>
                             }
                             plac
-                            placement="top"
+                            placement='top'
                           >
                             <span
                               style={{
-                                fontWeight: "300",
-                                fontFamily: "sans serif",
-                                color: "#222",
+                                fontWeight: '300',
+                                fontFamily: 'sans serif',
+                                color: '#222',
                               }}
                             >
                               {idea.userId.firstname}
                             </span>
                           </Tooltip>
                         </span>
-                        <span style={{ fontSize: "12px", color: "grey" }}>
-                          {new Intl.DateTimeFormat("en-GB", {
-                            month: "long",
-                            day: "2-digit",
-                            year: "numeric",
+                        <span style={{ fontSize: '12px', color: 'grey' }}>
+                          {new Intl.DateTimeFormat('en-GB', {
+                            month: 'long',
+                            day: '2-digit',
+                            year: 'numeric',
                           }).format(new Date(idea.creationDate))}
                         </span>
                       </Link>
                     </div>
                     <div
-                      className="card-content"
+                      className='card-content'
                       style={{
-                        transition: "0.6s ease out",
-                        padding: "20px",
-                        paddingTop: "10px",
+                        transition: '0.6s ease out',
+                        padding: '20px',
+                        paddingTop: '10px',
                       }}
                     >
                       <span
                         style={{
-                          textTransform: "capitalize",
-                          transition: "0.6s",
+                          textTransform: 'capitalize',
+                          transition: '0.6s',
                         }}
-                        className="card-title activator grey-text text-darken-4"
+                        className='card-title activator grey-text text-darken-4'
                       >
                         {idea.title}
-                        <Tooltip title="More Info">
-                          <i className="material-icons right">more_vert</i>
+                        <Tooltip title='More Info'>
+                          <i className='material-icons right'>more_vert</i>
                         </Tooltip>
                       </span>
                       <div
-                        className="description"
-                        style={{ marginBottom: "1rem", transition: "0.6s" }}
+                        className='description'
+                        style={{ marginBottom: '1rem', transition: '0.6s' }}
                       >
                         Lorem ipsum dolor sit amet, consectetur adipisicing
                         elit. Adipisci architecto culpa eligendi esse et eum
@@ -219,21 +219,21 @@ class Posts extends Component {
                         {JSON.parse(idea.tags).map((tag) => {
                           return (
                             <Chip
-                              size="small"
+                              size='small'
                               avatar={
                                 <Avatar
                                   style={{
-                                    textTransform: "capitalize",
-                                    background: "#336699",
-                                    color: "#fff",
+                                    textTransform: 'capitalize',
+                                    background: '#336699',
+                                    color: '#fff',
                                   }}
                                 >
                                   {tag.slice(0, 1)}
                                 </Avatar>
                               }
                               style={{
-                                marginRight: "5px",
-                                background: "#cee3f8",
+                                marginRight: '5px',
+                                background: '#cee3f8',
                               }}
                               label={tag.slice(0, -1)}
                             />
@@ -242,16 +242,16 @@ class Posts extends Component {
                       </div>
 
                       <div
-                        style={{ display: "flex", transition: "0.6s ease out" }}
+                        style={{ display: 'flex', transition: '0.6s ease out' }}
                       >
-                        <div style={{ transition: "0.6s ease out" }}>
+                        <div style={{ transition: '0.6s ease out' }}>
                           {idea.likes.includes(this.props.auth.user.id) ? (
                             <i
                               style={{
-                                fontSize: "22px",
-                                color: "#1e2a78",
+                                fontSize: '22px',
+                                color: '#1e2a78',
                               }}
-                              className="fa fa-thumbs-up up"
+                              className='fa fa-thumbs-up up'
                               onClick={() => {
                                 this.unlikeIdea(idea._id);
                               }}
@@ -259,11 +259,11 @@ class Posts extends Component {
                           ) : (
                             <i
                               style={{
-                                fontSize: "22px",
+                                fontSize: '22px',
 
-                                color: "#757575",
+                                color: '#757575',
                               }}
-                              className="fa fa-thumbs-up"
+                              className='fa fa-thumbs-up'
                               onClick={() => {
                                 this.likeIdea(idea._id);
                               }}
@@ -272,57 +272,58 @@ class Posts extends Component {
 
                           <span
                             style={{
-                              marginLeft: "5px",
-                              fontFamily: "sans serif",
-                              fontSize: "18px",
+                              marginLeft: '5px',
+                              fontFamily: 'sans serif',
+                              fontSize: '18px',
                             }}
                           >
                             {idea.likes.length}
                           </span>
                         </div>
                         <Collapsible
-                          style={{ transition: "0.6s" }}
-                          className="comments"
+                          style={{ transition: '0.6s' }}
+                          className='comments'
                           trigger={
                             // <img
                             //   style={{ width: "24px", margin: "0 10px" }}
                             //   src="https://img.icons8.com/pastel-glyph/64/000000/comments.png"
                             // />
                             <i
-                              className="fa fa-commenting-o"
+                              className='fa fa-commenting-o'
                               style={{
-                                margin: "0 10px",
-                                fontSize: "20px",
-                                color: "#0277bd",
+                                margin: '0 10px',
+                                fontSize: '20px',
+                                color: '#0277bd',
                               }}
                             />
                           }
                         >
                           {idea.comments.map((record) => {
                             return (
-                              <div style={{ display: "flex" }}>
-                                <div style={{ margin: "0.5rem" }}>
+                              <div style={{ display: 'flex' }}>
+                                <div style={{ margin: '0.5rem' }}>
                                   <span>
                                     <img
                                       style={{
-                                        width: "22px",
-                                        height: "22px",
-                                        borderRadius: "50%",
+                                        width: '22px',
+                                        height: '22px',
+                                        borderRadius: '50%',
                                       }}
-                                      src="https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs/115909667/original/7d79dd80b9eecaa289de1bc8065ad44aa03e2daf/do-a-simple-but-cool-profile-pic-or-logo-for-u.jpeg"
+                                      src='https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs/115909667/original/7d79dd80b9eecaa289de1bc8065ad44aa03e2daf/do-a-simple-but-cool-profile-pic-or-logo-for-u.jpeg'
+                                      alt=''
                                     />
                                   </span>
                                   <p
                                     style={{
-                                      fontSize: "12px",
-                                      fontFamily: "poppins",
-                                      textTransform: "lowercase",
+                                      fontSize: '12px',
+                                      fontFamily: 'poppins',
+                                      textTransform: 'lowercase',
                                     }}
                                   >
                                     {record.postedBy.firstname}
                                   </p>
                                 </div>
-                                <p style={{ padding: "5px 10px" }}>
+                                <p style={{ padding: '5px 10px' }}>
                                   {record.text}
                                 </p>
                               </div>
@@ -338,32 +339,33 @@ class Posts extends Component {
                           `}
                         </style>
                       </div>
-                      <div style={{ height: "40px" }}>
+                      <div style={{ height: '40px' }}>
                         {idea.comments.length ? (
-                          <div style={{ display: "flex" }}>
-                            <div style={{ margin: "0.2rem" }}>
+                          <div style={{ display: 'flex' }}>
+                            <div style={{ margin: '0.2rem' }}>
                               <span>
                                 <img
                                   style={{
-                                    width: "22px",
-                                    height: "22px",
-                                    borderRadius: "50%",
-                                    backgroundSize: "fit",
+                                    width: '22px',
+                                    height: '22px',
+                                    borderRadius: '50%',
+                                    backgroundSize: 'fit',
                                   }}
-                                  src="https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs/115909667/original/7d79dd80b9eecaa289de1bc8065ad44aa03e2daf/do-a-simple-but-cool-profile-pic-or-logo-for-u.jpeg"
+                                  src='https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs/115909667/original/7d79dd80b9eecaa289de1bc8065ad44aa03e2daf/do-a-simple-but-cool-profile-pic-or-logo-for-u.jpeg'
+                                  alt=''
                                 />
                               </span>
                               <p
                                 style={{
-                                  fontSize: "12px",
-                                  fontFamily: "poppins",
-                                  textTransform: "lowercase",
+                                  fontSize: '12px',
+                                  fontFamily: 'poppins',
+                                  textTransform: 'lowercase',
                                 }}
                               >
                                 {idea.comments[0].postedBy.firstname}
                               </p>
                             </div>
-                            <p style={{ padding: "3px 10px" }}>
+                            <p style={{ padding: '3px 10px' }}>
                               {idea.comments[0].text}
                             </p>
                           </div>
@@ -377,15 +379,15 @@ class Posts extends Component {
                           this.commentIdea(event.target[0].value, idea._id);
                         }}
                       >
-                        <input type="text" placeholder="add a comment" />
+                        <input type='text' placeholder='add a comment' />
                       </form>
                     </div>
                     <div
-                      style={{ transition: "0.6s ease " }}
-                      className="card-reveal"
+                      style={{ transition: '0.6s ease ' }}
+                      className='card-reveal'
                     >
-                      <span className="card-title grey-text text-darken-4">
-                        Card Title<i className="material-icons right">close</i>
+                      <span className='card-title grey-text text-darken-4'>
+                        Card Title<i className='material-icons right'>close</i>
                       </span>
                       <p>
                         Lorem ipsum dolor sit amet, consectetur adipisicing
@@ -427,8 +429,8 @@ class Posts extends Component {
     } else {
       return (
         <CircularProgress
-          style={{ marginLeft: "50%", marginTop: "10%" }}
-          color="secondary"
+          style={{ marginLeft: '50%', marginTop: '10%' }}
+          color='secondary'
         />
       );
     }

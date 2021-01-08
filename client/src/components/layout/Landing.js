@@ -1,68 +1,68 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const LandingNew = () => {
-  window.addEventListener("scroll", function () {
-    let header = document.querySelector("header");
-    header.classList.toggle("sticky", window.scrollY > 0);
+  window.addEventListener('scroll', function () {
+    let header = document.querySelector('header');
+    header.classList.toggle('sticky', window.scrollY > 0);
   });
 
   function toggle() {
-    let header = document.querySelector("header");
-    header.classList.toggle("active");
+    let header = document.querySelector('header');
+    header.classList.toggle('active');
   }
 
   return (
     <div>
       <header>
-        <Link to="/" className="logo">
-          Logo
+        <Link to='/' className='logo'>
+          Inovact
         </Link>
         <ul>
           <li>
-            <a href="#home" onClick={toggle}>
+            <a href='#home' onClick={toggle}>
               Home
             </a>
           </li>
           <li>
-            <a href="#about" onClick={toggle}>
+            <a href='#about' onClick={toggle}>
               About
             </a>
           </li>
           <li>
-            <a href="#services" onClick={toggle}>
+            <a href='#services' onClick={toggle}>
               Services
             </a>
           </li>
           <li>
-            <a href="#team" onClick={toggle}>
+            <a href='#team' onClick={toggle}>
               Testimonials
             </a>
           </li>
           <li>
-            <a href="#contact" onClick={toggle}>
+            <a href='#contact' onClick={toggle}>
               Contact
             </a>
           </li>
           <li>
-            <Link to="/login">Login</Link>
+            <Link to='/login'>Login</Link>
           </li>
           <li>
-            <a href="#home">SignUp</a>
+            <a href='#home'>SignUp</a>
           </li>
         </ul>
-        <div className="toggle" onClick={toggle} />
+        <div className='toggle' onClick={toggle} />
       </header>
-      <section className="banner" id="home">
+      <section className='banner' id='home'>
         <h2>
-          Carca
+          Inovact
           <br />
           <span>for students by students of students</span>
         </h2>
       </section>
-      <section className="sec" id="about">
-        <div className="content">
-          <div className="mxw800p">
+      <section className='sec' id='about'>
+        <div className='content'>
+          <div className='mxw800p'>
             <h3>Who We Are</h3>
             <p>
               "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -73,15 +73,24 @@ const LandingNew = () => {
               pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
               culpa qui officia deserunt mollit anim id est laborum."
             </p>
-            <a href="#" className="btn">
+            <a
+              href='h'
+              className='btn btn-primary'
+              style={{
+                backgroundColor: 'orange',
+                pointerEvents: 'none',
+                paddingTop: '10px',
+                paddingBottom: '10px',
+              }}
+            >
               Read Our story
             </a>
           </div>
         </div>
       </section>
-      <section className="sec" id="services">
-        <div className="content">
-          <div className="mxw800p">
+      <section className='sec' id='services'>
+        <div className='content'>
+          <div className='mxw800p'>
             <h3>Recent Projects and Ideas</h3>
             <p>
               "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -90,12 +99,12 @@ const LandingNew = () => {
               nisi ut aliquip ex ea commodo consequat.
             </p>
           </div>
-          <div className="services">
-            <div className="box">
-              <div id="iconBx">
-                <img src="" />
+          <div className='services'>
+            <div className='box'>
+              <div id='iconBx'>
+                <img src='' alt='' />
               </div>
-              <div id="content">
+              <div id='content'>
                 <h2>Project</h2>
                 <p>
                   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
@@ -104,11 +113,11 @@ const LandingNew = () => {
                 </p>
               </div>
             </div>
-            <div className="box">
-              <div id="iconBx">
-                <img src="" />
+            <div className='box'>
+              <div id='iconBx'>
+                <img src='' alt='' />
               </div>
-              <div id="content">
+              <div id='content'>
                 <h2>Idea</h2>
                 <p>
                   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
@@ -117,11 +126,11 @@ const LandingNew = () => {
                 </p>
               </div>
             </div>
-            <div className="box">
-              <div id="iconBx">
-                <img src="" />
+            <div className='box'>
+              <div id='iconBx'>
+                <img src='' alt='' />
               </div>
-              <div id="content">
+              <div id='content'>
                 <h2>Idea</h2>
                 <p>
                   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
@@ -133,9 +142,9 @@ const LandingNew = () => {
           </div>
         </div>
       </section>
-      <section className="sec stats">
-        <div className="content">
-          <div className="mxw800p">
+      <section className='sec stats'>
+        <div className='content'>
+          <div className='mxw800p'>
             <h3>Our Achivements</h3>
             <p>
               "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -144,37 +153,35 @@ const LandingNew = () => {
               nisi ut aliquip ex ea commodo consequat.
             </p>
           </div>
-          <div className="statsBox">
-            <div className="box">
+          <div className='statsBox'>
+            <div className='box'>
               <h2>200+</h2>
               <h4>Projects</h4>
             </div>
-            <div className="box">
+            <div className='box'>
               <h2>1200+</h2>
               <h4>Ideas Pitched</h4>
             </div>
-            <div className="box">
+            <div className='box'>
               <h2>100+</h2>
               <h4>Teams</h4>
             </div>
-            <div className="box">
+            <div className='box'>
               <h2>2400+</h2>
               <h4>Students</h4>
             </div>
           </div>
         </div>
       </section>
-      <section className="sec" id="team">
-        <div className="content">
-          <div className="mxw800p">
+      <section className='sec' id='team'>
+        <div className='content'>
+          <div className='mxw800p'>
             <h3>Testimonials</h3>
           </div>
-          <div className="teamBx">
-            <div className="member">
-              <div className="imgBx">
-                <img />
-              </div>
-              <div className="details">
+          <div className='teamBx'>
+            <div className='member'>
+              <div className='imgBx'></div>
+              <div className='details'>
                 <div>
                   <h2>
                     John Doe
@@ -184,11 +191,9 @@ const LandingNew = () => {
                 </div>
               </div>
             </div>
-            <div className="member">
-              <div className="imgBx">
-                <img />
-              </div>
-              <div className="details">
+            <div className='member'>
+              <div className='imgBx'></div>
+              <div className='details'>
                 <div>
                   <h2>
                     John Doe
@@ -198,11 +203,9 @@ const LandingNew = () => {
                 </div>
               </div>
             </div>
-            <div className="member">
-              <div className="imgBx">
-                <img />
-              </div>
-              <div className="details">
+            <div className='member'>
+              <div className='imgBx'></div>
+              <div className='details'>
                 <div>
                   <h2>
                     John Doe
@@ -215,54 +218,54 @@ const LandingNew = () => {
           </div>
         </div>
       </section>
-      <section className="sec contact " id="contact">
-        <div className="content">
-          <div className="mxw800p">
+      <section className='sec contact ' id='contact'>
+        <div className='content'>
+          <div className='mxw800p'>
             <h3>Contact Us</h3>
           </div>
-          <div className="contactForm">
+          <div className='contactForm'>
             <form>
-              <div className="row100">
-                <div className="inputBx50">
-                  <input type="text" name="" placeholder="Full Name" />
+              <div className='row100'>
+                <div className='inputBx50'>
+                  <input type='text' name='' placeholder='Full Name' />
                 </div>
-                <div className="inputBx50">
-                  <input type="text" name="" placeholder="Email Address" />
-                </div>
-              </div>
-              <div className="row100">
-                <div className="inputBx100">
-                  <textarea placeholder="message"></textarea>
+                <div className='inputBx50'>
+                  <input type='text' name='' placeholder='Email Address' />
                 </div>
               </div>
-              <div className="row100">
-                <div className="inputBx100">
-                  <input type="submit" value="send" />
+              <div className='row100'>
+                <div className='inputBx100'>
+                  <textarea placeholder='message'></textarea>
+                </div>
+              </div>
+              <div className='row100'>
+                <div className='inputBx100'>
+                  <input type='submit' value='send' />
                 </div>
               </div>
             </form>
           </div>
-          <div className="sci">
+          <div className='sci'>
             <ul>
               <li>
-                <a href="#">
-                  <img src="" />
+                <a href='#'>
+                  <img src='' alt='' />
                 </a>
               </li>
               <li>
-                <a href="#">
-                  <img src="" />
+                <a href='#'>
+                  <img src='' alt='' />
                 </a>
               </li>
               <li>
-                <a href="#">
-                  <img src="" />
+                <a href='#'>
+                  <img src='' alt='' />
                 </a>
               </li>
             </ul>
           </div>
-          <p className="copyright">
-            Design and Developed By <a href="">Afif</a>
+          <p className='copyright'>
+            Design and Developed By <a href='#'>Afif</a>
           </p>
         </div>
       </section>

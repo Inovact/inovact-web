@@ -52,8 +52,6 @@ class Login extends Component {
   };
   render() {
     const { errors } = this.state;
-    let pleaseVerify;
-
     return (
       <section className='section'>
         <div className='register-container'>

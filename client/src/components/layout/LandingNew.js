@@ -1,223 +1,270 @@
 import React from 'react';
-import {Link} from "react-router-dom";
-import lottie from "lottie-web";
+import { Link } from 'react-router-dom';
 
 // import landingCover2 from "../../static/21332-teamwork.json";
 
 const LandingNew = () => {
-    // React.useEffect(() => {
-    //     lottie.loadAnimation({
-    //         container: document.querySelector("#landing-cover"),
-    //         animationData:landingCover2,
-    //     });
-    // }, []);
+  // React.useEffect(() => {
+  //     lottie.loadAnimation({
+  //         container: document.querySelector("#landing-cover"),
+  //         animationData:landingCover2,
+  //     });
+  // }, []);
 
-    window.addEventListener("scroll", function () {
-        let header = document.querySelector("#header");
-        header.classList.toggle("sticky", window.scrollY > 0)
-    });
+  window.addEventListener('scroll', function () {
+    let header = document.querySelector('#header');
+    header.classList.toggle('sticky', window.scrollY > 0);
+  });
 
-    function toggle() {
-        let header = document.querySelector("header");
-        header.classList.toggle("active");
-    };
+  function toggle() {
+    let header = document.querySelector('header');
+    header.classList.toggle('active');
+  }
 
-    return (
-        <div>
-            <header id="header">
-                <Link to="/" className="logo">Logo</Link>
-                <ul>
-                    <li><a href="#home" onClick={toggle}>Home</a></li>
-                    <li><a href="#about" onClick={toggle}>About</a></li>
-                    <li><a href="#services"onClick={toggle}>Services</a></li>
-                    <li><a href="#team" onClick={toggle}>Testimonials</a></li>
-                    <li><a href="#contact"onClick={toggle}>Contact</a></li>
-                    <li><a href="#home">Login</a></li>
-                    <li><a href="#home">SignUp</a></li>
-                </ul>
-                <div className="toggle" onClick={toggle}/>
-            </header>
-            <section className="banner" id="home">
-                <h2>Carca<br/><span>for students by students of students</span></h2>
-            </section>
-            <section className="sec" id="about">
-                <div className="content">
-                    <div className="mxw800p">
-                        <h3>Who We Are</h3>
-                        <p>
-                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
-                            u fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt
-                            in culpa qui officia deserunt mollit anim id est laborum."
-                        </p>
-                        <a href="#" className="btn">Read Our story</a>
-                    </div>
+  return (
+    <div>
+      <header id='header'>
+        <Link to='/' className='logo'>
+          Logo
+        </Link>
+        <ul>
+          <li>
+            <a href='#home' onClick={toggle}>
+              Home
+            </a>
+          </li>
+          <li>
+            <a href='#about' onClick={toggle}>
+              About
+            </a>
+          </li>
+          <li>
+            <a href='#services' onClick={toggle}>
+              Services
+            </a>
+          </li>
+          <li>
+            <a href='#team' onClick={toggle}>
+              Testimonials
+            </a>
+          </li>
+          <li>
+            <a href='#contact' onClick={toggle}>
+              Contact
+            </a>
+          </li>
+          <li>
+            <a href='#home'>Login</a>
+          </li>
+          <li>
+            <a href='#home'>SignUp</a>
+          </li>
+        </ul>
+        <div className='toggle' onClick={toggle} />
+      </header>
+      <section className='banner' id='home'>
+        <h2>
+          Carca
+          <br />
+          <span>for students by students of students</span>
+        </h2>
+      </section>
+      <section className='sec' id='about'>
+        <div className='content'>
+          <div className='mxw800p'>
+            <h3>Who We Are</h3>
+            <p>
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore u fugiat nulla
+              pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+              culpa qui officia deserunt mollit anim id est laborum."
+            </p>
+            <a href='#' className='btn'>
+              Read Our story
+            </a>
+          </div>
+        </div>
+      </section>
+      <section className='sec' id='services'>
+        <div className='content'>
+          <div className='mxw800p'>
+            <h3>Recent Projects and Ideas</h3>
+            <p>
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat.
+            </p>
+          </div>
+          <div className='services'>
+            <div className='box'>
+              <div id='iconBx'>{/* <img src='' /> */}</div>
+              <div id='content'>
+                <h2>Project</h2>
+                <p>
+                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor dolore magna aliqua. Ut enim ad minim
+                  veniam, quis nostrud.
+                </p>
+              </div>
+            </div>
+            <div className='box'>
+              <div id='iconBx'>{/* <img src='' /> */}</div>
+              <div id='content'>
+                <h2>Idea</h2>
+                <p>
+                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor dolore magna aliqua. Ut enim ad minim
+                  veniam, quis nostrud.
+                </p>
+              </div>
+            </div>
+            <div className='box'>
+              <div id='iconBx'>{/* <img src='' /> */}</div>
+              <div id='content'>
+                <h2>Idea</h2>
+                <p>
+                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor dolore magna aliqua. Ut enim ad minim
+                  veniam, quis nostrud.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className='sec stats'>
+        <div className='content'>
+          <div className='mxw800p'>
+            <h3>Our Achivements</h3>
+            <p>
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat.
+            </p>
+          </div>
+          <div className='statsBox'>
+            <div className='box'>
+              <h2>200+</h2>
+              <h4>Projects</h4>
+            </div>
+            <div className='box'>
+              <h2>1200+</h2>
+              <h4>Ideas Pitched</h4>
+            </div>
+            <div className='box'>
+              <h2>100+</h2>
+              <h4>Teams</h4>
+            </div>
+            <div className='box'>
+              <h2>2400+</h2>
+              <h4>Students</h4>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className='sec' id='team'>
+        <div className='content'>
+          <div className='mxw800p'>
+            <h3>Testimonials</h3>
+          </div>
+          <div className='teamBx'>
+            <div className='member'>
+              <div className='imgBx'>{/* <img /> */}</div>
+              <div className='details'>
+                <div>
+                  <h2>
+                    John Doe
+                    <br />
+                    <span>Web Developer</span>
+                  </h2>
                 </div>
-            </section>
-            <section className="sec" id="services">
-                <div className="content">
-                    <div className="mxw800p">
-                        <h3>Recent Projects and Ideas</h3>
-                        <p>
-                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        </p>
-                    </div>
-                    <div className="services">
-                        <div className="box">
-                            <div id="iconBx">
-                                <img src=""/>
-                            </div>
-                            <div id="content">
-                                <h2>Project</h2>
-                                <p>
-                                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.
-
-                                </p>
-                            </div>
-                        </div>
-                        <div className="box">
-                            <div id="iconBx">
-                                <img src=""/>
-                            </div>
-                            <div id="content">
-                                <h2>Idea</h2>
-                                <p>
-                                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.
-
-                                </p>
-                            </div>
-                        </div>
-                        <div className="box">
-                            <div id="iconBx">
-                                <img src=""/>
-                            </div>
-                            <div id="content">
-                                <h2>Idea</h2>
-                                <p>
-                                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.
-
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+              </div>
+            </div>
+            <div className='member'>
+              <div className='imgBx'>{/* <img /> */}</div>
+              <div className='details'>
+                <div>
+                  <h2>
+                    John Doe
+                    <br />
+                    <span>Web Developer</span>
+                  </h2>
                 </div>
-            </section>
-            <section className="sec stats">
-                <div className="content">
-                    <div className="mxw800p">
-                        <h3>Our Achivements</h3>
-                        <p>
-                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        </p>
-                    </div>
-                    <div className="statsBox">
-                        <div className="box">
-                            <h2>200+</h2>
-                            <h4>Projects</h4>
-                        </div>
-                        <div className="box">
-                            <h2>1200+</h2>
-                            <h4>Ideas Pitched</h4>
-                        </div>
-                        <div className="box">
-                            <h2>100+</h2>
-                            <h4>Teams</h4>
-                        </div>
-                        <div className="box">
-                            <h2>2400+</h2>
-                            <h4>Students</h4>
-                        </div>
-                    </div>
+              </div>
+            </div>
+            <div className='member'>
+              <div className='imgBx'>{/* <img /> */}</div>
+              <div className='details'>
+                <div>
+                  <h2>
+                    John Doe
+                    <br />
+                    <span>Web Developer</span>
+                  </h2>
                 </div>
-            </section>
-            <section className="sec" id="team">
-                <div className="content">
-                    <div className="mxw800p">
-                        <h3>Testimonials</h3>
-                    </div>
-                    <div className="teamBx">
-                        <div className="member">
-                            <div className="imgBx">
-                                <img/>
-                            </div>
-                            <div className="details">
-                                <div>
-                                    <h2>John Doe<br/><span>Web Developer</span></h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="member">
-                            <div className="imgBx">
-                                <img/>
-                            </div>
-                            <div className="details">
-                                <div>
-                                    <h2>John Doe<br/><span>Web Developer</span></h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="member">
-                            <div className="imgBx">
-                                <img/>
-                            </div>
-                            <div className="details">
-                                <div>
-                                    <h2>John Doe<br/><span>Web Developer</span></h2>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className='sec contact ' id='contact'>
+        <div className='content'>
+          <div className='mxw800p'>
+            <h3>Contact Us</h3>
+          </div>
+          <div className='contactForm'>
+            <form>
+              <div className='row100'>
+                <div className='inputBx50'>
+                  <input type='text' name='' placeholder='Full Name' />
                 </div>
-            </section>
-            <section className="sec contact " id="contact">
-                <div className="content">
-                    <div className="mxw800p">
-                        <h3>Contact Us</h3>
-                    </div>
-                    <div className="contactForm">
-                        <form>
-                            <div className="row100">
-                                <div className="inputBx50">
-                                    <input type="text" name="" placeholder="Full Name"/>
-                                </div>
-                                <div className="inputBx50">
-                                    <input type="text" name="" placeholder="Email Address"/>
-                                </div>
-                            </div>
-                            <div className="row100">
-                                <div className="inputBx100">
-                                    <textarea placeholder="message"></textarea>
-                                </div>
-                            </div>
-                            <div className="row100">
-                                <div className="inputBx100">
-                                   <input type="submit" value="send"/>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div className="sci">
-                        <ul>
-                            <li><a href="#"><img src=""/></a></li>
-                            <li><a href="#"><img src=""/></a></li>
-                            <li><a href="#"><img src=""/></a></li>
-                        </ul>
-                    </div>
-                    <p className="copyright">Design and Developed By <a href="">Afif</a></p>
+                <div className='inputBx50'>
+                  <input type='text' name='' placeholder='Email Address' />
                 </div>
-            </section>
-            <style>
-                {
-                    `
+              </div>
+              <div className='row100'>
+                <div className='inputBx100'>
+                  <textarea placeholder='message'></textarea>
+                </div>
+              </div>
+              <div className='row100'>
+                <div className='inputBx100'>
+                  <input type='submit' value='send' />
+                </div>
+              </div>
+            </form>
+          </div>
+          <div className='sci'>
+            <ul>
+              <li>
+                <a href='#'>
+                  <img src='' alt='' />
+                </a>
+              </li>
+              <li>
+                <a href='#'>
+                  <img src='' alt='' />
+                </a>
+              </li>
+              <li>
+                <a href='#'>
+                  <img src='' alt='' />
+                </a>
+              </li>
+            </ul>
+          </div>
+          <p className='copyright'>
+            Design and Developed By <a href=''>Afif</a>
+          </p>
+        </div>
+      </section>
+      <style>
+        {`
                     html{
                         scroll-behavior:smooth;
                     }
@@ -717,12 +764,10 @@ const LandingNew = () => {
                         
                     }
                     
-                    `
-                }
-            </style>
-        </div>
-    );
-
-}
+                    `}
+      </style>
+    </div>
+  );
+};
 
 export default LandingNew;

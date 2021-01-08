@@ -1,126 +1,124 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { loginUser } from "../../actions/authActions";
-import { confirmUser } from "../../actions/authActions";
-import classnames from "classnames";
-import signupImage from "../assets/register/signup-image.jpeg";
-import googleIcon from "../assets/register/google-icon.png";
-import facebookIcon from "../assets/register/facebook-icon.png";
-import style from "react-style-tag";
-import axios from "axios";
-import M from "materialize-css";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { loginUser } from '../../actions/authActions';
+import { confirmUser } from '../../actions/authActions';
+import classnames from 'classnames';
+import signupImage from '../assets/register/signup-image.jpeg';
+
+import style from 'react-style-tag';
+import axios from 'axios';
+import M from 'materialize-css';
 
 class Login extends Component {
-    constructor() {
-        super();
-        this.state = {
-            password: "",
-            errors: {},
-        };
-    }
-
-    componentDidMount() {
-        // If logged in and user navigates to Login page, should redirect them to dashboard
-        if (this.props.auth.isAuthenticated) {
-            this.props.history.push("/Interests");
-        }
-    }
-
-    componentWillReceiveProps(nextProps, nextContext) {
-        if (nextProps.auth.isAuthenticated) {
-            this.props.history.push("/dashboard"); // push user to dashboard when they login
-        }
-        if (nextProps.errors) {
-            this.setState({
-                errors: nextProps.errors,
-            });
-        }
-    }
-
-    onChange = (e) => {
-        this.setState({ [e.target.id]: e.target.value });
+  constructor() {
+    super();
+    this.state = {
+      password: '',
+      errors: {},
     };
-    onSubmit = (e) => {
-        e.preventDefault();
-        const userData = {
-            password: this.state.password,
-            token: this.props.match.params.token,
-        };
+  }
 
-        axios
-            .post("/api/users/new-password", userData)
-            .then((result) => {
-                console.log(result.data);
-                if (result.data.error) {
-                    M.toast({ html: result.data.error, classes: "#c62828 red darken-3" });
-                } else {
-                    this.props.history.push("/login");
-                }
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+  componentDidMount() {
+    // If logged in and user navigates to Login page, should redirect them to dashboard
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push('/Interests');
+    }
+  }
+
+  componentWillReceiveProps(nextProps, nextContext) {
+    if (nextProps.auth.isAuthenticated) {
+      this.props.history.push('/dashboard'); // push user to dashboard when they login
+    }
+    if (nextProps.errors) {
+      this.setState({
+        errors: nextProps.errors,
+      });
+    }
+  }
+
+  onChange = (e) => {
+    this.setState({ [e.target.id]: e.target.value });
+  };
+  onSubmit = (e) => {
+    e.preventDefault();
+    const userData = {
+      password: this.state.password,
+      token: this.props.match.params.token,
     };
-    render() {
-        const { errors } = this.state;
 
-        console.log(this.props);
+    axios
+      .post('/api/users/new-password', userData)
+      .then((result) => {
+        console.log(result.data);
+        if (result.data.error) {
+          M.toast({ html: result.data.error, classes: '#c62828 red darken-3' });
+        } else {
+          this.props.history.push('/login');
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  render() {
+    const { errors } = this.state;
 
-        return (
-            <section className="section">
-                <div className="register-container">
-                    <div className="user signinBx">
-                        <div className="imgBx">
-                            <img src={signupImage} alt="signup" />
-                        </div>
-                        <div className="formBx">
-                            <form onSubmit={this.onSubmit}>
-                                <h2>New Password</h2>
+    console.log(this.props);
 
-                                <input
-                                    style={{ padding: "0 10px", margin: "8px 0" }}
-                                    type="password"
-                                    id="password"
-                                    onChange={this.onChange}
-                                    error={errors.password}
-                                    className={classnames("", {
-                                        invalid: errors.password || errors.passwordincorrect,
-                                    })}
-                                    placeholder="Enter New Password"
-                                />
-                                <span style={{ color: "red" }}>
+    return (
+      <section className='section'>
+        <div className='register-container'>
+          <div className='user signinBx'>
+            <div className='imgBx'>
+              <img src={signupImage} alt='signup' />
+            </div>
+            <div className='formBx'>
+              <form onSubmit={this.onSubmit}>
+                <h2>New Password</h2>
+
+                <input
+                  style={{ padding: '0 10px', margin: '8px 0' }}
+                  type='password'
+                  id='password'
+                  onChange={this.onChange}
+                  error={errors.password}
+                  className={classnames('', {
+                    invalid: errors.password || errors.passwordincorrect,
+                  })}
+                  placeholder='Enter New Password'
+                />
+                <span style={{ color: 'red' }}>
                   {errors.password}
-                                    {errors.passwordincorrect}
+                  {errors.passwordincorrect}
                 </span>
-                                <input
-                                    type="submit"
-                                    value="Update Password"
-                                    style={{ width: "150px" }}
-                                />
-                                {/*<p className="signup" style={{ textAlign: "center" }}>*/}
-                                {/*  Don't have an account ?<Link to="/register">Sign Up</Link>{" "}*/}
-                                {/*</p>*/}
-                                {/*<div className="other-signup">*/}
-                                {/*  <span style={{ fontSize: "12px", color: "grey" }}>*/}
-                                {/*    or signup using*/}
-                                {/*  </span>*/}
-                                {/*  <div className="signup-icons">*/}
-                                {/*    <Link to="/">*/}
-                                {/*      <img src={googleIcon} alt="google" />*/}
-                                {/*    </Link>*/}
-                                {/*    <Link to="/">*/}
-                                {/*      <img src={facebookIcon} alt="facebook" />*/}
-                                {/*    </Link>*/}
-                                {/*  </div>*/}
-                                {/*</div>*/}
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <style>
-                    {`
+                <input
+                  type='submit'
+                  value='Update Password'
+                  style={{ width: '150px' }}
+                />
+                {/*<p className="signup" style={{ textAlign: "center" }}>*/}
+                {/*  Don't have an account ?<Link to="/register">Sign Up</Link>{" "}*/}
+                {/*</p>*/}
+                {/*<div className="other-signup">*/}
+                {/*  <span style={{ fontSize: "12px", color: "grey" }}>*/}
+                {/*    or signup using*/}
+                {/*  </span>*/}
+                {/*  <div className="signup-icons">*/}
+                {/*    <Link to="/">*/}
+                {/*      <img src={googleIcon} alt="google" />*/}
+                {/*    </Link>*/}
+                {/*    <Link to="/">*/}
+                {/*      <img src={facebookIcon} alt="facebook" />*/}
+                {/*    </Link>*/}
+                {/*  </div>*/}
+                {/*</div>*/}
+              </form>
+            </div>
+          </div>
+        </div>
+        <style>
+          {`
                     .other-signup{
                         display:flex;
                         flex-direction:column;
@@ -283,19 +281,19 @@ class Login extends Component {
                         }
                     }
                     `}
-                </style>
-            </section>
-        );
-    }
+        </style>
+      </section>
+    );
+  }
 }
 
 Login.propTypes = {
-    loginUser: PropTypes.func.isRequired,
-    auth: PropTypes.object.isRequired,
-    errors: PropTypes.object.isRequired,
+  loginUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired,
 };
 const mapStateToProps = (state) => ({
-    auth: state.auth,
-    errors: state.errors,
+  auth: state.auth,
+  errors: state.errors,
 });
 export default connect(mapStateToProps, { loginUser, confirmUser })(Login);

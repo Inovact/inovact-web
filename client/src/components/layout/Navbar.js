@@ -1,24 +1,23 @@
-import React, { Component } from "react";
-import { logoutUser } from "../../actions/authActions";
-import style from "react-style-tag";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import axios from "axios";
+import React, { Component } from 'react';
+import { logoutUser } from '../../actions/authActions';
+import style from 'react-style-tag';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import axios from 'axios';
 import {
   Badge,
   Dialog,
   DialogActions,
   DialogContent,
-  DialogContentText,
   DialogTitle,
   Tooltip,
-} from "@material-ui/core";
-import NotificationsIcon from "@material-ui/icons/Notifications";
-import MailIcon from "@material-ui/icons/Mail";
-import { Link } from "react-router-dom";
-import IconButton from "@material-ui/core/IconButton";
-import SearchIcon from "@material-ui/icons/Search";
-import Button from "@material-ui/core/Button";
+} from '@material-ui/core';
+import NotificationsIcon from '@material-ui/icons/Notifications';
+import MailIcon from '@material-ui/icons/Mail';
+import { Link } from 'react-router-dom';
+import IconButton from '@material-ui/core/IconButton';
+import SearchIcon from '@material-ui/icons/Search';
+import Button from '@material-ui/core/Button';
 import {
   List,
   ListItem,
@@ -26,14 +25,14 @@ import {
   ListItemAvatar,
   Avatar,
   ListItemText,
-} from "@material-ui/core";
+} from '@material-ui/core';
 
 class Navbar extends Component {
   constructor() {
     super();
     this.state = {
       toggled: false,
-      userSearch: "",
+      userSearch: '',
       searchedUsers: [],
     };
   }
@@ -48,8 +47,8 @@ class Navbar extends Component {
   };
 
   dialogClose = (todo) => {
-    this.setState({ userSearch: "" });
-    if (todo === "cancel" || todo === "close") {
+    this.setState({ userSearch: '' });
+    if (todo === 'cancel' || todo === 'close') {
       this.setState({
         toggled: false,
       });
@@ -60,11 +59,11 @@ class Navbar extends Component {
     this.setState({
       userSearch: query,
     });
-    console.log("q", this.state.userSearch);
+    console.log('q', this.state.userSearch);
     const users = {
       query: query,
     };
-    axios.post("/api/users/search-users", users).then((result) => {
+    axios.post('/api/users/search-users', users).then((result) => {
       console.log(result.data);
       this.setState({
         searchedUsers: result.data,
@@ -75,54 +74,54 @@ class Navbar extends Component {
     return (
       <div>
         <div>
-          <div className="nav">
-            <input type="checkbox" id="nav-check" />
-            <div className="nav-header">
-              <div className="nav-title">
-                <Link style={{ color: "#336699" }} to="/dashboard">
+          <div className='nav'>
+            <input type='checkbox' id='nav-check' />
+            <div className='nav-header'>
+              <div className='nav-title'>
+                <Link style={{ color: '#336699' }} to='/dashboard'>
                   CARCA
                 </Link>
               </div>
             </div>
-            <div className="nav-btn">
-              <label htmlFor="nav-check">
+            <div className='nav-btn'>
+              <label htmlFor='nav-check'>
                 <span></span>
                 <span></span>
                 <span></span>
               </label>
             </div>
 
-            <div className="nav-links">
+            <div className='nav-links'>
               <span>
-                <Tooltip title="search user" style={{ color: "red" }}>
+                <Tooltip title='search user' style={{ color: 'red' }}>
                   <IconButton
-                    aria-label="search"
+                    aria-label='search'
                     onClick={this.dialogOpen}
-                    style={{ background: "#fff" }}
+                    style={{ background: '#fff' }}
                   >
                     <SearchIcon />
                   </IconButton>
                 </Tooltip>
                 <Dialog
                   open={this.state.toggled}
-                  onClose={() => this.dialogClose("close")}
-                  aria-labelledby="alert-dialog-title"
-                  aria-describedby="alert-dialog-description"
+                  onClose={() => this.dialogClose('close')}
+                  aria-labelledby='alert-dialog-title'
+                  aria-describedby='alert-dialog-description'
                 >
-                  <DialogTitle id="alert-dialog-title">
-                    {"Search a Carca User"}
+                  <DialogTitle id='alert-dialog-title'>
+                    {'Search a Carca User'}
                   </DialogTitle>
                   <DialogContent>
                     <input
-                      className="search-u"
-                      placeholder="Enter Users Name"
+                      className='search-u'
+                      placeholder='Enter Users Name'
                       value={this.state.userSearch}
                       onChange={(event) => {
                         this.fetchUsers(event.target.value);
                       }}
                     />
 
-                    <List style={{ transition: "0.5s" }}>
+                    <List style={{ transition: '0.5s' }}>
                       {this.state.searchedUsers ? (
                         this.state.searchedUsers.map((users) => {
                           return (
@@ -131,14 +130,14 @@ class Navbar extends Component {
                                 <ListItemAvatar>
                                   <Avatar src={users.profilePic} />
                                 </ListItemAvatar>
-                                <Link to={"/profileOther/" + users._id}>
+                                <Link to={'/profileOther/' + users._id}>
                                   <ListItemText
                                     primary={users.firstname}
                                     secondary={users.email}
                                   />
                                 </Link>
                               </ListItem>
-                              <Divider variant="inset" component="li" />
+                              <Divider variant='inset' component='li' />
                             </div>
                           );
                         })
@@ -149,20 +148,20 @@ class Navbar extends Component {
                   </DialogContent>
                   <DialogActions>
                     <Button
-                      onClick={() => this.dialogClose("cancel")}
-                      color="primary"
+                      onClick={() => this.dialogClose('cancel')}
+                      color='primary'
                     >
                       Cancel
                     </Button>
                   </DialogActions>
                 </Dialog>
               </span>
-              <form className="search-form" style={{ margin: "0" }}>
+              <form className='search-form' style={{ margin: '0' }}>
                 <input
-                  type="text"
-                  className="search-bar search-c"
-                  style={{ height: "30px", margin: "0" }}
-                  placeholder="search"
+                  type='text'
+                  className='search-bar search-c'
+                  style={{ height: '30px', margin: '0' }}
+                  placeholder='search'
                 />
                 <style>{`
                       
@@ -222,20 +221,20 @@ class Navbar extends Component {
                 `}</style>
 
               <span>
-                <Badge badgeContent={4} style={{ color: "red" }}>
-                  <NotificationsIcon style={{ color: "#222" }} />
+                <Badge badgeContent={4} style={{ color: 'red' }}>
+                  <NotificationsIcon style={{ color: '#222' }} />
                 </Badge>
               </span>
               <span>
-                <Badge badgeContent={4} style={{ color: "red" }}>
-                  <MailIcon style={{ color: "#222" }} />
+                <Badge badgeContent={4} style={{ color: 'red' }}>
+                  <MailIcon style={{ color: '#222' }} />
                 </Badge>
               </span>
-              <span style={{ marginTop: "3px" }}>
+              <span style={{ marginTop: '3px' }}>
                 <i
-                  style={{ fontSize: "22px", paddingRight: "10px" }}
+                  style={{ fontSize: '22px', paddingRight: '10px' }}
                   onClick={this.onLogoutClick}
-                  className="fa fa-sign-out"
+                  className='fa fa-sign-out'
                 />
               </span>
             </div>
