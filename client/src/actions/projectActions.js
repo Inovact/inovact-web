@@ -7,7 +7,8 @@ import {
   SUBSCRIBERS_PROJECTS,
 } from './types';
 
-const baseURL = 'http://localhost:5000';
+// const baseURL = 'http://localhost:5000';
+const baseURL = 'https://inovact.herokuapp.com';
 
 export const postProject = (projectData) => (dispatch) => {
   console.log({ projectData });

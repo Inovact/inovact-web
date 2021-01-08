@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { MY_TEAMS, TEAM_DETAILS } from './types';
 
-const baseUrl = 'http://localhost:5000';
+// const baseUrl = 'http://localhost:5000';
+const baseUrl = 'https://inovact.herokuapp.com';
 
 export const requestJoin = (projectId) => (dispatch) => {
   console.log(projectId);
@@ -19,7 +20,7 @@ export const requestJoin = (projectId) => (dispatch) => {
 export const getTeamDetails = (projectId) => (dispatch) => {
   console.log(projectId);
   axios
-    .get(`/api/teams/getteam/${projectId}`)
+    .get(`${baseUrl}/api/teams/getteam/${projectId}`)
     .then((res) => {
       dispatch(storeTeamDetails(res));
     })
@@ -30,7 +31,7 @@ export const getTeamDetails = (projectId) => (dispatch) => {
 
 export const getTeams = (userID) => (dispatch) => {
   axios
-    .get(`/api/teams/getteams/${userID}`)
+    .get(`${baseUrl}/api/teams/getteams/${userID}`)
     .then((result) => {
       dispatch(myteams(result));
     })

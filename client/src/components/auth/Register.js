@@ -185,7 +185,7 @@ class Register extends Component {
                       or signup using
                     </span>
                     <div className='signup-icons'>
-                      <a href='https://inovact.herokuapp.com/api/users/auth/google'>
+                      <a href='http://inovact.herokuapp.com/api/users/auth/google'>
                         <img src={googleIcon} alt='' />
                       </a>
                       <a href='https://inovact.herokuapp.com/api/users/auth/facebook'>
