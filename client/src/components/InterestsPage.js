@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 
 class InterestsPage extends Component {
   render() {
-    console.log(this.props.auths);
+    console.log(this.props);
     return (
       <div>
         <div>
