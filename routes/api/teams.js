@@ -279,9 +279,8 @@ router.get('/acceptrequest', function (req, res) {
             if (err) {
               return res.status(500).send({ msg: err.message });
             }
-            const message = 'Successfully added new member to the team!';
             return res.render(
-              'https://inovact.herokuapp.com/confirmed?message=' + message
+              'https://inovact.herokuapp.com/login'
             );
           });
         });
