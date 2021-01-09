@@ -181,6 +181,7 @@ router.get('/requestjoin/:projectId', requireLogin, async (req, res) => {
   });
 });
 
+// @TODO: Needs to be written strictly
 router.get('/acceptinvite', function (req, res) {
   Token.findOne(
     {
@@ -202,14 +203,14 @@ router.get('/acceptinvite', function (req, res) {
 
       team.findOne(filter, 'members', function (err, team) {
         if (err) {
-          res.status(500).send('Could not find team');
+          return res.status(500).send('Could not find team');
         }
         if (
           team.members.some(function (currValue) {
             return token.__userId === currValue.userid;
           })
         ) {
-          res.status(500).send('You are already in the team!');
+          return res.status(500).send('You are already in the team!');
         }
 
         team.members.push({ userid: token._userId });
@@ -224,7 +225,7 @@ router.get('/acceptinvite', function (req, res) {
               return res.status(500).send({ msg: err.mesage });
             }
             const message = 'Successfully joined the team!';
-            res.redirect(
+            return res.redirect(
               'https://inovact.herokuapp.com/confirmed?message=' + message
             );
           });
@@ -234,6 +235,7 @@ router.get('/acceptinvite', function (req, res) {
   );
 });
 
+// @TODO: Needs to be written strictly
 // Need to redirect admnin to requestee's profile so that admin can view his profile and only then accpet his request
 router.get('/acceptrequest', function (req, res) {
   
@@ -279,9 +281,11 @@ router.get('/acceptrequest', function (req, res) {
             if (err) {
               return res.status(500).send({ msg: err.message });
             }
-            return res.render(
-              'https://inovact.herokuapp.com/login'
-            );
+            // return res.render(
+            //   'https://inovact.herokuapp.com/login'
+            // );
+            console.log("Done");
+            return res.redirect("https://inovact.herokuapp.com");
           });
         });
       });
