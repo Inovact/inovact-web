@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import style from 'react-style-tag';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 class InterestsPage extends Component {
   render() {
+    console.log(this.props.auths);
     return (
       <div>
         <div>
@@ -200,4 +203,12 @@ class InterestsPage extends Component {
   }
 }
 
-export default InterestsPage;
+InterestsPage.propTypes = {
+  auth: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps)(InterestsPage);
