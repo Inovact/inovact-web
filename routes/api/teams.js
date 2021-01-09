@@ -226,7 +226,7 @@ router.get('/acceptinvite', function (req, res) {
             }
             const message = 'Successfully joined the team!';
             return res.redirect(
-              'https://inovact.herokuapp.com/confirmed?message=' + message
+              'https://inovact.herokuapp.com/TeamDetails/' + token.projectId
             );
           });
         });
@@ -281,11 +281,9 @@ router.get('/acceptrequest', function (req, res) {
             if (err) {
               return res.status(500).send({ msg: err.message });
             }
-            // return res.render(
-            //   'https://inovact.herokuapp.com/login'
-            // );
-            console.log("Done");
-            return res.redirect("https://inovact.herokuapp.com");
+            return res.redirect(
+              'https://inovact.herokuapp.com/TeamDetails/' + token.projectId
+            );
           });
         });
       });
