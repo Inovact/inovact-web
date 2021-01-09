@@ -696,6 +696,20 @@ class Posts extends Component {
                         transition:0.6s ;
                         justify-content:center;
                     }
+
+                    @media only screen and (max-width:700px){
+                      .teamBx{
+                        position:relative;
+                        display:grid;
+                        grid-template-columns: repeat(auto-fit, minmax(300px, 0.85fr));
+                        align-items:start;
+                        grid-gap:40px;
+                        margin-top:50px;
+                        transition:0.6s ;
+                        justify-content:center;
+                    }
+                    }
+
                     .image-gallery-slide-wrapper{
                       position:static;
                     }
