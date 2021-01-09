@@ -258,13 +258,13 @@ router.get('/acceptrequest', function (req, res) {
 
       team.findOne(filter, 'members', function (err, team) {
         if (err) {
-          res.status(500).send('Could not find team');
+          return res.status(500).send('Could not find team');
         } else if (
           team.members.some(function (currValue) {
             return token._userId === currValue.userid;
           })
         ) {
-          res.status(500).send('User is already in the team!');
+          return res.status(500).send('User is already in the team!');
         }
 
         team.members.push({ userid: token._userId });
@@ -279,7 +279,7 @@ router.get('/acceptrequest', function (req, res) {
               return res.status(500).send({ msg: err.message });
             }
             const message = 'Successfully added new member to the team!';
-            res.render(
+            return res.render(
               'https://inovact.herokuapp.com/confirmed?message=' + message
             );
           });
