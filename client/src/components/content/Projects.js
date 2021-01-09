@@ -135,9 +135,9 @@ class Projects extends Component {
       }
 
       this.props.postProject(data);
-      // await this.props.userProject();
       M.toast({ html: 'Posted Successfully' });
-      window.location.reload();
+      this.props.userProject();
+      // window.location.reload();
     };
 
     return (

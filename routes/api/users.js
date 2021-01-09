@@ -437,7 +437,7 @@ router.post('/interests', requireLogin, (req, res) => {
       $push: { interests: interests },
     }
   ).then(() => {
-    res.writeHead(200);
+    // res.writeHead(200);
     res.send({ success: true });
   });
 });

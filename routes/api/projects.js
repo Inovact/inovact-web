@@ -120,14 +120,19 @@ router.post(
   requireLogin,
   upload.array('file', 5),
   async (req, res) => {
-    const { title, description, status, tags } = req.body;
+    const { title, description, status } = req.body;
 
-    if (tags instanceof Array) {
-      tags.push('Inovact');
-    } else {
-      tags = ['Inovact'];
+    let { tags } = req.body;
+    // if (tags instanceof Array) {
+    //   tags.push('Inovact');
+    // } else {
+    //   tags = ['Inovact'];
+    // }
+
+    if (!tags) {
+      tags = '["inovact"]';
     }
-    
+
     const project = new Project({
       title: title,
       description: description,
