@@ -16,9 +16,9 @@ class Dashboard extends Component {
     };
   }
 
-  componentDidMount() {
-    this.props.currentUser(this.props.auth.user.id);
-  }
+  // componentDidMount() {
+  //   this.props.currentUser(this.props.auth.user.id);
+  // }
 
   componentWillReceiveProps(nextProps, nextContext) {
     console.log('user', nextProps.userDetails);
@@ -41,7 +41,6 @@ class Dashboard extends Component {
     document.querySelector('.feed').style.marginLeft = '0';
   };
   render() {
-    console.log(Object.keys(this.state.userProjects).length);
     return (
       <div>
         <div>
