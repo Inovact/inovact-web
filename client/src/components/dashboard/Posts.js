@@ -701,7 +701,7 @@ class Posts extends Component {
                       .teamBx{
                         position:relative;
                         display:grid;
-                        grid-template-columns: repeat(auto-fit, minmax(300px, 0.85fr));
+                        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
                         align-items:start;
                         grid-gap:40px;
                         margin-top:50px;
