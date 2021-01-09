@@ -424,7 +424,7 @@ class Posts extends Component {
         </section>
         <style>
           {`
-                        .teamBx{
+                      .teamBx{
                         position:relative;
                         display:grid;
                         grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
@@ -432,6 +432,18 @@ class Posts extends Component {
                         grid-gap:40px;
                         margin-top:50px;
                         transition:0.6s ;
+                    }
+                    @media only screen and (max-width:700px){
+                      .teamBx{
+                        position:relative;
+                        display:grid;
+                        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                        align-items:start;
+                        grid-gap:40px;
+                        margin-top:50px;
+                        transition:0.6s ;
+                        justify-content:center;
+                    }
                     }
       
                         
