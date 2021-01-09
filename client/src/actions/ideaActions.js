@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { IDEAS, GET_ERRORS, ALL_IDEAS, POST_SUCCESS } from './types';
 
-const baseURL = 'http://https://gentle-tundra-19319.herokuapp.com';
+const baseURL = 'https://inovact.herokuapp.com';
 
 export const postIdea = (ideaData) => (dispatch) => {
   axios

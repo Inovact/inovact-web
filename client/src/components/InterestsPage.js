@@ -3,7 +3,7 @@ import style from 'react-style-tag';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { currentUser } from '../actions/userActions';
+// import { currentUser } from '../actions/userActions';
 
 class InterestsPage extends Component {
   componentDidMount() {
@@ -216,4 +216,4 @@ const mapStateToProps = (state) => ({
   auth: state.auth,
 });
 
-export default connect(mapStateToProps, { currentUser })(InterestsPage);
+export default connect(mapStateToProps)(InterestsPage);

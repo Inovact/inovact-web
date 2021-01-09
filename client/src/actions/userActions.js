@@ -1,9 +1,11 @@
 import axios from 'axios';
 import { GET_USER, CURRENT_USER } from './types';
 
+const baseURL = 'https://inovact.herokuapp.com';
+
 export const getUser = (userId) => (dispatch) => {
   axios
-    .get(`/api/user/user/${userId}`)
+    .get(`${baseURL}/api/user/user/${userId}`)
     .then((result) => {
       dispatch(userdetails(result.data));
     })
@@ -13,14 +15,16 @@ export const getUser = (userId) => (dispatch) => {
 };
 
 export const currentUser = (userId) => (dispatch) => {
-  axios.get(`/api/user/currentUser/${userId}`, userId).then((result) => {
-    const currentUserDetails = {
-      ...result.data.user,
-      userProjects: { ...result.data.userProjects },
-      userIdeas: { ...result.data.userIdeas },
-    };
-    dispatch(currentuser(currentUserDetails));
-  });
+  axios
+    .get(`${baseURL}/api/user/currentUser/${userId}`, userId)
+    .then((result) => {
+      const currentUserDetails = {
+        ...result.data.user,
+        userProjects: { ...result.data.userProjects },
+        userIdeas: { ...result.data.userIdeas },
+      };
+      dispatch(currentuser(currentUserDetails));
+    });
 };
 
 export const currentuser = (data) => {
