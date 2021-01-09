@@ -4,12 +4,15 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { currentUser } from '../actions/userActions';
+import axios from 'axios';
 
 class InterestsPage extends Component {
-  componentDidMount() {
-    this.props.currentUser(this.props.auth.user.id);
-    console.log(this.props);
-  }
+  componentDidMount = async () => {
+    const dataUser = await axios.get(
+      `https://inovact.herokuapp.com/api/user/currentUser/${this.props.auth.user.id}`
+    );
+    console.log({ dataUser });
+  };
 
   render() {
     return (
