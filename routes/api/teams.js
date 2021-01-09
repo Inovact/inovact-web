@@ -9,7 +9,6 @@ const Token = require('../../models/Tokens');
 const crypto = require('crypto');
 const fs = require('fs');
 const handlebars = require('handlebars');
-// import mongoose from 'mongoose';
 const mongoose = require('mongoose');
 
 router.get('/getteam/:projectId', requireLogin, (req, res) => {
@@ -262,7 +261,7 @@ router.get('/acceptrequest', function (req, res) {
           res.status(500).send('Could not find team');
         } else if (
           team.members.some(function (currValue) {
-            return token.__userId === currValue.userid;
+            return token._userId === currValue.userid;
           })
         ) {
           res.status(500).send('User is already in the team!');
