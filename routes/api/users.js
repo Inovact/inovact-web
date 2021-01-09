@@ -303,6 +303,7 @@ router.get(
       followers: req.user.followers,
       following: req.user.following,
       pic: req.user.profilePic,
+      interest: req.user.interest,
     };
 
     // In jwt.sign set the data that you want to get
