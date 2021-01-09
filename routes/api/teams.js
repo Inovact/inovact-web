@@ -236,6 +236,7 @@ router.get('/acceptinvite', function (req, res) {
 
 // Need to redirect admnin to requestee's profile so that admin can view his profile and only then accpet his request
 router.get('/acceptrequest', function (req, res) {
+  
   Token.findOne(
     {
       token: req.query.token,
