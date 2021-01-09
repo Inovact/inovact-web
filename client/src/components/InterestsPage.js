@@ -3,10 +3,14 @@ import style from 'react-style-tag';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { currentUser } from '../../actions/userActions';
 
 class InterestsPage extends Component {
-  render() {
+  componentDidMount() {
     console.log(this.props);
+  }
+
+  render() {
     return (
       <div>
         <div>
@@ -205,10 +209,11 @@ class InterestsPage extends Component {
 
 InterestsPage.propTypes = {
   auth: PropTypes.object.isRequired,
+  currentUser: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
 });
 
-export default connect(mapStateToProps)(InterestsPage);
+export default connect(mapStateToProps, { currentUser })(InterestsPage);

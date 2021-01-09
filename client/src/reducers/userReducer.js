@@ -1,5 +1,5 @@
-import { CURRENT_USER, GET_USER } from "../actions/types";
-const isEmpty = require("is-empty");
+import { CURRENT_USER, GET_USER } from '../actions/types';
+const isEmpty = require('is-empty');
 const initialState = {
   userDetails: [],
   userExists: false,

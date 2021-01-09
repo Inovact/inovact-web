@@ -116,6 +116,7 @@ export const Form = ({ onSubmit, closeModal }) => {
             style={{ background: '#23232e' }}
             className='form-control btn btn-primary'
             type='submit'
+            onClick={closeModal}
           >
             Submit
           </button>
