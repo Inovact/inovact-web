@@ -16,9 +16,9 @@ class Dashboard extends Component {
     };
   }
 
-  // componentDidMount() {
-  //   this.props.currentUser(this.props.auth.user.id);
-  // }
+  componentDidMount() {
+    this.props.currentUser(this.props.auth.user.id);
+  }
 
   componentWillReceiveProps(nextProps, nextContext) {
     console.log('user', nextProps.userDetails);

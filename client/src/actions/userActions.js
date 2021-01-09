@@ -15,16 +15,14 @@ export const getUser = (userId) => (dispatch) => {
 };
 
 export const currentUser = (userId) => (dispatch) => {
-  axios
-    .get(`${baseURL}/api/user/currentUser/${userId}`, userId)
-    .then((result) => {
-      const currentUserDetails = {
-        ...result.data.user,
-        userProjects: { ...result.data.userProjects },
-        userIdeas: { ...result.data.userIdeas },
-      };
-      dispatch(currentuser(currentUserDetails));
-    });
+  axios.get(`${baseURL}/api/user/currentUser/${userId}`).then((result) => {
+    const currentUserDetails = {
+      ...result.data.user,
+      userProjects: { ...result.data.userProjects },
+      userIdeas: { ...result.data.userIdeas },
+    };
+    dispatch(currentuser(currentUserDetails));
+  });
 };
 
 export const currentuser = (data) => {
