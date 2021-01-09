@@ -128,7 +128,7 @@ class InterestsPage extends Component {
         </div>
         <div className='button-container'>
           <Link to='/Dashboard'>
-            <button onClick={() => this.captureInterest}>Continue</button>
+            <button onClick={this.captureInterest}>Continue</button>
           </Link>
         </div>
         <style>
