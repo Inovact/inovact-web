@@ -11,7 +11,21 @@ class InterestsPage extends Component {
     const dataUser = await axios.get(
       `https://inovact.herokuapp.com/api/user/currentUser/${this.props.auth.user.id}`
     );
-    console.log({ dataUser });
+
+    if (dataUser.data.user.interests.length > 0) {
+      this.props.history.push('/dashboard');
+    }
+  };
+
+  captureInterest = async () => {
+    const response = await axios.post(
+      'https://inovact.herokuapp.com/api/users/interests',
+      { interests: 'inovact,inovation' }
+    );
+
+    if (response.success) {
+      this.props.history.push('/dashboard');
+    }
   };
 
   render() {
@@ -114,7 +128,7 @@ class InterestsPage extends Component {
         </div>
         <div className='button-container'>
           <Link to='/Dashboard'>
-            <button>Continue</button>
+            <button onClick={() => this.captureInterest}>Continue</button>
           </Link>
         </div>
         <style>

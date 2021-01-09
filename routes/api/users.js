@@ -432,13 +432,13 @@ router.post('/interests', requireLogin, (req, res) => {
   const interests = req.body.interests.split(',');
 
   User.findOneAndUpdate(
-    { email: req.body.email },
+    { email: req.user.email },
     {
       $push: { interests: interests },
     }
   ).then(() => {
     res.writeHead(200);
-    res.send();
+    res.send({ success: true });
   });
 });
 
