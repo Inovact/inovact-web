@@ -117,50 +117,38 @@ router.get('/requestjoin/:projectId', requireLogin, async (req, res) => {
   const projectId = req.params.projectId;
   const userId = req.user._id;
   const transporter = nodemailer.createTransport({
-    service: 'gmail',
+    service: 'Gmail',
     auth: {
       user: 'carca.inc@gmail.com',
-      pass: 'CarcaGoogle314',
+      pass: '@CarcaGoogle314',
     },
   });
 
-  await projects.findById(projectId, async function (err, project) {
-    const projectID = mongoose.Types.ObjectId(projectId);
-    await team.find({ projectid: projectID }).then(async (err, temp) => {
+  projects.findById(projectId, function (err, project) {
+    team.findOne({ projectid: projectId }, "members", function (err, temp) {
       let adminId;
-      console.log(temp);
-      if (temp) {
-        for (let i = 0; i < temp.members.length; i++) {
-          if (temp.members[i].role === 'admin')
-            adminId = temp.members[i].userid;
-        }
+      for (let i = 0; i < temp.members.length; i++) {
+        if (temp.members[i].role === "admin") adminId = temp.members[i].userid;
       }
-
-      await User.findById(adminId, async function (err, admin) {
+      User.findById(adminId, function (err, admin) {
         let tokenC = new Token({
           _userId: userId,
           projectId: projectId,
-          token: crypto.randomBytes(16).toString('hex'),
+          token: crypto.randomBytes(16).toString("hex"),
         });
 
-        tokenC.save(async function (err) {
+        tokenC.save(function (err) {
           if (err) {
             return res.status(500).json({ msg: err.message });
           }
 
-          readHTMLFile('static/requestJoinTemplate.html', async function (
-            err,
-            html
-          ) {
+          readHTMLFile("static/requestJoinTemplate.html", function (err, html) {
             if (err) {
               console.log(err);
               return res.status(500).send(err);
             }
             let template = handlebars.compile(html);
-            await User.findById(userId, 'firstname lastname', async function (
-              err,
-              member
-            ) {
+            User.findById(userId, "firstname lastname", function (err, member) {
               let replacements = {
                 firstname: admin.firstname,
                 lastname: admin.lastname,
@@ -173,15 +161,15 @@ router.get('/requestjoin/:projectId', requireLogin, async (req, res) => {
               let htmlToSend = template(replacements);
 
               const mailOption = {
-                from: 'afifahmed456123@gmail.com',
+                from: "afifahmed456123@gmail.com",
                 to: admin.email,
-                subject: 'Request to collaborate',
+                subject: "Request to collaborate",
                 html: htmlToSend,
               };
 
               transporter.sendMail(mailOption, function (err, data) {
                 if (err) {
-                  console.log('error', err);
+                  console.log("error", err);
                 } else {
                   res.status(200).json({ success: true });
                 }
