@@ -1,12 +1,12 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const Idea = require("../../models/Idea");
-const requireLogin = require("../../middlewares/requireLogin");
+const Idea = require('../../models/Idea');
+const requireLogin = require('../../middlewares/requireLogin');
 
-router.get("/getallideas", (req, res) => {
+router.get('/getallideas', (req, res) => {
   Idea.find()
-    .populate("userId", "_id firstname")
-    .populate("comments.postedBy", "_id firstname")
+    .populate('userId', '_id firstname')
+    .populate('comments.postedBy', '_id firstname')
     .then((data) => {
       res.json(data);
     })
@@ -15,17 +15,23 @@ router.get("/getallideas", (req, res) => {
     });
 });
 
-router.get("/myideas", requireLogin, (req, res) => {
+router.get('/myideas', requireLogin, (req, res) => {
   Idea.find({ userId: req.user._id })
-    .populate("userId", "_id firstname email")
+    .populate('userId', '_id firstname email')
     .then((data) => {
       res.json(data);
     })
     .catch((err) => console.log(err));
 });
 
-router.post("/postidea", requireLogin, (req, res) => {
-  const { title, description, tags } = req.body;
+router.post('/postidea', requireLogin, (req, res) => {
+  const { title, description } = req.body;
+  let { tags } = req.body;
+
+  if (!tags) {
+    tags = '["inovact"]';
+  }
+
   const idea = new Idea({
     title: title,
     description: description,
@@ -42,7 +48,7 @@ router.post("/postidea", requireLogin, (req, res) => {
     });
 });
 
-router.put("/like", requireLogin, (req, res) => {
+router.put('/like', requireLogin, (req, res) => {
   Idea.findByIdAndUpdate(
     req.body.postId,
 
@@ -53,19 +59,19 @@ router.put("/like", requireLogin, (req, res) => {
       new: true,
     }
   )
-    .populate("userId", "_id firstname lastname")
-    .populate("comments.postedBy", "_id firstname")
+    .populate('userId', '_id firstname lastname')
+    .populate('comments.postedBy', '_id firstname')
     .exec((err, result) => {
       if (err) {
         console.log(err);
         return res.status(403).json({ error: err });
       } else {
-        console.log("server", result);
+        console.log('server', result);
         res.json(result);
       }
     });
 });
-router.put("/unlike", requireLogin, (req, res) => {
+router.put('/unlike', requireLogin, (req, res) => {
   console.log(req.body);
 
   Idea.findByIdAndUpdate(
@@ -78,19 +84,19 @@ router.put("/unlike", requireLogin, (req, res) => {
       new: true,
     }
   )
-    .populate("userId", "_id firstname lastname")
-    .populate("comments.postedBy", "_id firstname")
+    .populate('userId', '_id firstname lastname')
+    .populate('comments.postedBy', '_id firstname')
     .exec((err, result) => {
       if (err) {
         console.log(err);
         return res.status(403).json({ error: err });
       } else {
-        console.log("server", result);
+        console.log('server', result);
         res.json(result);
       }
     });
 });
-router.put("/comment", requireLogin, (req, res) => {
+router.put('/comment', requireLogin, (req, res) => {
   const comment = {
     text: req.body.text,
     postedBy: req.user._id,
@@ -104,8 +110,8 @@ router.put("/comment", requireLogin, (req, res) => {
       new: true,
     }
   )
-    .populate("userId", "_id firstname lastname")
-    .populate("comments.postedBy", "_id firstname")
+    .populate('userId', '_id firstname lastname')
+    .populate('comments.postedBy', '_id firstname')
     .exec((err, result) => {
       if (err) {
         return res.status(404).json({ error: err });

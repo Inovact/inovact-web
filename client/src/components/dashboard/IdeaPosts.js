@@ -216,7 +216,7 @@ class Posts extends Component {
                         fuga iusto molestiae perspiciatis recusandae.
                       </div>
                       <div>
-                        {JSON.parse(idea.tags).map((tag) => {
+                        {JSON.parse(idea.tags)?.map((tag) => {
                           return (
                             <Chip
                               size='small'
