@@ -256,27 +256,26 @@ router.post('/login', (req, res) => {
           token: crypto.randomBytes(16).toString('hex'),
         });
 
-        // if (!user.isVerified) {
-        //   return res
-        //     .status(404)
-        //     .json({ notVerified: 'your account has not been verified' });
-        // }
-        // else {
-        jwt.sign(
-          payload,
-          keys.secretOrKey,
-          {
-            expiresIn: 31556926, // 1 year in seconds
-          },
-          (err, token) => {
-            res.json({
-              success: true,
-              token: 'Bearer ' + token,
-              conformationToken: tokenC,
-            });
-          }
-        );
-        // }
+        if (!user.isVerified) {
+          return res
+            .status(404)
+            .json({ notVerified: 'your account has not been verified' });
+        } else {
+          jwt.sign(
+            payload,
+            keys.secretOrKey,
+            {
+              expiresIn: 31556926, // 1 year in seconds
+            },
+            (err, token) => {
+              res.json({
+                success: true,
+                token: 'Bearer ' + token,
+                conformationToken: tokenC,
+              });
+            }
+          );
+        }
       } else {
         return res
           .status(400)

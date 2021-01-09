@@ -243,7 +243,7 @@ class Dashboard extends Component {
                   <span id='h1'>Hello,</span>
                   <br />
                   <p id='h2'>
-                    {this.state.currentUser.firstname.split(' ')[0]}
+                    {this.state.currentUser?.firstname.split(' ')[0]}
                   </p>
                 </div>
               </div>
