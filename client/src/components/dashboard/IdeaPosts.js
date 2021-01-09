@@ -420,6 +420,18 @@ class Posts extends Component {
                         margin-top:50px;
                         transition:0.6s ;
                     }
+                    @media only screen and (max-width:700px){
+                      .teamBx{
+                        position:relative;
+                        display:grid;
+                        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                        align-items:start;
+                        grid-gap:40px;
+                        margin-top:50px;
+                        transition:0.6s ;
+                        justify-content:center;
+                    }
+                    }
       
                         
                         `}
