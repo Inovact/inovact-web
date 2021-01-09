@@ -139,7 +139,7 @@ router.post('/register', (req, res) => {
                     service: 'Gmail',
                     auth: {
                       user: 'carca.inc@gmail.com',
-                      pass: 'CarcaGoogle314',
+                      pass: '@CarcaGoogle314',
                     },
                   });
 
