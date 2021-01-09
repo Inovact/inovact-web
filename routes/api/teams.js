@@ -60,7 +60,7 @@ router.get('/invitemembers', async function (req, res) {
     service: 'gmail',
     auth: {
       user: 'carca.inc@gmail.com',
-      pass: 'CarcaGoogle314',
+      pass: '@CarcaGoogle314',
     },
   });
 
@@ -226,7 +226,7 @@ router.get('/acceptinvite', function (req, res) {
             }
             const message = 'Successfully joined the team!';
             res.redirect(
-              'https://carca-version-1.herokuapp.com/confirmed?message=' +
+              'https://inovact.herokuapp.com/confirmed?message=' +
                 message
             );
           });
@@ -281,7 +281,7 @@ router.get('/acceptrequest', function (req, res) {
             }
             const message = 'Successfully added new member to the team!';
             res.render(
-              'https://carca-version-1.herokuapp.com/confirmed?message=' +
+              'https://inovact.herokuapp.com/confirmed?message=' +
                 message
             );
           });

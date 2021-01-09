@@ -122,9 +122,12 @@ router.post(
   async (req, res) => {
     const { title, description, status, tags } = req.body;
 
-    // console.log(req.body);
-    // console.log(req.files);
-
+    if (tags instanceof Array) {
+      tags.push('Inovact');
+    } else {
+      tags = ['Inovact'];
+    }
+    
     const project = new Project({
       title: title,
       description: description,
