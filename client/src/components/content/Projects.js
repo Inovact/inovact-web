@@ -105,7 +105,7 @@ class Projects extends Component {
 
   render() {
     const triggerText = 'Create Project';
-    const onSubmit = async (event) => {
+    const onSubmit = (event) => {
       event.preventDefault(event);
       const data = new FormData();
 
@@ -134,8 +134,8 @@ class Projects extends Component {
         data.append('file', file[j]);
       }
 
-      await this.props.postProject(data);
-      await this.props.userProject();
+      this.props.postProject(data);
+      this.props.userProject();
       // M.toast({ html: 'Posted Successfully' });
       // window.location.reload();
     };
