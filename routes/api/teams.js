@@ -125,16 +125,16 @@ router.get('/requestjoin/:projectId', requireLogin, async (req, res) => {
   });
 
   projects.findById(projectId, function (err, project) {
-    team.findOne({ projectid: projectId }, "members", function (err, temp) {
+    team.findOne({ projectid: projectId }, 'members', function (err, temp) {
       let adminId;
       for (let i = 0; i < temp.members.length; i++) {
-        if (temp.members[i].role === "admin") adminId = temp.members[i].userid;
+        if (temp.members[i].role === 'admin') adminId = temp.members[i].userid;
       }
       User.findById(adminId, function (err, admin) {
         let tokenC = new Token({
           _userId: userId,
           projectId: projectId,
-          token: crypto.randomBytes(16).toString("hex"),
+          token: crypto.randomBytes(16).toString('hex'),
         });
 
         tokenC.save(function (err) {
@@ -142,13 +142,13 @@ router.get('/requestjoin/:projectId', requireLogin, async (req, res) => {
             return res.status(500).json({ msg: err.message });
           }
 
-          readHTMLFile("static/requestJoinTemplate.html", function (err, html) {
+          readHTMLFile('static/requestJoinTemplate.html', function (err, html) {
             if (err) {
               console.log(err);
               return res.status(500).send(err);
             }
             let template = handlebars.compile(html);
-            User.findById(userId, "firstname lastname", function (err, member) {
+            User.findById(userId, 'firstname lastname', function (err, member) {
               let replacements = {
                 firstname: admin.firstname,
                 lastname: admin.lastname,
@@ -161,15 +161,15 @@ router.get('/requestjoin/:projectId', requireLogin, async (req, res) => {
               let htmlToSend = template(replacements);
 
               const mailOption = {
-                from: "afifahmed456123@gmail.com",
+                from: 'afifahmed456123@gmail.com',
                 to: admin.email,
-                subject: "Request to collaborate",
+                subject: 'Request to collaborate',
                 html: htmlToSend,
               };
 
               transporter.sendMail(mailOption, function (err, data) {
                 if (err) {
-                  console.log("error", err);
+                  console.log('error', err);
                 } else {
                   res.status(200).json({ success: true });
                 }
@@ -226,8 +226,7 @@ router.get('/acceptinvite', function (req, res) {
             }
             const message = 'Successfully joined the team!';
             res.redirect(
-              'https://inovact.herokuapp.com/confirmed?message=' +
-                message
+              'https://inovact.herokuapp.com/confirmed?message=' + message
             );
           });
         });
@@ -255,6 +254,7 @@ router.get('/acceptrequest', function (req, res) {
         });
       }
 
+      //filter
       const filter = { projectid: token.projectId };
 
       team.findOne(filter, 'members', function (err, team) {
@@ -281,8 +281,7 @@ router.get('/acceptrequest', function (req, res) {
             }
             const message = 'Successfully added new member to the team!';
             res.render(
-              'https://inovact.herokuapp.com/confirmed?message=' +
-                message
+              'https://inovact.herokuapp.com/confirmed?message=' + message
             );
           });
         });

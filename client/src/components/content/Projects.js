@@ -66,7 +66,6 @@ class Projects extends Component {
         postSuccess: nextProps.projects.postSuccess,
         projects: nextProps.projects.projects,
       });
-      M.toast({ html: 'Posted Successfully' });
       window.location.reload();
     }
     if (nextProps.projects.projectExists) {
