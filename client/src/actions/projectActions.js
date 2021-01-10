@@ -11,7 +11,6 @@ import {
 const baseURL = 'https://inovact.herokuapp.com';
 
 export const postProject = (projectData) => (dispatch) => {
-  console.log({ projectData });
   axios
     .post(`${baseURL}/api/projects/createproject`, projectData)
     .then((res) => {

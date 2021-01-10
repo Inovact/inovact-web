@@ -7,7 +7,6 @@ export const postIdea = (ideaData) => (dispatch) => {
   axios
     .post(`${baseURL}/api/ideas/postidea`, ideaData)
     .then((res) => {
-      console.log(res);
       dispatch({
         type: POST_SUCCESS,
       });
