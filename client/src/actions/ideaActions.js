@@ -63,3 +63,14 @@ export const storeIdeas = (data) => {
     payload: data,
   };
 };
+
+export const deleteIdea = (ideaId) => (dispatch) => {
+  axios
+    .delete(`/api/ideas/deleteidea/${ideaId}`)
+    .then((result) => {
+      console.log(result);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};

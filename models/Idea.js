@@ -39,6 +39,9 @@ const IdeaSchema = new Schema({
     default: undefined,
     enum: tags,
   },
+  images: [Object],
+  videos: [Object],
+  files: [Object],
 });
 
 ideaSchema = mongoose.model("IdeaSchema", IdeaSchema);

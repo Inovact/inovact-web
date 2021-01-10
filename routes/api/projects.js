@@ -10,6 +10,7 @@ const videoFileFilter = require('../../validation/videoFileValidator');
 const imageFileFilter = require('../../validation/imageFileValidator');
 const multer = require('multer');
 const upload = multer();
+const helpers = require('../../helpers/helpers');
 
 const pusher = new Pusher({
   appId: '1039724',
@@ -327,22 +328,40 @@ router.put('/comment', requireLogin, (req, res) => {
     });
 });
 
-router.delete('/deleteproject/:projectId', requireLogin, (req, res) => {
+router.delete("/deleteproject/:projectId", requireLogin, (req, res) => {
   Project.findOne({ _id: req.params.projectId })
-    .populate('userId', '_id')
+    .populate("userId", "_id")
     .exec((err, project) => {
       if (err || !project) {
         return res.status(422).json({ error: err });
       }
       if (project.userId._id.toString() === req.user._id.toString()) {
-        project
-          .remove()
-          .then((result) => {
-            res.json({ message: 'successfully deleted', result });
-          })
-          .catch((err) => {
-            console.log(err);
-          });
+        // Delete the folder containing the images of this project
+        helpers.deleteFolder('project_documents/' + req.params.projectId + '/', function(result) {
+          if (result.success) {
+            project
+            .remove()
+            .then((result) => {
+              team.deleteOne({projectid: req.params.projectId}, (err) => {
+                if (!err) {
+                  res.json({ message: "successfully deleted", result });
+                } else {
+                  res.status(500);
+                  res.json({msg: "failed to delete the team"});
+                }
+              })
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+          } else {
+            res.status(500);
+            res.send({msg: res.msg});
+          }
+        });
+      } else {
+        res.status(403);
+        res.send({msg:"You cannot only delete projects created by you."});
       }
     });
 });

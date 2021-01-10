@@ -4,7 +4,7 @@ import style from 'react-style-tag';
 import Container from './IdeaModal/Container';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { postIdea, userIdeas } from '../../actions/ideaActions';
+import { postIdea, userIdeas, deleteIdea } from '../../actions/ideaActions';
 import Collapsible from 'react-collapsible';
 import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
@@ -77,10 +77,11 @@ class Ideas extends Component {
         toggled: false,
       });
     } else {
-      this.props.deleteProject(todo);
+      this.props.deleteIdea(todo);
       this.setState({
         toggled: false,
       });
+      window.location.reload();
     }
   };
 
@@ -921,6 +922,7 @@ Ideas.propTypes = {
   errors: PropTypes.object.isRequired,
   ideas: PropTypes.object.isRequired,
   userIdeas: PropTypes.func.isRequired,
+  deleteIdea: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
@@ -932,4 +934,5 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps, {
   postIdea,
   userIdeas,
+  deleteIdea
 })(withRouter(Ideas));
