@@ -65,7 +65,7 @@ export const storeIdeas = (data) => {
 
 export const deleteIdea = (ideaId) => (dispatch) => {
   axios
-    .delete(`/api/ideas/deleteidea/${ideaId}`)
+    .delete(`${baseURL}/api/ideas/deleteidea/${ideaId}`)
     .then((result) => {
       console.log(result);
     })
