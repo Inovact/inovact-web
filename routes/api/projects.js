@@ -18,9 +18,7 @@ const pusher = new Pusher({
   cluster: 'ap2',
   encrypted: true,
 });
-router.get('/lol', (req, res) => {
-  res.end('HELLO');
-});
+
 router.get('/getproject/:projectId', (req, res) => {
   Project.findById(req.params.projectId)
     .populate('userId', 'firstname lastname')
