@@ -5,6 +5,8 @@ const requireLogin = require('../../middlewares/requireLogin');
 const helpers = require("../../helpers/helpers");
 const multer = require("multer");
 const upload = multer();
+const Imagekit = require('imagekit');
+const keys = require('../../config/keys');
 
 router.get('/getallideas', (req, res) => {
   Idea.find()
@@ -212,14 +214,14 @@ router.put('/comment', requireLogin, (req, res) => {
 });
 
 router.delete("/deleteidea/:ideaId", requireLogin, (req, res) => {
-  Idea.findOne({ _id: req.params.projectId })
+  Idea.findOne({ _id: req.params.ideaId })
     .populate("userId", "_id")
     .exec((err, idea) => {
       if (err || !idea) {
         return res.status(422).json({ error: err });
       }
       if (idea.userId._id.toString() === req.user._id.toString()) {
-        // Delete the folder containing the images of this project
+        // Delete the folder containing the images of this idea
         helpers.deleteFolder('idea_documents/' + req.params.ideaId + '/', function(result) {
           if (result.success) {
             idea
