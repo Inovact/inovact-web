@@ -106,7 +106,6 @@ class Projects extends Component {
 
   requestjoin = async (id) => {
     await this.props.requestJoin(id);
-    M.toast({ html: 'Request sent successfully' });
   };
 
   render() {

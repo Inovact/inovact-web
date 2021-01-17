@@ -9,7 +9,11 @@ export const requestJoin = (projectId) => (dispatch) => {
   axios
     .get(`${baseUrl}/api/teams/requestjoin/${projectId}`)
     .then((result) => {
-      console.log(result);
+      if (result.data.success) {
+        M.toast({ html: 'Request sent successfully' });
+      } else {
+        M.toast({ html: 'Error Occured' });
+      }
     })
     .catch((err) => {
       console.log(err);
