@@ -49,6 +49,7 @@ class Ideas extends Component {
       this.setState({
         ideas: nextProps.ideas.ideas,
       });
+      window.location.reload();
     }
     if (nextProps.ideas.ideaExists) {
       this.setState({
@@ -922,7 +923,7 @@ Ideas.propTypes = {
   errors: PropTypes.object.isRequired,
   ideas: PropTypes.object.isRequired,
   userIdeas: PropTypes.func.isRequired,
-  deleteIdea: PropTypes.func.isRequired
+  deleteIdea: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -934,5 +935,5 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps, {
   postIdea,
   userIdeas,
-  deleteIdea
+  deleteIdea,
 })(withRouter(Ideas));

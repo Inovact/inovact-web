@@ -31,6 +31,8 @@ import AvatarGroup from '@material-ui/lab/AvatarGroup';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import NavbarHome from '../layout/Navbar';
+import { requestJoin } from '../../actions/teamActions';
+
 class Projects extends Component {
   constructor() {
     super();
@@ -100,6 +102,11 @@ class Projects extends Component {
       });
       window.location.reload();
     }
+  };
+
+  requestJoin = async (id) => {
+    await this.props.requestJoin(id);
+    M.toast({ html: 'Request sent successfully' });
   };
 
   render() {
@@ -662,7 +669,7 @@ class Projects extends Component {
                         <Fab
                           style={{ color: 'white', background: 'orange' }}
                           size='small'
-                          onClick={() => this.requestjoin(project._id)}
+                          onClick={() => this.requestJoin(project._id)}
                         >
                           <AddIcon />
                         </Fab>
@@ -981,6 +988,7 @@ Projects.propTypes = {
   projects: PropTypes.object.isRequired,
   userProject: PropTypes.func.isRequired,
   deleteProject: PropTypes.func.isRequired,
+  requestJoin: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -993,4 +1001,5 @@ export default connect(mapStateToProps, {
   postProject,
   userProject,
   deleteProject,
+  requestJoin,
 })(withRouter(Projects));

@@ -6,7 +6,7 @@ const style = {
   margin: 0,
   top: 'auto',
   right: 20,
-  bottom: 50,
+  bottom: 60,
   left: 'auto',
   position: 'fixed',
   backgroundColor: 'orange',
