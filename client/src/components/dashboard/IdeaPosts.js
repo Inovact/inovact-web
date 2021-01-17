@@ -18,6 +18,7 @@ class Posts extends Component {
     super(props);
     this.state = {
       newIdeas: [],
+      commentText: '',
     };
   }
 
@@ -84,9 +85,11 @@ class Posts extends Component {
 
   commentIdea = (text, postId) => {
     const comment = {
-      text: text,
+      text: this.state.commentText,
       postId: postId,
     };
+    this.setState({ commentText: '' });
+
     axios
       .put('/api/ideas/comment', comment)
       .then((result) => {
@@ -379,7 +382,15 @@ class Posts extends Component {
                           this.commentIdea(event.target[0].value, idea._id);
                         }}
                       >
-                        <input type='text' placeholder='add a comment' />
+                        <input
+                          type='text'
+                          className='comment'
+                          placeholder='add a comment'
+                          value={this.state.commentText}
+                          onChange={(event) => {
+                            this.setState({ commentText: event.target.value });
+                          }}
+                        />
                       </form>
                     </div>
                     <div
