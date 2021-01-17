@@ -191,30 +191,32 @@ class Posts extends Component {
       });
   };
 
-  // commentIdea = (text, postId) => {
-  //   const comment = {
-  //     text: text,
-  //     postId: postId,
-  //   };
-  //   axios
-  //     .put('/api/ideas/comment', comment)
-  //     .then((result) => {
-  //       console.log(result);
-  //       const newData = this.state.newIdeas.map((item) => {
-  //         if (item._id === result.data._id) {
-  //           return result.data;
-  //         } else {
-  //           return item;
-  //         }
-  //       });
-  //       this.setState({
-  //         newIdeas: newData,
-  //       });
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
+  commentIdea = (text, postId) => {
+    const comment = {
+      text: text,
+      postId: postId,
+    };
+    this.setState({ commentText: '' });
+
+    axios
+      .put('/api/ideas/comment', comment)
+      .then((result) => {
+        console.log(result);
+        const newData = this.state.newIdeas.map((item) => {
+          if (item._id === result.data._id) {
+            return result.data;
+          } else {
+            return item;
+          }
+        });
+        this.setState({
+          newIdeas: newData,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   render() {
     console.log(this.state.allProjectImages);
