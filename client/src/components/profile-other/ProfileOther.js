@@ -430,7 +430,7 @@ class ProfileOther extends Component {
                           marginRight: '2px',
                         }}
                       >
-                        100
+                        {this.state.projects.length}
                       </span>
                       <span
                         style={{
@@ -488,7 +488,7 @@ class ProfileOther extends Component {
                           marginRight: '2px',
                         }}
                       >
-                        100
+                        {this.state.userDetails.user.followers.length}
                       </span>
                       <span
                         style={{
@@ -517,7 +517,7 @@ class ProfileOther extends Component {
                           marginRight: '2px',
                         }}
                       >
-                        100
+                        {this.state.userDetails.user.following.length}
                       </span>
                       <span
                         style={{
