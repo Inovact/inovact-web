@@ -4,7 +4,10 @@ import style from 'react-style-tag';
 const TagsInput = (props) => {
   const [tags, setTags] = React.useState(props.tags);
   const addTags = (event) => {
-    if (event.keyCode === 188 && event.target.value !== '') {
+    if (
+      (event.keyCode === 188 || event.keyCode === 55) &&
+      event.target.value !== ''
+    ) {
       event.preventDefault();
       setTags([...tags, event.target.value]);
       props.selectedTags([...tags, event.target.value]);
