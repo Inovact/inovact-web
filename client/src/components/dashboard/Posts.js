@@ -196,6 +196,8 @@ class Posts extends Component {
       text: text,
       postId: postId,
     };
+    this.setState({ commentText: '' });
+    
     axios
       .put('/api/ideas/comment', comment)
       .then((result) => {
