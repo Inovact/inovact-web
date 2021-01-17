@@ -49,7 +49,6 @@ class Ideas extends Component {
       this.setState({
         ideas: nextProps.ideas.ideas,
       });
-      window.location.reload();
     }
     if (nextProps.ideas.ideaExists) {
       this.setState({
@@ -97,6 +96,7 @@ class Ideas extends Component {
       };
 
       this.props.postIdea(newIdea);
+      window.location.reload();
       this.props.userIdeas();
     };
 

@@ -104,7 +104,7 @@ class Projects extends Component {
     }
   };
 
-  requestJoin = async (id) => {
+  requestjoin = async (id) => {
     await this.props.requestJoin(id);
     M.toast({ html: 'Request sent successfully' });
   };
@@ -669,7 +669,7 @@ class Projects extends Component {
                         <Fab
                           style={{ color: 'white', background: 'orange' }}
                           size='small'
-                          onClick={() => this.requestJoin(project._id)}
+                          onClick={() => this.requestjoin(project._id)}
                         >
                           <AddIcon />
                         </Fab>
