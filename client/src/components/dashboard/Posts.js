@@ -538,6 +538,18 @@ class Posts extends Component {
                             
                           `}
                         </style>
+
+                        <div>
+                          <Tooltip title='Request Join' placement='top' arrow>
+                            <Fab
+                              style={{ color: 'white', background: 'orange' }}
+                              size='small'
+                              onClick={() => this.requestjoin(project._id)}
+                            >
+                              <AddIcon />
+                            </Fab>
+                          </Tooltip>
+                        </div>
                       </div>
 
                       <div style={{ height: '30px' }}>
