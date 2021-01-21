@@ -286,7 +286,7 @@ class Posts extends Component {
                               marginLeft: '10px',
                             }}
                           >
-                            {project.userId.firstname[0]}+
+                            {project.userId.firstname[0]}
                             {project.userId.lastname[0]}
                           </Avatar>
                         </Tooltip>
@@ -331,22 +331,24 @@ class Posts extends Component {
                           </span>
                         </Link>
                       </div>
-                      <Tooltip title='project status' placement='top' arrow>
-                        <div className='status'>
-                          <span
-                            style={{
-                              fontSize: '12px',
-                              padding: '2px 5px',
-                              borderRadius: '10%',
-                              background: '#fff3e0',
-                              color: 'orange',
-                              fontWeight: '500',
-                            }}
-                          >
-                            {project.status}
-                          </span>
-                        </div>
-                      </Tooltip>
+                      {project.status !== 'completed' && (
+                        <Tooltip title='project status' placement='top' arrow>
+                          <div className='status'>
+                            <span
+                              style={{
+                                fontSize: '12px',
+                                padding: '2px 5px',
+                                borderRadius: '10%',
+                                background: '#fff3e0',
+                                color: 'orange',
+                                fontWeight: '500',
+                              }}
+                            >
+                              {project.status}
+                            </span>
+                          </div>
+                        </Tooltip>
+                      )}
                     </div>
                     <div
                       className='card-content'
