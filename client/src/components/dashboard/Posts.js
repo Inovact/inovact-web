@@ -331,24 +331,23 @@ class Posts extends Component {
                           </span>
                         </Link>
                       </div>
-                      {project.status !== 'complete' && (
-                        <Tooltip title='project status' placement='top' arrow>
-                          <div className='status'>
-                            <span
-                              style={{
-                                fontSize: '12px',
-                                padding: '2px 5px',
-                                borderRadius: '10%',
-                                background: '#fff3e0',
-                                color: 'orange',
-                                fontWeight: '500',
-                              }}
-                            >
-                              {project.status}
-                            </span>
-                          </div>
-                        </Tooltip>
-                      )}
+
+                      <Tooltip title='project status' placement='top' arrow>
+                        <div className='status'>
+                          <span
+                            style={{
+                              fontSize: '12px',
+                              padding: '2px 5px',
+                              borderRadius: '10%',
+                              background: '#fff3e0',
+                              color: 'orange',
+                              fontWeight: '500',
+                            }}
+                          >
+                            {project.status}
+                          </span>
+                        </div>
+                      </Tooltip>
                     </div>
                     <div
                       className='card-content'
@@ -549,17 +548,19 @@ class Posts extends Component {
                           `}
                           </style>
                         </div>
-                        <div style={{ float: 'right' }}>
-                          <Tooltip title='Request Join' placement='top' arrow>
-                            <Fab
-                              style={{ color: 'white', background: 'orange' }}
-                              size='small'
-                              onClick={() => this.requestjoin(project._id)}
-                            >
-                              <AddIcon />
-                            </Fab>
-                          </Tooltip>
-                        </div>
+                        {project.status !== 'complete' && (
+                          <div style={{ float: 'right' }}>
+                            <Tooltip title='Request Join' placement='top' arrow>
+                              <Fab
+                                style={{ color: 'white', background: 'orange' }}
+                                size='small'
+                                onClick={() => this.requestjoin(project._id)}
+                              >
+                                <AddIcon />
+                              </Fab>
+                            </Tooltip>
+                          </div>
+                        )}
                       </div>
 
                       <div style={{ height: '30px' }}>
