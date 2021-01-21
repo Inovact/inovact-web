@@ -429,115 +429,118 @@ class Posts extends Component {
                       <div
                         style={{
                           display: 'flex',
+                          justifyContent: 'space-between',
                           transition: '0.6s ease out',
                           marginTop: '0.5rem',
                           marginBottom: '0.5rem',
                         }}
                       >
-                        <div style={{ transition: '0.6s ease out' }}>
-                          {project.likes.includes(this.props.auth.user.id) ? (
-                            <img
-                              alt=''
-                              className='up'
-                              style={{ width: '28px', marginBottom: '-5px' }}
-                              src={afterClap}
-                              onClick={() => {
-                                this.unlikeProject(project._id);
-                              }}
-                            />
-                          ) : (
-                            <img
-                              alt=''
-                              className='down'
-                              style={{ width: '28px', marginBottom: '-5px' }}
-                              src={beforeClap}
-                              onClick={() => {
-                                this.likeProject(project._id);
-                              }}
-                            />
-                          )}
+                        <div>
+                          <div style={{ transition: '0.6s ease out' }}>
+                            {project.likes.includes(this.props.auth.user.id) ? (
+                              <img
+                                alt=''
+                                className='up'
+                                style={{ width: '28px', marginBottom: '-5px' }}
+                                src={afterClap}
+                                onClick={() => {
+                                  this.unlikeProject(project._id);
+                                }}
+                              />
+                            ) : (
+                              <img
+                                alt=''
+                                className='down'
+                                style={{ width: '28px', marginBottom: '-5px' }}
+                                src={beforeClap}
+                                onClick={() => {
+                                  this.likeProject(project._id);
+                                }}
+                              />
+                            )}
 
-                          <span
-                            style={{
-                              marginLeft: '2px',
-                              fontFamily: 'sans serif',
-                              fontSize: '18px',
-                            }}
-                          >
-                            {project.likes.length}
-                          </span>
-                        </div>
-                        <Collapsible
-                          style={{ transition: '0.6s' }}
-                          className='comments'
-                          trigger={
-                            <img
-                              alt=''
-                              id='comment'
-                              src={comment}
+                            <span
                               style={{
-                                width: '21px',
-                                marginLeft: '10px',
-                                marginBottom: '-10px',
+                                marginLeft: '2px',
+                                fontFamily: 'sans serif',
+                                fontSize: '18px',
                               }}
-                            />
-                          }
-                        >
-                          {project.comments.map((record) => {
-                            return (
-                              <div style={{ display: 'flex' }}>
-                                <div
-                                  style={{
-                                    margin: '0.5rem',
-                                    display: 'flex',
-                                    verticalAlign: 'middle',
-                                  }}
-                                >
-                                  <span
+                            >
+                              {project.likes.length}
+                            </span>
+                          </div>
+                          <Collapsible
+                            style={{ transition: '0.6s' }}
+                            className='comments'
+                            trigger={
+                              <img
+                                alt=''
+                                id='comment'
+                                src={comment}
+                                style={{
+                                  width: '21px',
+                                  marginLeft: '10px',
+                                  marginBottom: '-10px',
+                                }}
+                              />
+                            }
+                          >
+                            {project.comments.map((record) => {
+                              return (
+                                <div style={{ display: 'flex' }}>
+                                  <div
                                     style={{
-                                      paddingTop: '3px',
+                                      margin: '0.5rem',
+                                      display: 'flex',
+                                      verticalAlign: 'middle',
                                     }}
                                   >
-                                    <img
-                                      alt=''
+                                    <span
                                       style={{
-                                        width: '20px',
-                                        height: '20px',
-                                        borderRadius: '50%',
+                                        paddingTop: '3px',
                                       }}
-                                      src='https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs/115909667/original/7d79dd80b9eecaa289de1bc8065ad44aa03e2daf/do-a-simple-but-cool-profile-pic-or-logo-for-u.jpeg'
-                                    />
-                                  </span>
-                                  <p
-                                    style={{
-                                      fontSize: '12px',
-                                      fontFamily: 'sans-serif',
-                                      textTransform: 'lowercase',
-                                      padding: '5px',
-                                      fontWeight: '600',
-                                    }}
-                                  >
-                                    {record.postedBy.firstname}
+                                    >
+                                      <img
+                                        alt=''
+                                        style={{
+                                          width: '20px',
+                                          height: '20px',
+                                          borderRadius: '50%',
+                                        }}
+                                        src='https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs/115909667/original/7d79dd80b9eecaa289de1bc8065ad44aa03e2daf/do-a-simple-but-cool-profile-pic-or-logo-for-u.jpeg'
+                                      />
+                                    </span>
+                                    <p
+                                      style={{
+                                        fontSize: '12px',
+                                        fontFamily: 'sans-serif',
+                                        textTransform: 'lowercase',
+                                        padding: '5px',
+                                        fontWeight: '600',
+                                      }}
+                                    >
+                                      {record.postedBy.firstname}
+                                    </p>
+                                  </div>
+                                  <p style={{ padding: '10px 5px' }}>
+                                    {record.text}
                                   </p>
                                 </div>
-                                <p style={{ padding: '10px 5px' }}>
-                                  {record.text}
-                                </p>
-                              </div>
-                            );
-                          })}
-                        </Collapsible>
-                        <style>
-                          {`
+                              );
+                            })}
+                          </Collapsible>
+                          <style>
+                            {`
                           #comment:hover{
                             filter:drop-shadow(1px 2px 2px rgba(0,0,0,0.5))
-                           }
-                           .up:hover{
-                           filter:drop-shadow(1px 2px 2px rgba(0,0,0,0.3))
-                            }
-                            
+                          }
+                          .up:hover{
+                            filter:drop-shadow(1px 2px 2px rgba(0,0,0,0.3))
+                          }
+                          
                           `}
-                        </style>
+                          </style>
+                        </div>
                         <div style={{ float: 'right' }}>
                           <Tooltip title='Request Join' placement='top' arrow>
                             <Fab
