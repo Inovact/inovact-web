@@ -286,7 +286,8 @@ class Posts extends Component {
                               marginLeft: '10px',
                             }}
                           >
-                            A
+                            {project.userId.firstname[0]}+
+                            {project.userId.lastname[0]}
                           </Avatar>
                         </Tooltip>
                         <Link
