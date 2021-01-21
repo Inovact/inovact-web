@@ -435,7 +435,12 @@ class Posts extends Component {
                           marginBottom: '0.5rem',
                         }}
                       >
-                        <div>
+                        <div
+                          style={{
+                            display: 'flex',
+                            flexWrap: 'nowrap',
+                          }}
+                        >
                           <div style={{ transition: '0.6s ease out' }}>
                             {project.likes.includes(this.props.auth.user.id) ? (
                               <img
