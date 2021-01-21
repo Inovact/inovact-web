@@ -538,8 +538,7 @@ class Posts extends Component {
                             
                           `}
                         </style>
-
-                        <div>
+                        <div style={{ float: 'right' }}>
                           <Tooltip title='Request Join' placement='top' arrow>
                             <Fab
                               style={{ color: 'white', background: 'orange' }}
