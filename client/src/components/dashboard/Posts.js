@@ -331,7 +331,7 @@ class Posts extends Component {
                           </span>
                         </Link>
                       </div>
-                      {project.status !== 'completed' && (
+                      {project.status !== 'complete' && (
                         <Tooltip title='project status' placement='top' arrow>
                           <div className='status'>
                             <span
