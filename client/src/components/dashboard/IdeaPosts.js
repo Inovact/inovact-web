@@ -261,7 +261,7 @@ class Posts extends Component {
                               }}
                             />
                           ) : (
-                            <i
+                            <img
                               alt=''
                               className='up'
                               style={{ width: '28px', marginBottom: '-5px' }}
