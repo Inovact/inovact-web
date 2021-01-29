@@ -12,7 +12,9 @@ import Typography from '@material-ui/core/Typography';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Avatar from '@material-ui/core/Avatar';
 import Chip from '@material-ui/core/Chip';
-
+import comment from '../../static/comment.svg';
+import beforeClap from '../../static/beforeClap.svg';
+import afterClap from '../../static/afterClap.svg';
 class Posts extends Component {
   constructor(props) {
     super(props);
@@ -249,24 +251,21 @@ class Posts extends Component {
                       >
                         <div style={{ transition: '0.6s ease out' }}>
                           {idea.likes.includes(this.props.auth.user.id) ? (
-                            <i
-                              style={{
-                                fontSize: '22px',
-                                color: '#1e2a78',
-                              }}
-                              className='fa fa-thumbs-up up'
+                            <img
+                              alt=''
+                              className='up'
+                              style={{ width: '28px', marginBottom: '-5px' }}
+                              src={afterClap}
                               onClick={() => {
                                 this.unlikeIdea(idea._id);
                               }}
                             />
                           ) : (
                             <i
-                              style={{
-                                fontSize: '22px',
-
-                                color: '#757575',
-                              }}
-                              className='fa fa-thumbs-up'
+                              alt=''
+                              className='up'
+                              style={{ width: '28px', marginBottom: '-5px' }}
+                              src={beforeClap}
                               onClick={() => {
                                 this.likeIdea(idea._id);
                               }}
@@ -291,12 +290,14 @@ class Posts extends Component {
                             //   style={{ width: "24px", margin: "0 10px" }}
                             //   src="https://img.icons8.com/pastel-glyph/64/000000/comments.png"
                             // />
-                            <i
-                              className='fa fa-commenting-o'
+                            <img
+                              alt=''
+                              id='comment'
+                              src={comment}
                               style={{
-                                margin: '0 10px',
-                                fontSize: '20px',
-                                color: '#0277bd',
+                                width: '21px',
+                                marginLeft: '10px',
+                                marginBottom: '-10px',
                               }}
                             />
                           }
