@@ -18,11 +18,15 @@ const orangeTheme = createMuiTheme({
   palette: { primary: orange, secondary: orange },
 });
 
+const baseURL = 'https://inovact.herokuapp.com';
+
 class ProfileOther extends Component {
   constructor() {
     super();
     this.state = {
       userDetails: [],
+      ideas: [],
+      teams: [],
       projects: [],
       userExists: false,
     };
@@ -34,6 +38,10 @@ class ProfileOther extends Component {
 
   componentDidMount() {
     M.Tabs.init(this.Tabs);
+    axios.get(`${baseURL}/api/ideas/myideas`).then((response) => {
+      this.setState({ ideas: response.data });
+      console.log(response.data);
+    });
   }
 
   componentWillReceiveProps(nextProps, nextContext) {
@@ -591,6 +599,7 @@ class ProfileOther extends Component {
               </div>
               <div>
                 <ScrollableTabsButtonPrevent
+                  ideas={this.state.ideas}
                   projects={this.state.projects}
                   user={this.props.auth.user}
                 />

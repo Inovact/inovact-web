@@ -130,7 +130,7 @@ const commentProject = (text, postId) => {
     });
 };
 
-export default function ScrollableTabsButtonPrevent({ projects, user }) {
+export default function ScrollableTabsButtonPrevent({ projects, user, ideas }) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
   const handleChange = (event, newValue) => {
@@ -390,7 +390,166 @@ export default function ScrollableTabsButtonPrevent({ projects, user }) {
         </div>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+        <div
+          className='projects'
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, max(400px)',
+            gridGap: '20px',
+            overflow: 'hidden',
+            margin: '0 auto',
+          }}
+        >
+          {ideas.map((project) => {
+            return (
+              <div
+                className='card'
+                style={{
+                  overflow: 'hidden',
+                  boxShadow: '0 4px 16px 0 rgba(0,0,0,0.2)',
+                }}
+                key={project._id}
+              >
+                <div className='card-image waves-effect waves-block waves-light'>
+                  <p
+                    style={{
+                      color: '#222',
+                      fontSize: '16px',
+                      paddingLeft: '0px',
+                      margin: '15px',
+                      fontWeight: '400',
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                    }}
+                  >
+                    {project.userId.firstname}
+                    <span style={{ color: '#9e9e9e', fontWeight: '500' }}>
+                      {project.status}
+                    </span>
+                  </p>
+                </div>
+                <div className='card-content'>
+                  <span
+                    style={{ textTransform: 'capitalize' }}
+                    className='card-title activator grey-text text-darken-4'
+                  >
+                    {project.title}
+                    <i className='material-icons right'>more_vert</i>
+                  </span>
+                  <div
+                    className='description'
+                    style={{ marginBottom: '1rem', transition: '0.6s' }}
+                  >
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Adipisci architecto culpa eligendi esse et eum fuga iusto
+                    molestiae perspiciatis recusandae.
+                  </div>
+                  <div style={{ display: 'flex' }}>
+                    <div>
+                      {project.likes.includes(user.id) ? (
+                        <i
+                          style={{
+                            color: 'yellow',
+                            fontSize: '20px',
+                            transition: '0.3s',
+                          }}
+                          className='fa fa-star'
+                          onClick={() => {
+                            unlikeProject(project._id);
+                          }}
+                        />
+                      ) : (
+                        <i
+                          style={{
+                            color: 'rgba(0,0,0,0.5)',
+                            fontSize: '20px',
+                            transition: '0.3s',
+                          }}
+                          className='fa fa-star'
+                          onClick={() => {
+                            likeProject(project._id);
+                          }}
+                        />
+                      )}
+                      <span
+                        style={{
+                          marginLeft: '5px',
+                          fontFamily: 'sans serif',
+                          fontSize: '18px',
+                        }}
+                      >
+                        {project.likes.length}
+                      </span>
+                    </div>
+                    <Collapsible
+                      className='comments'
+                      trigger={
+                        <i
+                          className='fa fa-comment'
+                          style={{
+                            marginLeft: '10px',
+                            fontSize: '22px',
+                            color: '#222',
+                          }}
+                        />
+                      }
+                    >
+                      {project.comments.map((record) => {
+                        return (
+                          <h6 key={record._id}>
+                            <span
+                              style={{
+                                textTransform: 'uppercase',
+                                fontWeight: '400',
+                                fontFamily: 'sans-serif',
+                                fontSize: '16px',
+                              }}
+                            >
+                              {record.postedBy.firstname}
+                            </span>
+                            <span style={{ marginLeft: '10px' }}>
+                              {record.text}
+                            </span>
+                          </h6>
+                        );
+                      })}
+                    </Collapsible>
+                    <style>
+                      {`
+                          i.fa.fa-comment:hover{
+                             color:#1e88e5 !important;
+                             transition:0.5s;
+                           }
+                          `}
+                    </style>
+                  </div>
+
+                  <form
+                    onSubmit={(event) => {
+                      event.preventDefault();
+                      commentProject(event.target[0].value, project._id);
+                    }}
+                  >
+                    <input type='text' placeholder='add a comment' />
+                  </form>
+                </div>
+                <div
+                  style={{ transition: '0.6s ease ' }}
+                  className='card-reveal'
+                >
+                  <span className='card-title grey-text text-darken-4'>
+                    Card Title
+                    <i className='material-icons right'>close</i>
+                  </span>
+                  <p>
+                    Here is some more information about this product that is
+                    only revealed once clicked on.
+                  </p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </TabPanel>
       <TabPanel value={value} index={2}>
         Item Three
