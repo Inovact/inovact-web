@@ -145,7 +145,7 @@ class Posts extends Component {
                         }}
                       >
                         {idea.userId.firstname[0]}
-                        {idea.userId.lastname[0]}
+                        {/* {idea.userId.lastname[0]} */}
                       </Avatar>
                       <Link
                         to={

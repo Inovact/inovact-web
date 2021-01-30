@@ -36,15 +36,21 @@ class ProfileOther extends Component {
     this.props.getUser(this.props.match.params.userId);
   }
 
-  componentDidMount() {
+  componentDidMount = async () => {
     M.Tabs.init(this.Tabs);
-    axios
-      .get(`${baseURL}/api/ideas/otheridea/${this.props.match.params.userId}`)
+    await axios
+      .get(`${baseURL}/api/ideas/otherideas/${this.props.match.params.userId}`)
       .then((response) => {
         this.setState({ ideas: response.data });
         console.log(response.data);
       });
-  }
+    await axios
+      .get(`${baseURL}/api/teams/getteams/${this.props.match.params.userId}`)
+      .then((response) => {
+        this.setState({ teams: response.data });
+        console.log(response.data);
+      });
+  };
 
   componentWillReceiveProps(nextProps, nextContext) {
     console.log(nextProps);
@@ -601,6 +607,7 @@ class ProfileOther extends Component {
               </div>
               <div>
                 <ScrollableTabsButtonPrevent
+                  teams={this.state.teams}
                   ideas={this.state.ideas}
                   projects={this.state.projects}
                   user={this.props.auth.user}

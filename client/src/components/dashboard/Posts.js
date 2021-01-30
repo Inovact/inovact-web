@@ -219,7 +219,6 @@ class Posts extends Component {
   };
 
   render() {
-    console.log(this.state.allProjectImages);
     if (this.state.newProjects && this.state.allProjectImages) {
       return (
         <div>
