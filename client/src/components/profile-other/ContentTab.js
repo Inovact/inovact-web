@@ -400,7 +400,7 @@ export default function ScrollableTabsButtonPrevent({ projects, user, ideas }) {
             margin: '0 auto',
           }}
         >
-          {ideas.map((project) => {
+          {ideas?.map((project) => {
             return (
               <div
                 className='card'
