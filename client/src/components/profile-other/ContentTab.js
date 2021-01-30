@@ -394,7 +394,7 @@ export default function ScrollableTabsButtonPrevent({ projects, user, ideas }) {
           className='projects'
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, max(400px)',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px,1fr))',
             gridGap: '20px',
             overflow: 'hidden',
             margin: '0 auto',
