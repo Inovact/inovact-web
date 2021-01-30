@@ -38,10 +38,12 @@ class ProfileOther extends Component {
 
   componentDidMount() {
     M.Tabs.init(this.Tabs);
-    axios.get(`${baseURL}/api/ideas/myideas`).then((response) => {
-      this.setState({ ideas: response.data });
-      console.log(response.data);
-    });
+    axios
+      .get(`${baseURL}/api/ideas/myideas/${this.props.match.params.userId}`)
+      .then((response) => {
+        this.setState({ ideas: response.data });
+        console.log(response.data);
+      });
   }
 
   componentWillReceiveProps(nextProps, nextContext) {

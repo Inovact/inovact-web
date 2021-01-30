@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 const Idea = require('../../models/Idea');
 const requireLogin = require('../../middlewares/requireLogin');
-const helpers = require("../../helpers/helpers");
-const multer = require("multer");
+const helpers = require('../../helpers/helpers');
+const multer = require('multer');
 const upload = multer();
 const Imagekit = require('imagekit');
 const keys = require('../../config/keys');
@@ -22,6 +22,15 @@ router.get('/getallideas', (req, res) => {
 
 router.get('/myideas', requireLogin, (req, res) => {
   Idea.find({ userId: req.user._id })
+    .populate('userId', '_id firstname email')
+    .then((data) => {
+      res.json(data);
+    })
+    .catch((err) => console.log(err));
+});
+
+router.get('/otherideas/:id', requireLogin, (req, res) => {
+  Idea.find({ userId: req.params.id })
     .populate('userId', '_id firstname email')
     .then((data) => {
       res.json(data);
@@ -213,33 +222,36 @@ router.put('/comment', requireLogin, (req, res) => {
     });
 });
 
-router.delete("/deleteidea/:ideaId", requireLogin, (req, res) => {
+router.delete('/deleteidea/:ideaId', requireLogin, (req, res) => {
   Idea.findOne({ _id: req.params.ideaId })
-    .populate("userId", "_id")
+    .populate('userId', '_id')
     .exec((err, idea) => {
       if (err || !idea) {
         return res.status(422).json({ error: err });
       }
       if (idea.userId._id.toString() === req.user._id.toString()) {
         // Delete the folder containing the images of this idea
-        helpers.deleteFolder('idea_documents/' + req.params.ideaId + '/', function(result) {
-          if (result.success) {
-            idea
-            .remove()
-            .then((result) => {
-              res.json({ message: "successfully deleted", result });
-            })
-            .catch((err) => {
-              console.log(err);
-            });
-          } else {
-            res.status(500);
-            res.send({msg: res.msg});
+        helpers.deleteFolder(
+          'idea_documents/' + req.params.ideaId + '/',
+          function (result) {
+            if (result.success) {
+              idea
+                .remove()
+                .then((result) => {
+                  res.json({ message: 'successfully deleted', result });
+                })
+                .catch((err) => {
+                  console.log(err);
+                });
+            } else {
+              res.status(500);
+              res.send({ msg: res.msg });
+            }
           }
-        });
+        );
       } else {
         res.status(403);
-        res.send({msg:"You cannot only delete idea created by you."});
+        res.send({ msg: 'You cannot only delete idea created by you.' });
       }
     });
 });

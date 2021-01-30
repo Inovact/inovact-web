@@ -144,7 +144,8 @@ class Posts extends Component {
                           backgroundColor: '#ff1f5a',
                         }}
                       >
-                        P
+                        {idea.userId.firstname[0]}
+                        {idea.userId.lastname[0]}
                       </Avatar>
                       <Link
                         to={
