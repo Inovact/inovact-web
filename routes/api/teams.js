@@ -24,6 +24,7 @@ router.get('/getteams/:userId', requireLogin, (req, res) => {
   team
     .find({ 'members.userid': req.params.userId })
     .then((result) => {
+      console.log(result);
       res.json(result);
     })
     .catch((err) => {
@@ -238,7 +239,6 @@ router.get('/acceptinvite', function (req, res) {
 // @TODO: Needs to be written strictly
 // Need to redirect admnin to requestee's profile so that admin can view his profile and only then accpet his request
 router.get('/acceptrequest', function (req, res) {
-  
   Token.findOne(
     {
       token: req.query.token,

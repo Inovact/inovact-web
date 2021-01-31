@@ -567,7 +567,7 @@ export default function ScrollableTabsButtonPrevent({
             margin: '0 auto',
           }}
         >
-          {teams &&
+          {teams !== 'undefined' &&
             teams.map((project) => {
               return (
                 <div
