@@ -48,7 +48,7 @@ class ProfileOther extends Component {
       .get(`${baseURL}/api/teams/getteams/${this.props.match.params.userId}`)
       .then((response) => {
         this.setState({ teams: response.data });
-        console.log(response.data);
+        console.log('teams', response.data);
       });
   };
 
