@@ -278,18 +278,18 @@ class Teams extends Component {
                         }
                         
                         :root {
-                            font-size: 16px;
-                            font-family: 'sans-serif';
-                            --text-primary: #b6b6b6;
-                            --text-secondary: #ececec;
-                            --bg-primary: #23232e;
-                            --bg-secondary: #141418;
-                            --transition-speed: 600ms;
+                          font-size: 14px;
+                          font-family: 'sans-serif';
+                          --text-primary: #fff;
+                          --text-secondary: #222;
+                          --bg-primary: #f5f8fa;
+                          --bg-secondary: #fff;
+                          --transition-speed: 600ms;
                         }
                         
                         body {
                             color: black;
-                            background-color: #eceff1;
+                            background-color: #f5f8fa;
                             margin: 0;
                             padding: 0;
                         }
@@ -306,18 +306,14 @@ class Teams extends Component {
                             background: orange;
                         }
                         
-                          .dashboard{
-                           display:grid;
-                           grid-template-columns: 4rem auto 200px;   
-                           overflow:hidden;
-                           grid-gap:10px;
-                        }
+                         
                          
                         .navbar {
                             position: fixed;
                             background-color: var(--bg-primary);
                             transition: width 600ms ease;
                             padding-left:0%; 
+                            box-shadow:none;
                         }
                         
                         .navbar-nav {
@@ -326,8 +322,8 @@ class Teams extends Component {
                             margin: 0;
                             display: flex;
                             flex-direction: column;
-                            justify-content:start;
-                           
+                            align-items:center;
+                            height:100%                           
                         }
                         .navbar-nav::-webkit-scrollbar{
                             width:0rem;
@@ -336,11 +332,12 @@ class Teams extends Component {
                         
                         .nav-item {
                             width: 100%;
-                            
-                        }
+                            margin-top:4px;
+
+                     }
                         
                         .nav-item:last-child {
-                            margin-top: 0;
+                            margin-top: auto;
                         }
                         
                         .nav-link {
@@ -349,33 +346,42 @@ class Teams extends Component {
                             height: 4rem;
                             color: var(--text-primary);
                             text-decoration: none;
-                            filter: grayscale(100%) opacity(0.7);
                             transition: var(--transition-speed);
                         }
                         
-                        .nav-link:hover {
+                        .nav-link:hover .link-text {
                             filter: grayscale(0%) opacity(1);
                             background: var(--bg-secondary);
-                            color: var(--text-secondary);
+                            color: #336699;
+                        }
+                         .nav-link:hover{
+                            filter: grayscale(0%) opacity(1);
+                            background: var(--bg-secondary);
+                            color: #fff;
                         }
                         
                         .link-text {
                             display: none;
                             margin-left: 1rem;
+                            color:#222;
+                            font-weight:500;
+                            height:4rem;
+                            transition:0.6s;
                         }
                         
                         .nav-link svg {
-                            width: 2rem;
-                            min-width: 2rem;
-                            margin: 0 1rem;
+                            width: 1.5rem;
+                            min-width: 1.5rem;
+                            margin-right:1rem;
+                            margin-left:1.2rem;
                         }
                         
                         .fa-primary {
-                            color: orange;
+                            color: #f0f0f0;
                         }
                         
                         .fa-secondary {
-                            color: orange;
+                            color: #ff4500;
                         }
                         
                         .fa-primary,
@@ -416,59 +422,56 @@ class Teams extends Component {
                         @media only screen and (max-width: 600px) {
                             .dashboard{
                               display:grid;
-                              grid-template-columns:4rem auto 0;
-                              grid-template-rows:auto 4rem 0;
+                              grid-template-columns:0 auto !important;
+                              grid-template-rows:auto 3rem;
                               }
                         
                             .navbar {
-                                top: 0;
-                                width: 4rem;
-                                height: 100vh;
+                                bottom:0;   
+                                width: 100vw;
+                                height: 4rem;
+                                transition:0.6s;
+
                             }
                       
                             .navbar-nav {   
                                 display:flex;
-                                flex-direction: column;
+                                flex-direction: row;
                                 justify-content:center;                            
                             }
-                            .navbar:hover {
-                                width: 14rem;
-                            }
-                            
-                        
-                            .nav-link:hover {
+                            .nav-link {
                                 justify-content: center;
                                 transition:0.6s ease in;
+                                
                             }   
-                            .navbar:hover .link-text {
-                                display: inline;
-                            }
-                             .navbar:hover .logo svg
+                             .navbar .logo
                             {
-                                margin-left: 11rem;
-                            }
-                        
-                            .navbar:hover .logo-text
-                            {
-                                left: 0px;
+                                display: none;
                             }
                         }
                         
                         /* Large screens */
                         @media only screen and (min-width: 600px) {
+                         .dashboard{
+                           display:grid;
+                           grid-template-columns: 3rem auto 200px;   
+                           grid-gap:10px;
+                        }
                             .navbar {
                                 top: 0;
-                                width: 4rem;
+                                width: 3rem;
                                 height: 100vh;
+                                transition:0.6s;
                             }
                         
                             .navbar:hover {
-                                width: 14rem;
+                                width: 12rem;
+                                transition:0.6s;
                             }
                         
                             .navbar:hover .link-text {
                                 display: inline;
-                                color:#fff;
+                           
                             }
                               
                             
