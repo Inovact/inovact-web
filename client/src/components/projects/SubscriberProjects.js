@@ -10,6 +10,9 @@ import 'font-awesome/css/font-awesome.min.css';
 import Collapsible from 'react-collapsible';
 import { Tooltip } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
+import beforeClap from '../../static/beforeClap.svg';
+import afterClap from '../../static/afterClap.svg';
+import comment from '../../static/comment.svg';
 
 class Posts extends Component {
   constructor(props) {
@@ -268,25 +271,27 @@ class Posts extends Component {
                     >
                       <div style={{ transition: '0.6s ease out' }}>
                         {project.likes.includes(this.props.auth.user.id) ? (
-                          <i
+                          <img
                             style={{
                               color: 'yellow',
                               fontSize: '22px',
                               transition: '0.3s',
                             }}
-                            className='fa fa-star'
+                            src={afterClap}
                             onClick={() => {
                               this.unlikeProject(project._id);
                             }}
+                            alt=''
                           />
                         ) : (
-                          <i
+                          <img
                             style={{
                               color: 'rgba(0,0,0,0.5)',
                               fontSize: '22px',
                               transition: '0.3s',
                             }}
-                            className='fa fa-star'
+                            src={beforeClap}
+                            alt=''
                             onClick={() => {
                               this.likeProject(project._id);
                             }}
@@ -308,7 +313,7 @@ class Posts extends Component {
                         trigger={
                           <img
                             style={{ width: '24px', margin: '0 10px' }}
-                            src='https://img.icons8.com/pastel-glyph/64/000000/comments.png'
+                            src={comment}
                             alt='comments'
                           />
                         }
