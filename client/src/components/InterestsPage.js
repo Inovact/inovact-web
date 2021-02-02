@@ -156,7 +156,7 @@ class InterestsPage extends Component {
                             }
                         
                         .container div label input[type="checkbox"]{
-                            display:none;
+                            display:none !important;
                             }
                             
                         .container div label span{
@@ -178,8 +178,7 @@ class InterestsPage extends Component {
                             content: '';
                             position:absolute;
                             top:0;
-                            left:0;
-                            
+                            left:0;        
                             width:100%;
                             background:rgba(255,255,255,.1);
                             }
