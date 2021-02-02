@@ -9,7 +9,8 @@ import Box from '@material-ui/core/Box';
 import style from 'react-style-tag';
 import Collapsible from 'react-collapsible';
 import axios from 'axios';
-import { Avatar, AvatarGroup } from 'material-ui/core/Avatar';
+import Avatar from '@material-ui/core/Avatar';
+import AvatarGroup from '@material-ui/lab/AvatarGroup';
 import { Link } from 'react-router-dom';
 
 function TabPanel(props) {
