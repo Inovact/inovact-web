@@ -272,26 +272,20 @@ class Posts extends Component {
                       <div style={{ transition: '0.6s ease out' }}>
                         {project.likes.includes(this.props.auth.user.id) ? (
                           <img
-                            style={{
-                              color: 'yellow',
-                              fontSize: '22px',
-                              transition: '0.3s',
-                            }}
+                            alt=''
+                            className='up'
+                            style={{ width: '28px', marginBottom: '-5px' }}
                             src={afterClap}
                             onClick={() => {
                               this.unlikeProject(project._id);
                             }}
-                            alt=''
                           />
                         ) : (
                           <img
-                            style={{
-                              color: 'rgba(0,0,0,0.5)',
-                              fontSize: '22px',
-                              transition: '0.3s',
-                            }}
-                            src={beforeClap}
                             alt=''
+                            className='down'
+                            style={{ width: '28px', marginBottom: '-5px' }}
+                            src={beforeClap}
                             onClick={() => {
                               this.likeProject(project._id);
                             }}
