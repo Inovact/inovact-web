@@ -9,6 +9,8 @@ import Box from '@material-ui/core/Box';
 import style from 'react-style-tag';
 import Collapsible from 'react-collapsible';
 import axios from 'axios';
+import { Avatar, AvatarGroup } from 'material-ui/core/Avatar';
+import { Link } from 'react-router-dom';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -567,7 +569,83 @@ export default function ScrollableTabsButtonPrevent({
             margin: '0 auto',
           }}
         >
-          {teams.teamname}
+          {teams.map((team) => {
+            return (
+              <div
+                className='card'
+                style={{
+                  margin: 'none',
+                  borderRadius: '12px',
+                  maxWidth: '600px',
+                  boxShadow: '8px 4px 16px 0 rgba(0,0,0,0.2)',
+                }}
+              >
+                <div className='card-content' style={{ transition: '0.6s' }}>
+                  <span
+                    style={{ textTransform: 'uppercase' }}
+                    className='card-title'
+                  >
+                    {team.teamname}
+                  </span>
+                  <p>
+                    This a simple description about the team or the project they
+                    is working on. Lorem ipsum dolor sit amet, consectetur
+                    adipisicing elit. Blanditiis deleniti, neque? A, dicta error
+                    fugit impedit officia quasi tempora tempore?
+                  </p>
+                </div>
+                <div
+                  className='card-action'
+                  style={{
+                    borderRadius: '12px',
+                    transition: '0.6s',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                  }}
+                >
+                  <AvatarGroup max={4} style={{ zIndex: 'inherit' }}>
+                    <Avatar
+                      alt='Remy Sharp'
+                      src='/static/images/avatar/1.jpg'
+                      style={{ zIndex: 'inherit' }}
+                    />
+                    <Avatar
+                      alt='Travis Howard'
+                      src='/static/images/avatar/2.jpg'
+                      style={{ zIndex: 'inherit' }}
+                    />
+                    <Avatar
+                      alt='Cindy Baker'
+                      src='/static/images/avatar/3.jpg'
+                      style={{ zIndex: 'inherit' }}
+                    />
+                    <Avatar
+                      alt='Agnes Walker'
+                      src='/static/images/avatar/4.jpg'
+                      style={{ zIndex: 'inherit' }}
+                    />
+                    <Avatar
+                      alt='Trevor Henderson'
+                      src='/static/images/avatar/5.jpg'
+                      style={{ zIndex: 'inherit' }}
+                    />
+                  </AvatarGroup>
+                  <Link
+                    style={{ padding: '5px 0', color: 'orange' }}
+                    to={'/TeamDetails/' + team.projectid}
+                  >
+                    View Team
+                  </Link>
+                </div>
+                <style>{`
+                  .card{
+                    transition:0.6s !important;
+                    }
+                    
+                  `}</style>
+              </div>
+            );
+          })}
         </div>
       </TabPanel>
       <style>
