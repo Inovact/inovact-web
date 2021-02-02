@@ -1,10 +1,11 @@
-import React, { Component } from "react";
-import { getTeamDetails } from "../../actions/teamActions";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import style from "react-style-tag";
-import Skeleton from "@material-ui/lab/Skeleton";
+import React, { Component } from 'react';
+import { getTeamDetails } from '../../actions/teamActions';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import style from 'react-style-tag';
+import Skeleton from '@material-ui/lab/Skeleton';
+import NavbarHome from '../layout/Navbar';
 
 class Teams extends Component {
   constructor() {
@@ -19,7 +20,7 @@ class Teams extends Component {
   }
 
   componentWillReceiveProps(nextProps, nextContext) {
-    console.log("next", nextProps);
+    console.log('next', nextProps);
     if (this.state.teamDetails !== nextProps.teams.teamDetails) {
       this.setState({
         teamDetails: nextProps.teams.teamDetails,
@@ -28,230 +29,248 @@ class Teams extends Component {
   }
 
   openNav = () => {
-    document.querySelector(".teams").style.marginLeft = "10rem";
+    document.querySelector('.teams').style.marginLeft = '10rem';
   };
 
   closeNav = () => {
-    document.querySelector(".teams").style.margin = "0 2rem";
+    document.querySelector('.teams').style.margin = '0 2rem';
   };
 
   render() {
     return (
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "4rem auto",
-          gridTemplateRows: "auto-fit",
-          overflow: "hidden",
-          gridGap: "10px",
-          transition: "0.6s",
-        }}
-      >
-        <nav
-          className="navbar"
-          id="nav"
-          onMouseEnter={this.openNav}
-          onMouseLeave={this.closeNav}
-          style={{ overflow: "hidden", padding: "0px" }}
-        >
-          <ul className="navbar-nav" style={{ padding: "0" }}>
-            <li className="logo">
-              <Link
-                to="/Dashboard"
-                className="nav-link"
-                style={{ padding: "0" }}
-              >
-                <span className="link-text logo-text">Carca</span>
-
-                <svg
-                  aria-hidden="true"
-                  focusable="false"
-                  data-prefix="fad"
-                  data-icon="angle-double-right"
-                  role="img"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 448 512"
-                  className="svg-inline--fa fa-angle-double-right fa-w-14 fa-5x"
-                >
-                  <g className="fa-group">
-                    <path
-                      fill="currentColor"
-                      d="M224 273L88.37 409a23.78 23.78 0 0 1-33.8 0L32 386.36a23.94 23.94 0 0 1 0-33.89l96.13-96.37L32 159.73a23.94 23.94 0 0 1 0-33.89l22.44-22.79a23.78 23.78 0 0 1 33.8 0L223.88 239a23.94 23.94 0 0 1 .1 34z"
-                      className="fa-secondary"
-                    />
-                    <path
-                      fill="currentColor"
-                      d="M415.89 273L280.34 409a23.77 23.77 0 0 1-33.79 0L224 386.26a23.94 23.94 0 0 1 0-33.89L320.11 256l-96-96.47a23.94 23.94 0 0 1 0-33.89l22.52-22.59a23.77 23.77 0 0 1 33.79 0L416 239a24 24 0 0 1-.11 34z"
-                      className="fa-primary"
-                    />
-                  </g>
-                </svg>
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                to="/dashboard/editProfile"
-                className="nav-link"
-                style={{ padding: "0" }}
-              >
-                <svg
-                  aria-hidden="true"
-                  focusable="false"
-                  data-prefix="fas"
-                  data-icon="user"
-                  className="svg-inline--fa fa-user fa-w-14"
-                  role="img"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 512 512"
-                >
-                  <g className="fa-group">
-                    <path
-                      fill="currentColor"
-                      d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352
-                                               c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"
-                      className="fa-secondary"
-                    />
-                  </g>
-                </svg>
-                <span className="link-text">Profile</span>
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                to="/projects"
-                className="nav-link"
-                style={{ padding: "0" }}
-              >
-                <svg
-                  aria-hidden="true"
-                  focusable="false"
-                  data-prefix="fas"
-                  data-icon="project-diagram"
-                  className="svg-inline--fa fa-project-diagram fa-w-20"
-                  role="img"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 640 512"
-                >
-                  <g className="fa-group">
-                    <path
-                      fill="currentColor"
-                      d="M384 320H256c-17.67 0-32 14.33-32 32v128c0 17.67 14.33 32 32 32h128c17.67 0 32-14.33 32-32V352c0-17.67-14.33-32-32-32zM192 32c0-17.67-14.33-32-32-32H32C14.33 0 0 14.33 0 32v128c0 17.67 14.33 32 32 32h95.72l73.16 128.04C211.98 300.98 232.4 288 256 288h.28L192 175.51V128h224V64H192V32zM608 0H480c-17.67 0-32 14.33-32 32v128c0 17.67 14.33 32 32 32h128c17.67 0 32-14.33 32-32V32c0-17.67-14.33-32-32-32z"
-                      className="fa-secondary"
-                    />
-                  </g>
-                </svg>
-                <span className="link-text">Projects</span>
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/ideas" className="nav-link" style={{ padding: "0" }}>
-                <svg
-                  aria-hidden="true"
-                  focusable="false"
-                  data-prefix="fad"
-                  data-icon="lightbulb"
-                  className="svg-inline--fa fa-lightbulb fa-w-11"
-                  role="img"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 512 512"
-                >
-                  <g className="fa-group">
-                    <path
-                      fill="currentColor"
-                      d="M96.06 454.35c.01 6.29 1.87 12.45 5.36 17.69l17.09 25.69a31.99 31.99 0 0 0 26.64 14.28h61.71a31.99 31.99 0 0 0 26.64-14.28l17.09-25.69a31.989 31.989 0 0 0 5.36-17.69l.04-38.35H96.01l.05 38.35zM0 176c0 44.37 16.45 84.85 43.56 115.78 16.52 18.85 42.36 58.23 52.21 91.45.04.26.07.52.11.78h160.24c.04-.26.07-.51.11-.78 9.85-33.22 35.69-72.6 52.21-91.45C335.55 260.85 352 220.37 352 176 352 78.61 272.91-.3 175.45 0 73.44.31 0 82.97 0 176zm176-80c-44.11 0-80 35.89-80 80 0 8.84-7.16 16-16 16s-16-7.16-16-16c0-61.76 50.24-112 112-112 8.84 0 16 7.16 16 16s-7.16 16-16 16z"
-                      className="fa-secondary"
-                    />
-                  </g>
-                </svg>
-                <span className="link-text">Ideas</span>
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/teams" className="nav-link" style={{ padding: "0" }}>
-                <svg
-                  aria-hidden="true"
-                  focusable="false"
-                  data-prefix="fas"
-                  data-icon="users"
-                  className="svg-inline--fa fa-users fa-w-20"
-                  role="img"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 650 512"
-                >
-                  <g className="fa-group">
-                    <path
-                      fill="currentColor"
-                      d="M96 224c35.3 0 64-28.7 64-64s-28.7-64-64-64-64 28.7-64 64 28.7 64 64 64zm448 0c35.3 0 64-28.7 64-64s-28.7-64-64-64-64 28.7-64 64 28.7 64 64 64zm32 32h-64c-17.6 0-33.5 7.1-45.1 18.6 40.3 22.1 68.9 62 75.1 109.4h66c17.7 0 32-14.3 32-32v-32c0-35.3-28.7-64-64-64zm-256 0c61.9 0 112-50.1 112-112S381.9 32 320 32 208 82.1 208 144s50.1 112 112 112zm76.8 32h-8.3c-20.8 10-43.9 16-68.5 16s-47.6-6-68.5-16h-8.3C179.6 288 128 339.6 128 403.2V432c0 26.5 21.5 48 48 48h288c26.5 0 48-21.5 48-48v-28.8c0-63.6-51.6-115.2-115.2-115.2zm-223.7-13.4C161.5 263.1 145.6 256 128 256H64c-35.3 0-64 28.7-64 64v32c0 17.7 14.3 32 32 32h65.9c6.3-47.4 34.9-87.3 75.2-109.4z"
-                      className="fa-secondary"
-                    />
-                  </g>
-                </svg>
-                <span className="link-text">Team</span>
-              </Link>
-            </li>
-          </ul>
-        </nav>
+      <div>
+        <div>
+          <NavbarHome />
+        </div>
         <div
-          className="teams"
-          style={{
-            display: "grid",
-            gridColumnStart: "2",
-            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 400px))",
-            gridTemplateRows: "auto-fit",
-            gridGap: "40px",
-            margin: "0 2rem",
-            transition: "0.6s",
-          }}
+          className='dashboard'
+          style={{ marginTop: '60px', overflow: 'hidden' }}
         >
-          {this.state.teamDetails[0] ? (
-            this.state.teamDetails[0].members.map((member) => {
-              return (
-                <div
-                  className="card"
-                  style={{
-                    margin: "none",
-                    borderRadius: "12px",
-                    maxWidth: "600px",
-                  }}
+          <nav
+            className='navbar'
+            id='nav'
+            onMouseEnter={this.openNav}
+            onMouseLeave={this.closeNav}
+            style={{ overflow: 'hidden', zIndex: '1', padding: '0px' }}
+          >
+            <ul className='navbar-nav' style={{ padding: '0' }}>
+              <li className='logo' style={{ height: '3rem' }}>
+                <Link
+                  to='/Dashboard'
+                  className='nav-link'
+                  style={{ padding: '0' }}
                 >
-                  <div className="card-content" style={{ transition: "0.6s" }}>
-                    <span
-                      style={{ textTransform: "uppercase" }}
-                      className="card-title"
-                    >
-                      {member.userid.firstname}
-                    </span>
-                    <p>
-                      This a simple description about the team or the project
-                      they is working on. Lorem ipsum dolor sit amet,
-                      consectetur adipisicing elit. Blanditiis deleniti, neque?
-                      A, dicta error fugit impedit officia quasi tempora
-                      tempore?
-                    </p>
-                  </div>
+                  <span className='link-text logo-text'>Carca</span>
+
+                  <svg
+                    aria-hidden='true'
+                    focusable='false'
+                    data-prefix='fad'
+                    data-icon='angle-double-right'
+                    role='img'
+                    xmlns='http://www.w3.org/2000/svg'
+                    viewBox='0 0 448 512'
+                    className='svg-inline--fa fa-angle-double-right fa-w-14 fa-5x'
+                  >
+                    <g className='fa-group'>
+                      <path
+                        fill='currentColor'
+                        d='M224 273L88.37 409a23.78 23.78 0 0 1-33.8 0L32 386.36a23.94 23.94 0 0 1 0-33.89l96.13-96.37L32 159.73a23.94 23.94 0 0 1 0-33.89l22.44-22.79a23.78 23.78 0 0 1 33.8 0L223.88 239a23.94 23.94 0 0 1 .1 34z'
+                        className='fa-secondary'
+                      />
+                      <path
+                        fill='currentColor'
+                        d='M415.89 273L280.34 409a23.77 23.77 0 0 1-33.79 0L224 386.26a23.94 23.94 0 0 1 0-33.89L320.11 256l-96-96.47a23.94 23.94 0 0 1 0-33.89l22.52-22.59a23.77 23.77 0 0 1 33.79 0L416 239a24 24 0 0 1-.11 34z'
+                        className='fa-primary'
+                      />
+                    </g>
+                  </svg>
+                </Link>
+              </li>
+              <li className='nav-item'>
+                <Link
+                  to='/dashboard/editProfile'
+                  className='nav-link'
+                  style={{ padding: '0' }}
+                >
+                  <svg
+                    aria-hidden='true'
+                    focusable='false'
+                    data-prefix='far'
+                    data-icon='user'
+                    className='svg-inline--fa fa-user fa-w-14'
+                    role='img'
+                    xmlns='http://www.w3.org/2000/svg'
+                    viewBox='0 0 448 512'
+                  >
+                    <path
+                      fill='currentColor'
+                      d='M313.6 304c-28.7 0-42.5 16-89.6 16-47.1 0-60.8-16-89.6-16C60.2 304 0 364.2 0 438.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-25.6c0-74.2-60.2-134.4-134.4-134.4zM400 464H48v-25.6c0-47.6 38.8-86.4 86.4-86.4 14.6 0 38.3 16 89.6 16 51.7 0 74.9-16 89.6-16 47.6 0 86.4 38.8 86.4 86.4V464zM224 288c79.5 0 144-64.5 144-144S303.5 0 224 0 80 64.5 80 144s64.5 144 144 144zm0-240c52.9 0 96 43.1 96 96s-43.1 96-96 96-96-43.1-96-96 43.1-96 96-96z'
+                      className='fa-secondary'
+                    />
+                  </svg>
+                  <span className='link-text'>Profile</span>
+                </Link>
+              </li>
+              <li className='nav-item'>
+                <Link
+                  to='/projects'
+                  className='nav-link'
+                  style={{ padding: '0' }}
+                >
+                  <svg
+                    aria-hidden='true'
+                    focusable='false'
+                    data-prefix='far'
+                    data-icon='project-diagram'
+                    className='svg-inline--far fa-project-diagram fa-w-20'
+                    role='img'
+                    xmlns='http://www.w3.org/2000/svg'
+                    viewBox='0 0 640 512'
+                  >
+                    <g className='fa-group'>
+                      <path
+                        fill='currentColor'
+                        d='M384 320H256c-17.67 0-32 14.33-32 32v128c0 17.67 14.33 32 32 32h128c17.67 0 32-14.33 32-32V352c0-17.67-14.33-32-32-32zM192 32c0-17.67-14.33-32-32-32H32C14.33 0 0 14.33 0 32v128c0 17.67 14.33 32 32 32h95.72l73.16 128.04C211.98 300.98 232.4 288 256 288h.28L192 175.51V128h224V64H192V32zM608 0H480c-17.67 0-32 14.33-32 32v128c0 17.67 14.33 32 32 32h128c17.67 0 32-14.33 32-32V32c0-17.67-14.33-32-32-32z'
+                        className='fa-secondary'
+                      />
+                    </g>
+                  </svg>
+                  <span className='link-text'>Projects</span>
+                </Link>
+              </li>
+              <li className='nav-item'>
+                <Link to='/ideas' className='nav-link' style={{ padding: '0' }}>
+                  <svg
+                    aria-hidden='true'
+                    focusable='false'
+                    data-prefix='far'
+                    data-icon='lightbulb'
+                    className='svg-inline--fa fa-lightbulb fa-w-11'
+                    role='img'
+                    xmlns='http://www.w3.org/2000/svg'
+                    viewBox='0 0 448 512'
+                  >
+                    <g className='fa-group'>
+                      <path
+                        fill='currentColor'
+                        d='M176 80c-52.94 0-96 43.06-96 96 0 8.84 7.16 16 16 16s16-7.16 16-16c0-35.3 28.72-64 64-64 8.84 0 16-7.16 16-16s-7.16-16-16-16zM96.06 459.17c0 3.15.93 6.22 2.68 8.84l24.51 36.84c2.97 4.46 7.97 7.14 13.32 7.14h78.85c5.36 0 10.36-2.68 13.32-7.14l24.51-36.84c1.74-2.62 2.67-5.7 2.68-8.84l.05-43.18H96.02l.04 43.18zM176 0C73.72 0 0 82.97 0 176c0 44.37 16.45 84.85 43.56 115.78 16.64 18.99 42.74 58.8 52.42 92.16v.06h48v-.12c-.01-4.77-.72-9.51-2.15-14.07-5.59-17.81-22.82-64.77-62.17-109.67-20.54-23.43-31.52-53.15-31.61-84.14-.2-73.64 59.67-128 127.95-128 70.58 0 128 57.42 128 128 0 30.97-11.24 60.85-31.65 84.14-39.11 44.61-56.42 91.47-62.1 109.46a47.507 47.507 0 0 0-2.22 14.3v.1h48v-.05c9.68-33.37 35.78-73.18 52.42-92.16C335.55 260.85 352 220.37 352 176 352 78.8 273.2 0 176 0z'
+                        className='fa-secondary'
+                      />
+                    </g>
+                  </svg>
+                  <span className='link-text'>Ideas</span>
+                </Link>
+              </li>
+              <li className='nav-item'>
+                <Link to='/teams' className='nav-link' style={{ padding: '0' }}>
+                  <svg
+                    aria-hidden='true'
+                    focusable='false'
+                    data-prefix='far'
+                    data-icon='user'
+                    className='svg-inline--fa fa-user fa-w-14'
+                    role='img'
+                    xmlns='http://www.w3.org/2000/svg'
+                    viewBox='0 0 448 512'
+                  >
+                    <path
+                      fill='currentColor'
+                      d='M313.6 304c-28.7 0-42.5 16-89.6 16-47.1 0-60.8-16-89.6-16C60.2 304 0 364.2 0 438.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-25.6c0-74.2-60.2-134.4-134.4-134.4zM400 464H48v-25.6c0-47.6 38.8-86.4 86.4-86.4 14.6 0 38.3 16 89.6 16 51.7 0 74.9-16 89.6-16 47.6 0 86.4 38.8 86.4 86.4V464zM224 288c79.5 0 144-64.5 144-144S303.5 0 224 0 80 64.5 80 144s64.5 144 144 144zm0-240c52.9 0 96 43.1 96 96s-43.1 96-96 96-96-43.1-96-96 43.1-96 96-96z'
+                      className='fa-secondary'
+                    />
+                  </svg>
+                  <span className='link-text'>Team</span>
+                </Link>
+              </li>
+              <li className='nav-item'>
+                <Link to='/teams' className='nav-link' style={{ padding: '0' }}>
+                  <svg
+                    aria-hidden='true'
+                    focusable='false'
+                    data-prefix='fas'
+                    data-icon='cog'
+                    className='svg-inline--fa fa-cog fa-w-16'
+                    role='img'
+                    xmlns='http://www.w3.org/2000/svg'
+                    viewBox='0 0 512 512'
+                  >
+                    <path
+                      fill='currentColor'
+                      d='M487.4 315.7l-42.6-24.6c4.3-23.2 4.3-47 0-70.2l42.6-24.6c4.9-2.8 7.1-8.6 5.5-14-11.1-35.6-30-67.8-54.7-94.6-3.8-4.1-10-5.1-14.8-2.3L380.8 110c-17.9-15.4-38.5-27.3-60.8-35.1V25.8c0-5.6-3.9-10.5-9.4-11.7-36.7-8.2-74.3-7.8-109.2 0-5.5 1.2-9.4 6.1-9.4 11.7V75c-22.2 7.9-42.8 19.8-60.8 35.1L88.7 85.5c-4.9-2.8-11-1.9-14.8 2.3-24.7 26.7-43.6 58.9-54.7 94.6-1.7 5.4.6 11.2 5.5 14L67.3 221c-4.3 23.2-4.3 47 0 70.2l-42.6 24.6c-4.9 2.8-7.1 8.6-5.5 14 11.1 35.6 30 67.8 54.7 94.6 3.8 4.1 10 5.1 14.8 2.3l42.6-24.6c17.9 15.4 38.5 27.3 60.8 35.1v49.2c0 5.6 3.9 10.5 9.4 11.7 36.7 8.2 74.3 7.8 109.2 0 5.5-1.2 9.4-6.1 9.4-11.7v-49.2c22.2-7.9 42.8-19.8 60.8-35.1l42.6 24.6c4.9 2.8 11 1.9 14.8-2.3 24.7-26.7 43.6-58.9 54.7-94.6 1.5-5.5-.7-11.3-5.6-14.1zM256 336c-44.1 0-80-35.9-80-80s35.9-80 80-80 80 35.9 80 80-35.9 80-80 80z'
+                      className='fa-secondary'
+                    />
+                  </svg>
+                  <span className='link-text'>Settings</span>
+                </Link>
+              </li>
+            </ul>
+          </nav>
+          <div
+            className='teams'
+            style={{
+              display: 'grid',
+              gridColumnStart: '2',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 400px))',
+              gridTemplateRows: 'auto-fit',
+              gridGap: '40px',
+              margin: '0 2rem',
+              transition: '0.6s',
+            }}
+          >
+            {this.state.teamDetails[0] ? (
+              this.state.teamDetails[0].members.map((member) => {
+                return (
                   <div
-                    className="card-action"
+                    className='card'
                     style={{
-                      borderRadius: "12px",
-                      transition: "0.6s",
-                      display: "flex",
+                      margin: 'none',
+                      borderRadius: '12px',
+                      maxWidth: '600px',
                     }}
-                  ></div>
-                  <style>{`
+                  >
+                    <div
+                      className='card-content'
+                      style={{ transition: '0.6s' }}
+                    >
+                      <span
+                        style={{ textTransform: 'uppercase' }}
+                        className='card-title'
+                      >
+                        {member.userid.firstname}
+                      </span>
+                      <p>
+                        This a simple description about the team or the project
+                        they is working on. Lorem ipsum dolor sit amet,
+                        consectetur adipisicing elit. Blanditiis deleniti,
+                        neque? A, dicta error fugit impedit officia quasi
+                        tempora tempore?
+                      </p>
+                    </div>
+                    <div
+                      className='card-action'
+                      style={{
+                        borderRadius: '12px',
+                        transition: '0.6s',
+                        display: 'flex',
+                      }}
+                    ></div>
+                    <style>{`
                   .card{
                     transition:0.6s !important;
                     }
                     
                   `}</style>
-                </div>
-              );
-            })
-          ) : (
-            <div>
-              <Skeleton animation="wave" />
-              <Skeleton animation="wave" />
-            </div>
-          )}
+                  </div>
+                );
+              })
+            ) : (
+              <div>
+                <Skeleton animation='wave' />
+                <Skeleton animation='wave' />
+              </div>
+            )}
+          </div>
         </div>
         <style>
           {`*{
