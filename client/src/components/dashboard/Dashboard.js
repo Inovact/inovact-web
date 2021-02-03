@@ -562,7 +562,7 @@ class Dashboard extends Component {
                             margin-top: 1%;
                             transition:600ms ;
                             position:fixed;
-                            float:right;
+                            height:100vh;
                         }
                         
                        .profile:hover{
