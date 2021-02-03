@@ -306,9 +306,14 @@ class Posts extends Component {
                         className='comments'
                         trigger={
                           <img
-                            style={{ width: '24px', margin: '0 10px' }}
+                            alt=''
+                            id='comment'
                             src={comment}
-                            alt='comments'
+                            style={{
+                              width: '21px',
+                              marginLeft: '10px',
+                              marginBottom: '-10px',
+                            }}
                           />
                         }
                       >
