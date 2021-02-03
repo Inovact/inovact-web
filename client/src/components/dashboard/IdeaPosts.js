@@ -141,7 +141,6 @@ class Posts extends Component {
                         style={{
                           marginTop: '5px',
                           marginLeft: '10px',
-                          backgroundColor: '#ff1f5a',
                         }}
                       >
                         {idea.userId.firstname[0]}
