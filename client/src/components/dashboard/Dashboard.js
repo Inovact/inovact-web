@@ -559,7 +559,6 @@ class Dashboard extends Component {
                             background: #fff;
                             overflow: hidden;
                             border-radius: 10px;
-                            margin-top: 1%;
                             transition:600ms ;
                             height:100vh;
                             position:fixed;
