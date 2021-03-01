@@ -664,7 +664,7 @@ class Projects extends Component {
                           Team Details
                         </Link>
                       </div>
-                      {project.status !== 'complete' && (
+                      {/* {project.status !== 'complete' && (
                         <Tooltip title='Request Join' placement='top' arrow>
                           <Fab
                             style={{ color: 'white', background: 'orange' }}
@@ -674,7 +674,7 @@ class Projects extends Component {
                             <AddIcon />
                           </Fab>
                         </Tooltip>
-                      )}
+                      )} */}
                     </div>
                   </div>
                 </div>
