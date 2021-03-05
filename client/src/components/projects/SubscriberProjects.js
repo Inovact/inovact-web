@@ -23,6 +23,7 @@ class Posts extends Component {
     };
   }
 
+  //this is a component did mount which gets executed after the component is rendered.
   componentWillMount() {
     this.props.subscribersProject();
     this.props.subscribersIdeas();
@@ -34,11 +35,12 @@ class Posts extends Component {
         subPro: nextProps.projects.subscribersProject,
       });
     }
-    if (this.state.subIdeas !== nextProps.ideas.subIdeas) {
-      this.setState({
-        subIdeas: nextProps.ideas.subIdeas,
-      });
-    }
+    // if (this.state.subIdeas !== nextProps.ideas.subIdeas) {
+    //   this.setState({
+    //     subIdeas: nextProps.ideas.subIdeas,
+    //   });
+    // }
+    console.log(nextProps.ideas);
   }
 
   likeProject = (id) => {
