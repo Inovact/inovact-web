@@ -9,6 +9,8 @@ const initialState = {
   ideaExists: false,
   ideas: [],
   allIdeas: [],
+  subIdeasExists: false,
+  subIdeas: [],
 };
 
 export default function (state = initialState, action) {
