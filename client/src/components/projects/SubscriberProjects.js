@@ -480,6 +480,7 @@ const mapStateToProps = (state) => ({
   auth: state.auth,
   errors: state.errors,
   projects: state.projects,
+  ideas: state.ideas,
   subscribersProjects: state.subscribersProjects,
   subscribersIdeas: state.subscribersIdeas,
 });
