@@ -1,5 +1,11 @@
 import axios from 'axios';
-import { IDEAS, GET_ERRORS, ALL_IDEAS, POST_SUCCESS } from './types';
+import {
+  IDEAS,
+  GET_ERRORS,
+  ALL_IDEAS,
+  POST_SUCCESS,
+  SUBSCRIBERS_IDEAS,
+} from './types';
 
 const baseURL = 'https://inovact.herokuapp.com';
 
@@ -47,6 +53,16 @@ export const userIdeas = () => (dispatch) => {
       });
       console.log(err);
     });
+};
+
+export const subscribersIdeas = () => (dispatch) => {
+  axios.get(`${baseURL}/api/ideas/getsubIdeas`).then((result) => {
+    console.log(result);
+    dispatch({
+      type: SUBSCRIBERS_IDEAS,
+      payload: result.data,
+    });
+  });
 };
 
 export const storeMyIdeas = (data) => {

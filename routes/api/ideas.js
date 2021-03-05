@@ -29,6 +29,34 @@ router.get('/myideas', requireLogin, (req, res) => {
     .catch((err) => console.log(err));
 });
 
+router.get('/getsubIdeas', requireLogin, (req, res) => {
+  Idea.find({ userId: { $in: req.user.following } })
+    .populate('userId', '_id firstname')
+    .populate('comments.postedBy', '_id firstname')
+    .then((result) => {
+      if (result instanceof Array) {
+        result.forEach((project) => {
+          files = project['files'];
+          project['files'] = [];
+          files.forEach((file) => {
+            project['files'].push(file.originalname);
+          });
+        });
+      } else {
+        files = result['files'];
+        result['files'] = [];
+        files.forEach((file) => {
+          result['files'].push(file.originalname);
+        });
+      }
+      res.json(result);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(400).send(err);
+    });
+});
+
 router.get('/otherideas/:id', requireLogin, (req, res) => {
   Idea.find({ userId: req.params.id })
     .populate('userId', '_id firstname email')

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import { subscribersProject } from '../../actions/projectActions';
-import { getIdeas } from '../../actions/ideaActions';
+import { getIdeas, subscribersIdeas } from '../../actions/ideaActions';
 import { Link } from 'react-router-dom';
 import 'font-awesome/css/font-awesome.min.css';
 import Collapsible from 'react-collapsible';
@@ -19,18 +19,24 @@ class Posts extends Component {
     super(props);
     this.state = {
       subPro: [],
-      newIdeas: [],
+      subIdeas: [],
     };
   }
 
   componentWillMount() {
     this.props.subscribersProject();
+    this.props.subscribersIdeas();
   }
 
   componentWillReceiveProps(nextProps, nextContext) {
     if (this.state.subPro !== nextProps.projects.subscribersProject) {
       this.setState({
         subPro: nextProps.projects.subscribersProject,
+      });
+    }
+    if (this.state.subIdeas !== nextProps.ideas.subIdeas) {
+      this.setState({
+        subIdeas: nextProps.ideas.subIdeas,
       });
     }
   }
@@ -182,7 +188,7 @@ class Posts extends Component {
 
   render() {
     console.log(this.props);
-    console.log(this.state.subPro);
+    // console.log(this.state.subPro);
     return (
       <div>
         <section className='projects'>
@@ -460,6 +466,7 @@ class Posts extends Component {
 
 Posts.propTypes = {
   subscribersProject: PropTypes.func.isRequired,
+  subscribersIdeas: PropTypes.func.isRequired,
   projects: PropTypes.object.isRequired,
   getIdeas: PropTypes.func.isRequired,
   ideas: PropTypes.object.isRequired,
@@ -472,9 +479,11 @@ const mapStateToProps = (state) => ({
   errors: state.errors,
   projects: state.projects,
   subscribersProjects: state.subscribersProjects,
+  subscribersIdeas: state.subscribersIdeas,
 });
 
 export default connect(mapStateToProps, {
   subscribersProject,
+  subscribersIdeas,
   getIdeas,
 })(Posts);
