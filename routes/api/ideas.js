@@ -10,8 +10,8 @@ const keys = require('../../config/keys');
 
 router.get('/getallideas', (req, res) => {
   Idea.find()
-    .populate('userId', '_id firstname')
-    .populate('comments.postedBy', '_id firstname')
+    .populate('userId', '_id firstname lastname')
+    .populate('comments.postedBy', '_id firstname lastname')
     .then((data) => {
       res.json(data);
     })
@@ -22,7 +22,7 @@ router.get('/getallideas', (req, res) => {
 
 router.get('/myideas', requireLogin, (req, res) => {
   Idea.find({ userId: req.user._id })
-    .populate('userId', '_id firstname email')
+    .populate('userId', '_id firstname email lastname')
     .then((data) => {
       res.json(data);
     })
@@ -31,8 +31,8 @@ router.get('/myideas', requireLogin, (req, res) => {
 
 router.get('/getsubIdeas', requireLogin, (req, res) => {
   Idea.find({ userId: { $in: req.user.following } })
-    .populate('userId', '_id firstname')
-    .populate('comments.postedBy', '_id firstname')
+    .populate('userId', '_id firstname lastname')
+    .populate('comments.postedBy', '_id firstname lastname')
     .then((result) => {
       if (result instanceof Array) {
         result.forEach((project) => {
@@ -59,7 +59,7 @@ router.get('/getsubIdeas', requireLogin, (req, res) => {
 
 router.get('/otherideas/:id', requireLogin, (req, res) => {
   Idea.find({ userId: req.params.id })
-    .populate('userId', '_id firstname email')
+    .populate('userId', '_id firstname email lastname')
     .then((data) => {
       res.json(data);
     })
