@@ -34,7 +34,7 @@ class ProfileEdit extends Component {
     }
   }
 
-  onSubmit = (e) => {
+  onSubmit = async (e) => {
     e.preventDefault();
 
     const data = new FormData();
@@ -42,24 +42,24 @@ class ProfileEdit extends Component {
     data.append('upload_preset', 'carca-webapp');
     data.append('cloud_name', 'charcha');
 
-    axios
+    await axios
       .post('https://api.cloudinary.com/v1_1/charcha/image/upload', data)
       .then((res) => {
         this.setState({
           pic: res.data.url,
         });
-        const editUser = {
-          firstname: this.state.firstname,
-          lastname: this.state.lastname,
-          pic: res.data.url,
-          dob: this.state.dob,
-        };
-        // console.log(editUser);
-        this.props.profileEdit(editUser);
       })
       .catch((err) => {
         console.log(err);
       });
+      const editUser = {
+        firstname: this.state.firstname,
+        lastname: this.state.lastname,
+        pic: this.state.pic,
+        dob: this.state.dob,
+      };
+      // console.log(editUser);
+      this.props.profileEdit(editUser);
   };
   openNav = () => {
     document.querySelector('.edit-profile').style.marginLeft = '8remrem';

@@ -34,8 +34,9 @@ router.put('/profileEdit', requireLogin, async function (req, res) {
   const firstname = typeof (req.body.firstname) == "string" && req.body.firstname.trim().length > 0 ? req.body.firstname : false;
   const lastname = typeof (req.body.lastname) == "string" && req.body.lastname.trim().length > 0 ? req.body.lastname : false;
   const dob = typeof (req.body.dob) == "string" && req.body.dob.trim().length > 0 ? req.body.dob : false;
+  const pic = typeof (req.body.pic) == "string" && req.body.pic.trim().length > 0 ? req.body.pic : false;
 
-  if (firstname || lastname || dob) {
+  if (firstname || lastname || dob || pic) {
     const filter = {
       _id: jwt_decode(String(req.headers.authorization).slice(7)).id,
     };
@@ -43,6 +44,7 @@ router.put('/profileEdit', requireLogin, async function (req, res) {
     if (firstname) update.firstname = firstname;
     if (lastname) update.lastname = lastname;
     if (dob) update.dob = dob;
+    if (pic) update.dob = pic;
   
     const user = await User.findOneAndUpdate(filter, update, { new: true });
   
