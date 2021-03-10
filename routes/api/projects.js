@@ -38,7 +38,7 @@ router.get('/getproject/:projectId', (req, res) => {
 router.get('/getallprojects', requireLogin, (req, res) => {
   Project.find()
     .populate('userId', '_id firstname lastname email')
-    .populate('comments.postedBy', '_id firstname')
+    .populate('comments.postedBy', '_id firstname lastname')
     .then((result) => {
       if (result instanceof Array) {
         result.forEach((project) => {
@@ -89,7 +89,7 @@ router.get('/myprojects', requireLogin, (req, res) => {
 router.get('/getsubprojects', requireLogin, (req, res) => {
   Project.find({ userId: { $in: req.user.following } })
     .populate('userId', '_id firstname')
-    .populate('comments.postedBy', '_id firstname')
+    .populate('comments.postedBy', '_id firstname lastname')
     .then((result) => {
       if (result instanceof Array) {
         result.forEach((project) => {
@@ -328,40 +328,43 @@ router.put('/comment', requireLogin, (req, res) => {
     });
 });
 
-router.delete("/deleteproject/:projectId", requireLogin, (req, res) => {
+router.delete('/deleteproject/:projectId', requireLogin, (req, res) => {
   Project.findOne({ _id: req.params.projectId })
-    .populate("userId", "_id")
+    .populate('userId', '_id')
     .exec((err, project) => {
       if (err || !project) {
         return res.status(422).json({ error: err });
       }
       if (project.userId._id.toString() === req.user._id.toString()) {
         // Delete the folder containing the images of this project
-        helpers.deleteFolder('project_documents/' + req.params.projectId + '/', function(result) {
-          if (result.success) {
-            project
-            .remove()
-            .then((result) => {
-              team.deleteOne({projectid: req.params.projectId}, (err) => {
-                if (!err) {
-                  res.json({ message: "successfully deleted", result });
-                } else {
-                  res.status(500);
-                  res.json({msg: "failed to delete the team"});
-                }
-              })
-            })
-            .catch((err) => {
-              console.log(err);
-            });
-          } else {
-            res.status(500);
-            res.send({msg: res.msg});
+        helpers.deleteFolder(
+          'project_documents/' + req.params.projectId + '/',
+          function (result) {
+            if (result.success) {
+              project
+                .remove()
+                .then((result) => {
+                  team.deleteOne({ projectid: req.params.projectId }, (err) => {
+                    if (!err) {
+                      res.json({ message: 'successfully deleted', result });
+                    } else {
+                      res.status(500);
+                      res.json({ msg: 'failed to delete the team' });
+                    }
+                  });
+                })
+                .catch((err) => {
+                  console.log(err);
+                });
+            } else {
+              res.status(500);
+              res.send({ msg: res.msg });
+            }
           }
-        });
+        );
       } else {
         res.status(403);
-        res.send({msg:"You cannot only delete projects created by you."});
+        res.send({ msg: 'You cannot only delete projects created by you.' });
       }
     });
 });
