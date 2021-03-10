@@ -506,7 +506,7 @@ class Posts extends Component {
                                         paddingTop: '3px',
                                       }}
                                     >
-                                      {/* <img
+                                      <img
                                         alt=''
                                         style={{
                                           width: '20px',
@@ -514,8 +514,8 @@ class Posts extends Component {
                                           borderRadius: '50%',
                                         }}
                                         src='https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs/115909667/original/7d79dd80b9eecaa289de1bc8065ad44aa03e2daf/do-a-simple-but-cool-profile-pic-or-logo-for-u.jpeg'
-                                      /> */}
-                                      <Avatar
+                                      />
+                                      {/* <Avatar
                                         width='20px'
                                         height='20px'
                                         style={{
@@ -525,7 +525,7 @@ class Posts extends Component {
                                       >
                                         {record.postedBy.firstname[0]}
                                         {record.postedBy.lastname[0]}
-                                      </Avatar>
+                                      </Avatar> */}
                                     </span>
                                     <p
                                       style={{

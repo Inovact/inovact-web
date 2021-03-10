@@ -309,7 +309,7 @@ class Posts extends Component {
                               <div style={{ display: 'flex' }}>
                                 <div style={{ margin: '0.5rem' }}>
                                   <span>
-                                    {/* <img
+                                    <img
                                       style={{
                                         width: '22px',
                                         height: '22px',
@@ -317,8 +317,8 @@ class Posts extends Component {
                                       }}
                                       src='https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs/115909667/original/7d79dd80b9eecaa289de1bc8065ad44aa03e2daf/do-a-simple-but-cool-profile-pic-or-logo-for-u.jpeg'
                                       alt=''
-                                    /> */}
-                                    <Avatar
+                                    />
+                                    {/* <Avatar
                                       style={{
                                         width: '20px',
                                         height: '20px',
@@ -328,7 +328,7 @@ class Posts extends Component {
                                     >
                                       {record.postedBy.firstname[0]}
                                       {record.postedBy.lastname[0]}
-                                    </Avatar>
+                                    </Avatar> */}
                                   </span>
                                   <p
                                     style={{
