@@ -517,6 +517,8 @@ class Posts extends Component {
                                       /> */}
                                       <Avatar
                                         style={{
+                                          width: '20px',
+                                          height: '20px',
                                           marginTop: '5px',
                                           marginLeft: '10px',
                                         }}

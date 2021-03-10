@@ -45,6 +45,7 @@ class ProfileEdit extends Component {
     await axios
       .post('https://api.cloudinary.com/v1_1/charcha/image/upload', data)
       .then((res) => {
+        console.log(res.data);
         this.setState({
           pic: res.data.url,
         });
@@ -52,14 +53,14 @@ class ProfileEdit extends Component {
       .catch((err) => {
         console.log(err);
       });
-      const editUser = {
-        firstname: this.state.firstname,
-        lastname: this.state.lastname,
-        pic: this.state.pic,
-        dob: this.state.dob,
-      };
-      // console.log(editUser);
-      this.props.profileEdit(editUser);
+    const editUser = {
+      firstname: this.state.firstname,
+      lastname: this.state.lastname,
+      pic: this.state.pic,
+      dob: this.state.dob,
+    };
+    console.log(editUser);
+    this.props.profileEdit(editUser);
   };
   openNav = () => {
     document.querySelector('.edit-profile').style.marginLeft = '8remrem';
