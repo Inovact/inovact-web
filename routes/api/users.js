@@ -29,52 +29,56 @@ let readHTMLFile = function (path, callback) {
   });
 };
 
-router.put('/profileEdit', async function (req, res) {
-  const { errors, isValid } = validateProfileEditInput(req.body);
+router.put('/profileEdit', requireLogin, async function (req, res) {
+  // const { errors, isValid } = validateProfileEditInput(req.body);
+  const firstname = typeof (req.body.firstname) == "string" && req.body.firstname.trim().length > 0 ? req.body.firstname : false;
+  const lastname = typeof (req.body.lastname) == "string" && req.body.lastname.trim().length > 0 ? req.body.lastname : false;
+  const dob = typeof (req.body.dob) == "string" && req.body.dob.trim().length > 0 ? req.body.dob : false;
 
-  if (!isValid) {
-    res.status(400).json(errors);
+  if (firstname || lastname || dob) {
+    const filter = {
+      _id: jwt_decode(String(req.headers.authorization).slice(7)).id,
+    };
+    const update = {};
+    if (firstname) update.firstname = firstname;
+    if (lastname) update.lastname = lastname;
+    if (dob) update.dob = dob;
+  
+    const user = await User.findOneAndUpdate(filter, update, { new: true });
+  
+    // user = await User.findOne(filter);
+    const payload = {
+      id: user.id,
+      firstname: user.firstname,
+      lastname: user.lastname,
+      email: user.email,
+      followers: user.followers,
+      following: user.following,
+      pic: user.profilePic,
+    };
+    let tokenC = new Token({
+      _userId: user._id,
+      token: crypto.randomBytes(16).toString('hex'),
+    });
+    jwt.sign(
+      payload,
+      keys.secretOrKey,
+      {
+        expiresIn: 31556926, // 1 year in seconds
+      },
+      (err, token) => {
+        res.json({
+          success: true,
+          token: 'Bearer ' + token,
+          conformationToken: tokenC,
+        });
+      }
+    );
+  } else {
+    res.status(400).json({
+      "message": "At least one update field is required."
+    });
   }
-  const filter = {
-    _id: jwt_decode(String(req.headers.authorization).slice(7)).id,
-  };
-  const update = {
-    firstname: req.body.firstname,
-    lastname: req.body.lastname,
-    profilePic: req.body.pic,
-    dob: req.body.dob,
-  };
-
-  let user = await User.findOneAndUpdate(filter, update);
-
-  user = await User.findOne(filter);
-  const payload = {
-    id: user.id,
-    firstname: user.firstname,
-    lastname: user.lastname,
-    email: user.email,
-    followers: user.followers,
-    following: user.following,
-    pic: user.profilePic,
-  };
-  let tokenC = new Token({
-    _userId: user._id,
-    token: crypto.randomBytes(16).toString('hex'),
-  });
-  jwt.sign(
-    payload,
-    keys.secretOrKey,
-    {
-      expiresIn: 31556926, // 1 year in seconds
-    },
-    (err, token) => {
-      res.json({
-        success: true,
-        token: 'Bearer ' + token,
-        conformationToken: tokenC,
-      });
-    }
-  );
 });
 
 //route POST api/users/register
