@@ -35,12 +35,11 @@ class Posts extends Component {
         subPro: nextProps.projects.subscribersProject,
       });
     }
-    // if (this.state.subIdeas !== nextProps.ideas.subIdeas) {
-    //   this.setState({
-    //     subIdeas: nextProps.ideas.subIdeas,
-    //   });
-    // }
-    console.log(nextProps.ideas);
+    if (this.state.subIdeas !== nextProps.ideas.subIdeas) {
+      this.setState({
+        subIdeas: nextProps.ideas.subIdeas,
+      });
+    }
   }
 
   likeProject = (id) => {
