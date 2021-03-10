@@ -166,7 +166,7 @@ class Posts extends Component {
                                 <Typography color='inherit'>
                                   Tooltip with HTML
                                 </Typography>
-                                <h6>{idea.userId.firstname}</h6>
+                                <h6>{idea.userId.firstname} {idea.userId.lastname}</h6>
                               </React.Fragment>
                             }
                             plac
