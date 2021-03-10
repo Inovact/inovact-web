@@ -144,7 +144,7 @@ class Posts extends Component {
                         }}
                       >
                         {idea.userId.firstname[0]}
-                        {/* {idea.userId.lastname[0]} */}
+                        {idea.userId.lastname[0]}
                       </Avatar>
                       <Link
                         to={
@@ -166,7 +166,9 @@ class Posts extends Component {
                                 <Typography color='inherit'>
                                   Tooltip with HTML
                                 </Typography>
-                                <h6>{idea.userId.firstname} {idea.userId.lastname}</h6>
+                                <h6>
+                                  {idea.userId.firstname} {idea.userId.lastname}
+                                </h6>
                               </React.Fragment>
                             }
                             plac
@@ -307,7 +309,7 @@ class Posts extends Component {
                               <div style={{ display: 'flex' }}>
                                 <div style={{ margin: '0.5rem' }}>
                                   <span>
-                                    <img
+                                    {/* <img
                                       style={{
                                         width: '22px',
                                         height: '22px',
@@ -315,7 +317,16 @@ class Posts extends Component {
                                       }}
                                       src='https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs/115909667/original/7d79dd80b9eecaa289de1bc8065ad44aa03e2daf/do-a-simple-but-cool-profile-pic-or-logo-for-u.jpeg'
                                       alt=''
-                                    />
+                                    /> */}
+                                    <Avatar
+                                      style={{
+                                        marginTop: '5px',
+                                        marginLeft: '10px',
+                                      }}
+                                    >
+                                      {record.postedBy.firstname[0]}
+                                      {record.postedBy.lastname[0]}
+                                    </Avatar>
                                   </span>
                                   <p
                                     style={{
