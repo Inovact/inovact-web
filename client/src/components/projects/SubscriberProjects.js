@@ -233,20 +233,31 @@ class Posts extends Component {
                           justifyContent: 'space-between',
                         }}
                       >
-                        <Tooltip
-                          title={
-                            <React.Fragment>
-                              <Typography color='inherit'>
-                                Tooltip with HTML
-                              </Typography>
-                              <h6>{project.userId.firstname}</h6>
-                            </React.Fragment>
-                          }
-                          plac
-                          placement='top'
-                        >
-                          <span>{project.userId.firstname}</span>
-                        </Tooltip>
+                        <div style={{ display: 'flex' }}>
+                          <Avatar
+                            style={{
+                              marginTop: '5px',
+                              marginLeft: '10px',
+                            }}
+                          >
+                            {project.userId.firstname[0]}
+                            {project.userId.lastname[0]}
+                          </Avatar>
+                          <Tooltip
+                            title={
+                              <React.Fragment>
+                                <Typography color='inherit'>
+                                  Tooltip with HTML
+                                </Typography>
+                                <h6>{project.userId.firstname}</h6>
+                              </React.Fragment>
+                            }
+                            plac
+                            placement='top'
+                          >
+                            <span>{project.userId.firstname}</span>
+                          </Tooltip>
+                        </div>
                         <Tooltip title='Project Status' placement='top'>
                           <span style={{ color: '#9e9e9e', fontWeight: '500' }}>
                             {project.status}
