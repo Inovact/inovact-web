@@ -188,7 +188,7 @@ class Register extends Component {
                       <a href='http://inovact.herokuapp.com/api/users/auth/google'>
                         <img src={googleIcon} alt='' />
                       </a>
-                      <a href='https://inovact.herokuapp.com/api/users/auth/facebook'>
+                      <a href='http://inovact.herokuapp.com/api/users/auth/facebook'>
                         <img src={facebookIcon} alt='' />
                       </a>
                     </div>

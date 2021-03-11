@@ -641,8 +641,8 @@ class ProfileEdit extends Component {
                 .edit-profile{
                   display:flex;
                   flex-wrap:wrap;
-                  max-width:768px;
-                  margin:50px auto;
+                  max-width:600px;
+                  margin:60px auto;
                   transition:0.5s;
                 }
                  .formBx{
@@ -651,7 +651,7 @@ class ProfileEdit extends Component {
                   justify-content:space-evenly;
                   width:100%;
                   margin:0 auto;
-                  margin-bottom:40px;
+                  margin-bottom:50px;
                   transition:0.5s;
                   }
                   form{

@@ -101,10 +101,10 @@ class Login extends Component {
                     or signup using
                   </span>
                   <div className='signup-icons'>
-                    <a href='https://inovact.herokuapp.com/api/users/auth/google'>
+                    <a href='http://inovact.herokuapp.com/api/users/auth/google'>
                       <img src={googleIcon} alt='google' />
                     </a>
-                    <a href='https://inovact.herokuapp.com/api/users/auth/facebook'>
+                    <a href='http://inovact.herokuapp.com/api/users/auth/facebook'>
                       <img src={facebookIcon} alt='facebook' />
                     </a>
                   </div>
