@@ -73,7 +73,7 @@ class ProfileEdit extends Component {
   render() {
     console.log(this.props);
     return (
-      <div className='container-fluid'>
+      <div>
         <div>
           <NavbarHome />
         </div>
@@ -639,6 +639,7 @@ class ProfileEdit extends Component {
               display: block;
           }
                 .edit-profile{
+                  grid-column-start:2;
                   display:flex;
                   flex-wrap:wrap;
                   max-width:600px;
