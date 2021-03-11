@@ -15,6 +15,11 @@ import afterClap from '../../static/afterClap.svg';
 import comment from '../../static/comment.svg';
 import Avatar from '@material-ui/core/Avatar';
 import Chip from '@material-ui/core/Chip';
+import Fab from '@material-ui/core/Fab';
+import AvatarGroup from '@material-ui/lab/AvatarGroup';
+import AddIcon from '@material-ui/icons/Add';
+import { requestJoin } from '../../actions/teamActions';
+
 class Posts extends Component {
   constructor(props) {
     super(props);
@@ -161,6 +166,10 @@ class Posts extends Component {
       .catch((err) => {
         console.log(err);
       });
+  };
+
+  requestjoin = (id) => {
+    this.props.requestJoin(id);
   };
 
   commentIdea = (text, postId) => {
@@ -428,6 +437,56 @@ class Posts extends Component {
                       veritatis. Debitis ipsa quas quibusdam quis vel,
                       voluptate!
                     </p>
+                  </div>
+                  <div
+                    style={{
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                    }}
+                  >
+                    <div
+                      style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'Center',
+                      }}
+                    >
+                      <AvatarGroup max={3}>
+                        <Avatar
+                          alt='Remy Sharp'
+                          src='/static/images/avatar/1.jpg'
+                        />
+                        <Avatar
+                          alt='Travis Howard'
+                          src='/static/images/avatar/2.jpg'
+                        />
+                        <Avatar
+                          alt='Cindy Baker'
+                          src='/static/images/avatar/3.jpg'
+                        />
+                        <Avatar
+                          alt='Trevor Henderson'
+                          src='/static/images/avatar/5.jpg'
+                        />
+                      </AvatarGroup>
+                      <Link
+                        style={{ textAlign: 'center', color: '#ff1f5a' }}
+                        to={'/TeamDetails/' + project._id}
+                      >
+                        Team Details
+                      </Link>
+                    </div>
+                    {project.status !== 'complete' && (
+                      <Tooltip title='Request Join' placement='top' arrow>
+                        <Fab
+                          style={{ color: 'white', background: 'orange' }}
+                          size='small'
+                          onClick={() => this.requestjoin(project._id)}
+                        >
+                          <AddIcon />
+                        </Fab>
+                      </Tooltip>
+                    )}
                   </div>
                 </div>
               ))}
@@ -805,6 +864,7 @@ Posts.propTypes = {
   ideas: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired,
+  requestJoin: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -820,4 +880,5 @@ export default connect(mapStateToProps, {
   subscribersProject,
   subscribersIdeas,
   getIdeas,
+  requestJoin,
 })(Posts);
