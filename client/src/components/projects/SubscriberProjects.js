@@ -93,6 +93,7 @@ class Posts extends Component {
       .catch((err) => {
         console.log(err);
       });
+    //this is how its done
   };
 
   commentProject = (text, postId) => {
