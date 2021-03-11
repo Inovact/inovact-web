@@ -511,6 +511,22 @@ class Posts extends Component {
                       </span>
                     </Link>
                   </div>
+                  <Tooltip title='project status' placement='top' arrow>
+                    <div className='status'>
+                      <span
+                        style={{
+                          fontSize: '12px',
+                          padding: '2px 5px',
+                          borderRadius: '10%',
+                          background: '#fff3e0',
+                          color: 'orange',
+                          fontWeight: '500',
+                        }}
+                      >
+                        idea
+                      </span>
+                    </div>
+                  </Tooltip>
                   <div
                     className='card-content'
                     style={{
