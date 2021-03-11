@@ -88,7 +88,7 @@ router.get('/myprojects', requireLogin, (req, res) => {
 
 router.get('/getsubprojects', requireLogin, (req, res) => {
   Project.find({ userId: { $in: req.user.following } })
-    .populate('userId', '_id firstname')
+    .populate('userId', '_id firstname lastname')
     .populate('comments.postedBy', '_id firstname lastname')
     .then((result) => {
       if (result instanceof Array) {
