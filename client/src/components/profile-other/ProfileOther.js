@@ -375,7 +375,7 @@ class ProfileOther extends Component {
                       borderRadius: '50%',
                     }}
                     alt=''
-                    src='https://i.pinimg.com/originals/d3/69/70/d36970b0526f5ffeb0fdc4dc1e8f1284.jpg'
+                    src={this.state.userDetails.user.pic}
                   />
                 </div>
                 <div
