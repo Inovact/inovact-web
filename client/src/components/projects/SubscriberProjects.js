@@ -234,7 +234,7 @@ class Posts extends Component {
                           justifyContent: 'space-between',
                         }}
                       >
-                        <div style={{ display: 'flex', padding: '10px' }}>
+                        <div style={{ display: 'flex' }}>
                           <Avatar
                             style={{
                               marginTop: '5px',
@@ -256,7 +256,9 @@ class Posts extends Component {
                             plac
                             placement='top'
                           >
-                            <span>{project.userId.firstname}</span>
+                            <span style={{ paddingTop: '5px' }}>
+                              {project.userId.firstname}
+                            </span>
                           </Tooltip>
                         </div>
                         <Tooltip title='Project Status' placement='top'>
