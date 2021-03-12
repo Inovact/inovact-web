@@ -217,6 +217,12 @@ class Posts extends Component {
                 >
                   <div className='card-image waves-effect waves-block waves-light'>
                     <Link
+                      style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        marginLeft: '1rem',
+                        textDecoration: 'none',
+                      }}
                       to={
                         project.userId._id !== this.props.auth.user.id
                           ? '/profileOther/' + project.userId._id
@@ -248,7 +254,7 @@ class Posts extends Component {
                             title={
                               <React.Fragment>
                                 <Typography color='inherit'>
-                                  Tooltip with HTML
+                                  user info
                                 </Typography>
                                 <h6>{project.userId.firstname}</h6>
                               </React.Fragment>
@@ -256,9 +262,7 @@ class Posts extends Component {
                             plac
                             placement='top'
                           >
-                            <span style={{ paddingTop: '5px' }}>
-                              {project.userId.firstname}
-                            </span>
+                            <span>{project.userId.firstname}</span>
                           </Tooltip>
                         </div>
                         <Tooltip title='Project Status' placement='top'>
@@ -553,9 +557,7 @@ class Posts extends Component {
                         <Tooltip
                           title={
                             <React.Fragment>
-                              <Typography color='inherit'>
-                                Tooltip with HTML
-                              </Typography>
+                              <Typography color='inherit'>user info</Typography>
                               <h6>
                                 {idea.userId.firstname} {idea.userId.lastname}
                               </h6>
