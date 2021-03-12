@@ -234,7 +234,7 @@ class Posts extends Component {
                           justifyContent: 'space-between',
                         }}
                       >
-                        <div style={{ display: 'flex' }}>
+                        <div style={{ display: 'flex', padding: '10px' }}>
                           <Avatar
                             style={{
                               marginTop: '5px',
