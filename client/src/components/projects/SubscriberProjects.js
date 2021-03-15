@@ -215,67 +215,69 @@ class Posts extends Component {
                     borderRadius: '12px',
                   }}
                 >
-                  <div className='card-image waves-effect waves-block waves-light'>
+                  <div
+                    className='card-image waves-effect waves-block waves-light'
+                    style={{
+                      display: 'flex',
+                      justifyContent: 'start',
+                      padding: '10px',
+                    }}
+                  >
+                    <Avatar
+                      style={{
+                        marginTop: '5px',
+                        marginLeft: '10px',
+                      }}
+                    >
+                      {project.userId.firstname[0]}
+                      {project.userId.lastname[0]}
+                    </Avatar>
                     <Link
+                      to={
+                        project.userId._id !== this.props.auth.user.id
+                          ? '/profileOther/' + project.userId._id
+                          : '/projects'
+                      }
                       style={{
                         display: 'flex',
                         flexDirection: 'column',
                         marginLeft: '1rem',
                         textDecoration: 'none',
                       }}
-                      to={
-                        project.userId._id !== this.props.auth.user.id
-                          ? '/profileOther/' + project.userId._id
-                          : '/projects'
-                      }
                     >
-                      <p
-                        style={{
-                          color: '#222',
-                          fontSize: '16px',
-                          paddingLeft: '0px',
-                          margin: '15px',
-                          fontWeight: '400',
-                          display: 'flex',
-                          justifyContent: 'space-between',
-                        }}
-                      >
-                        <div style={{ display: 'flex' }}>
-                          <Avatar
+                      <span>
+                        <Tooltip
+                          title={
+                            <React.Fragment>
+                              <Typography color='inherit'>user info</Typography>
+                              <h6>
+                                {project.userId.firstname}{' '}
+                                {project.userId.lastname}
+                              </h6>
+                            </React.Fragment>
+                          }
+                          plac
+                          placement='top'
+                        >
+                          <span
                             style={{
-                              marginTop: '5px',
-                              marginLeft: '10px',
+                              fontWeight: '300',
+                              fontFamily: 'sans serif',
+                              color: '#222',
                             }}
                           >
-                            {project.userId.firstname[0]}
-                            {project.userId.lastname[0]}
-                          </Avatar>
-                          <Tooltip
-                            title={
-                              <React.Fragment>
-                                <Typography color='inherit'>
-                                  user info
-                                </Typography>
-                                <h6>{project.userId.firstname}</h6>
-                              </React.Fragment>
-                            }
-                            plac
-                            placement='top'
-                          >
-                            <span>{project.userId.firstname}</span>
-                          </Tooltip>
-                        </div>
-                        <Tooltip title='Project Status' placement='top'>
-                          <span style={{ color: '#9e9e9e', fontWeight: '500' }}>
-                            {project.status}
+                            {project.userId.firstname}
                           </span>
                         </Tooltip>
-                      </p>
+                      </span>
+                      <span style={{ fontSize: '12px', color: 'grey' }}>
+                        {new Intl.DateTimeFormat('en-GB', {
+                          month: 'long',
+                          day: '2-digit',
+                          year: 'numeric',
+                        }).format(new Date(project.creationDate))}
+                      </span>
                     </Link>
-                    {/*<img*/}
-                    {/*  className="activator"*/}
-                    {/*  src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg"*/}
-                    {/*/>*/}
                   </div>
                   <div
                     className='card-content'
