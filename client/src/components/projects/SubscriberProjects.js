@@ -575,7 +575,7 @@ class Posts extends Component {
                               color: '#222',
                             }}
                           >
-                            {idea.userId.firstname}
+                            {idea.userId.firstname} {idea.userId.lastname}
                           </span>
                         </Tooltip>
                       </span>
