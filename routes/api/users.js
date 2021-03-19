@@ -31,11 +31,10 @@ let readHTMLFile = function (path, callback) {
 
 router.put('/profileEdit', requireLogin, async function (req, res) {
   // const { errors, isValid } = validateProfileEditInput(req.body);
-  const firstname = typeof (req.body.firstname) == "string" && req.body.firstname.trim().length > 0 ? req.body.firstname : false;
-  const lastname = typeof (req.body.lastname) == "string" && req.body.lastname.trim().length > 0 ? req.body.lastname : false;
-  const dob = typeof (req.body.dob) == "string" && req.body.dob.trim().length > 0 ? req.body.dob : false;
-  const pic = typeof (req.body.pic) == "string" && req.body.pic.trim().length > 0 ? req.body.pic : false;
-
+  const firstname = typeof (req.body.firstname) == "string" && req.body.firstname.trim().length > 0 ? req.body.firstname : false,
+    lastname = typeof (req.body.lastname) == "string" && req.body.lastname.trim().length > 0 ? req.body.lastname : false,
+    dob = typeof (req.body.dob) == "string" && req.body.dob.trim().length > 0 ? req.body.dob : false,
+    pic = typeof (req.body.pic) == "string" && req.body.pic.trim().length > 0 ? req.body.pic : false;
   if (firstname || lastname || dob || pic) {
     const filter = {
       _id: jwt_decode(String(req.headers.authorization).slice(7)).id,
@@ -45,9 +44,9 @@ router.put('/profileEdit', requireLogin, async function (req, res) {
     if (lastname) update.lastname = lastname;
     if (dob) update.dob = dob;
     if (pic) update.dob = pic;
-  
+
     const user = await User.findOneAndUpdate(filter, update, { new: true });
-  
+
     // user = await User.findOne(filter);
     const payload = {
       id: user.id,
@@ -170,7 +169,7 @@ router.post('/register', (req, res) => {
         });
       });
     }
-  });
+  }).catch(err => console.log(err));
 });
 
 router.post('/confirm', (req, res) => {
@@ -287,8 +286,8 @@ router.post('/login', (req, res) => {
           .status(400)
           .json({ passwordincorrect: 'Password incorrect' });
       }
-    });
-  });
+    }).catch(err => console.log(err));
+  }).catch(err => console.log(err));
 });
 
 router.get(
