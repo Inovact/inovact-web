@@ -306,6 +306,12 @@ class Posts extends Component {
                     <div
                       style={{ display: 'flex', transition: '0.6s ease out' }}
                     >
+                      <div
+                        style={{
+                          display: 'flex',
+                          flexWrap: 'nowrap',
+                        }}
+                      >
                       <div style={{ transition: '0.6s ease out' }}>
                         {project.likes.includes(this.props.auth.user.id) ? (
                           <img
@@ -393,6 +399,20 @@ class Posts extends Component {
                            }
                           `}
                       </style>
+                    </div>
+                    {project.status !== 'complete' && (
+                      <div style={{ float: 'right' }}>
+                        <Tooltip title='Request Join' placement='top' arrow>
+                          <Fab
+                            style={{ color: 'white', background: 'orange' }}
+                            size='small'
+                            onClick={() => this.requestjoin(project._id)}
+                          >
+                            <AddIcon />
+                          </Fab>
+                        </Tooltip>
+                      </div>
+                    )}
                     </div>
                     <div style={{ height: '40px' }}>
                       {project.comments.length ? (
