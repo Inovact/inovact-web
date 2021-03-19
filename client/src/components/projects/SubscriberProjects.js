@@ -283,7 +283,7 @@ class Posts extends Component {
                     className='card-content'
                     style={{ transition: '0.6s ease out', padding: '20px' }}
                   >
-                    <span
+                    <p
                       style={{
                         textTransform: 'capitalize',
                         transition: '0.6s',
@@ -294,7 +294,7 @@ class Posts extends Component {
                       <Tooltip title='More Info'>
                         <i className='material-icons right'>more_vert</i>
                       </Tooltip>
-                    </span>
+                    </p>
                     <div
                       className='description'
                       style={{ marginBottom: '1rem', transition: '0.6s' }}
@@ -304,7 +304,7 @@ class Posts extends Component {
                       molestiae perspiciatis recusandae.
                     </div>
                     <div
-                      style={{ display: 'flex', transition: '0.6s ease out' }}
+                      style={{ display: 'flex',justifyContent:"space-between", transition: '0.6s ease out' }}
                     >
                       <div
                         style={{
