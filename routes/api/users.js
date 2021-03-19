@@ -261,11 +261,11 @@ router.post('/login', (req, res) => {
           token: crypto.randomBytes(16).toString('hex'),
         });
 
-        if (!user.isVerified) {
-          return res
-            .status(404)
-            .json({ notVerified: 'your account has not been verified' });
-        } else {
+        // if (!user.isVerified) {
+        //   return res
+        //     .status(404)
+        //     .json({ notVerified: 'your account has not been verified' });
+        // } else {
           jwt.sign(
             payload,
             keys.secretOrKey,
@@ -280,7 +280,7 @@ router.post('/login', (req, res) => {
               });
             }
           );
-        }
+
       } else {
         return res
           .status(400)
