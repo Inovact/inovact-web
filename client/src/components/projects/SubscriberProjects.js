@@ -266,7 +266,7 @@ class Posts extends Component {
                               color: '#222',
                             }}
                           >
-                            {project.userId.firstname}
+                            {project.userId.firstname} {project.userId.lastname}
                           </span>
                         </Tooltip>
                       </span>
@@ -304,7 +304,11 @@ class Posts extends Component {
                       molestiae perspiciatis recusandae.
                     </div>
                     <div
-                      style={{ display: 'flex',justifyContent:"space-between", transition: '0.6s ease out' }}
+                      style={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        transition: '0.6s ease out',
+                      }}
                     >
                       <div
                         style={{
@@ -312,107 +316,107 @@ class Posts extends Component {
                           flexWrap: 'nowrap',
                         }}
                       >
-                      <div style={{ transition: '0.6s ease out' }}>
-                        {project.likes.includes(this.props.auth.user.id) ? (
-                          <img
-                            alt=''
-                            className='up'
-                            style={{ width: '28px', marginBottom: '-5px' }}
-                            src={afterClap}
-                            onClick={() => {
-                              this.unlikeProject(project._id);
-                            }}
-                          />
-                        ) : (
-                          <img
-                            alt=''
-                            className='down'
-                            style={{ width: '28px', marginBottom: '-5px' }}
-                            src={beforeClap}
-                            onClick={() => {
-                              this.likeProject(project._id);
-                            }}
-                          />
-                        )}
-                        <span
-                          style={{
-                            marginLeft: '5px',
-                            fontFamily: 'sans serif',
-                            fontSize: '18px',
-                          }}
-                        >
-                          {project.likes.length}
-                        </span>
-                      </div>
-                      <Collapsible
-                        style={{ transition: '0.6s' }}
-                        className='comments'
-                        trigger={
-                          <img
-                            alt=''
-                            id='comment'
-                            src={comment}
+                        <div style={{ transition: '0.6s ease out' }}>
+                          {project.likes.includes(this.props.auth.user.id) ? (
+                            <img
+                              alt=''
+                              className='up'
+                              style={{ width: '28px', marginBottom: '-5px' }}
+                              src={afterClap}
+                              onClick={() => {
+                                this.unlikeProject(project._id);
+                              }}
+                            />
+                          ) : (
+                            <img
+                              alt=''
+                              className='down'
+                              style={{ width: '28px', marginBottom: '-5px' }}
+                              src={beforeClap}
+                              onClick={() => {
+                                this.likeProject(project._id);
+                              }}
+                            />
+                          )}
+                          <span
                             style={{
-                              width: '21px',
-                              marginLeft: '10px',
-                              marginBottom: '-10px',
+                              marginLeft: '5px',
+                              fontFamily: 'sans serif',
+                              fontSize: '18px',
                             }}
-                          />
-                        }
-                      >
-                        {project.comments.map((record) => {
-                          return (
-                            <div style={{ display: 'flex' }}>
-                              <div style={{ margin: '0.5rem' }}>
-                                <span>
-                                  <img
+                          >
+                            {project.likes.length}
+                          </span>
+                        </div>
+                        <Collapsible
+                          style={{ transition: '0.6s' }}
+                          className='comments'
+                          trigger={
+                            <img
+                              alt=''
+                              id='comment'
+                              src={comment}
+                              style={{
+                                width: '21px',
+                                marginLeft: '10px',
+                                marginBottom: '-10px',
+                              }}
+                            />
+                          }
+                        >
+                          {project.comments.map((record) => {
+                            return (
+                              <div style={{ display: 'flex' }}>
+                                <div style={{ margin: '0.5rem' }}>
+                                  <span>
+                                    <img
+                                      style={{
+                                        width: '22px',
+                                        borderRadius: '50%',
+                                      }}
+                                      alt=''
+                                      src='https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png'
+                                    />
+                                  </span>
+                                  <p
                                     style={{
-                                      width: '22px',
-                                      borderRadius: '50%',
+                                      fontSize: '12px',
+                                      fontFamily: 'poppins',
+                                      textTransform: 'lowercase',
                                     }}
-                                    alt=''
-                                    src='https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png'
-                                  />
-                                </span>
-                                <p
-                                  style={{
-                                    fontSize: '12px',
-                                    fontFamily: 'poppins',
-                                    textTransform: 'lowercase',
-                                  }}
-                                >
-                                  {record.postedBy.firstname}
+                                  >
+                                    {record.postedBy.firstname}
+                                  </p>
+                                </div>
+                                <p style={{ padding: '5px 10px' }}>
+                                  {record.text}
                                 </p>
                               </div>
-                              <p style={{ padding: '5px 10px' }}>
-                                {record.text}
-                              </p>
-                            </div>
-                          );
-                        })}
-                      </Collapsible>
-                      <style>
-                        {`
+                            );
+                          })}
+                        </Collapsible>
+                        <style>
+                          {`
                           i.fa.fa-comment:hover{
                              color:#1e88e5 !important;
                              transition:0.5s;
                            }
                           `}
-                      </style>
-                    </div>
-                    {project.status !== 'complete' && (
-                      <div style={{ float: 'right' }}>
-                        <Tooltip title='Request Join' placement='top' arrow>
-                          <Fab
-                            style={{ color: 'white', background: 'orange' }}
-                            size='small'
-                            onClick={() => this.requestjoin(project._id)}
-                          >
-                            <AddIcon />
-                          </Fab>
-                        </Tooltip>
+                        </style>
                       </div>
-                    )}
+                      {project.status !== 'complete' && (
+                        <div style={{ float: 'right' }}>
+                          <Tooltip title='Request Join' placement='top' arrow>
+                            <Fab
+                              style={{ color: 'white', background: 'orange' }}
+                              size='small'
+                              onClick={() => this.requestjoin(project._id)}
+                            >
+                              <AddIcon />
+                            </Fab>
+                          </Tooltip>
+                        </div>
+                      )}
                     </div>
                     <div style={{ height: '40px' }}>
                       {project.comments.length ? (
