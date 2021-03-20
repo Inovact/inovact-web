@@ -161,7 +161,7 @@ router.get('/requestjoin/:projectId', requireLogin, async (req, res) => {
               let htmlToSend = template(replacements);
 
               const mailOption = {
-                from: 'afifahmed456123@gmail.com',
+                from: 'carca.inc@gmail.com',
                 to: admin.email,
                 subject: 'Request to collaborate',
                 html: htmlToSend,
