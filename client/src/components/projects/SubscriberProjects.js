@@ -594,7 +594,7 @@ class Posts extends Component {
                         >
                           <span
                             style={{
-                              fontWeight: '500',
+                              fontWeight: 'bold',
                               color: '#222',
                             }}
                           >
