@@ -286,6 +286,7 @@ class Posts extends Component {
                       style={{
                         textTransform: 'capitalize',
                         transition: '0.6s',
+                        flexWrap:"wrap"
                       }}
                       className='card-title activator grey-text text-darken-4'
                     >
