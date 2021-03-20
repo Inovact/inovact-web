@@ -176,12 +176,11 @@ class Posts extends Component {
                           >
                             <span
                               style={{
-                                fontWeight: '300',
-                                fontFamily: 'sans serif',
+                                fontWeight: '500 !important',
                                 color: '#222',
                               }}
                             >
-                              {idea.userId.firstname}
+                              {idea.userId.firstname} {idea.userId.lastname}
                             </span>
                           </Tooltip>
                         </span>

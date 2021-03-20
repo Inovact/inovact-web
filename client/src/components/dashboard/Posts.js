@@ -305,7 +305,7 @@ class Posts extends Component {
                           <span>
                             <span
                               style={{
-                                fontWeight: '500',
+                                fontWeight: '500 !important',
                                 marginRight: '5px',
                                 color: '#222',
                               }}
@@ -314,7 +314,7 @@ class Posts extends Component {
                             </span>
                             <span
                               style={{
-                                fontWeight: '500',
+                                fontWeight: '500 !importtant',
                                 color: '#222',
                               }}
                             >
