@@ -122,11 +122,7 @@ router.post(
     const { title, description, status } = req.body;
 
     let { tags } = req.body;
-    // if (tags instanceof Array) {
-    //   tags.push('Inovact');
-    // } else {
-    //   tags = ['Inovact'];
-    // }
+ 
 
     if (!tags) {
       tags = '["inovact"]';
