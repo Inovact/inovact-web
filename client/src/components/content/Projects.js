@@ -139,10 +139,10 @@ class Projects extends Component {
         data.append('file', file[j]);
       }
 
-      this.props.postProject(data);
+      await this.props.postProject(data);
       M.toast({ html: 'Posted Successfully' });
-      this.props.userProject();
-      // window.location.reload();
+      await this.props.userProject();
+      window.location.reload();
     };
 
     return (
