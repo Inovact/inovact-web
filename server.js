@@ -52,7 +52,7 @@ app.use('/api/ideas', ideas);
 app.use('/api/teams', teams);
 app.use('/api/user', user);
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 80;
 
 //sercve static assets if in production
 // if (process.env.NODE_ENV === 'production') {
