@@ -1,7 +1,9 @@
 import axios from 'axios';
 import { GET_USER, CURRENT_USER } from './types';
 
-const baseURL = 'https://inovact.herokuapp.com';
+
+const baseURL = 'http://localhost:80';
+//const baseURL = 'https://inovact.herokuapp.com';
 
 export const getUser = (userId) => (dispatch) => {
   axios

@@ -2,8 +2,8 @@ import axios from 'axios';
 import { MY_TEAMS, TEAM_DETAILS } from './types';
 import M from 'materialize-css';
 
-// const baseUrl = 'http://localhost:5000';
-const baseUrl = 'https://inovact.herokuapp.com';
+const baseUrl = 'http://localhost:80';
+//const baseUrl = 'https://inovact.herokuapp.com';
 
 export const requestJoin = (projectId) => (dispatch) => {
   axios

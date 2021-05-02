@@ -9,7 +9,7 @@ import { getIdeas } from '../../actions/ideaActions';
 import { Link } from 'react-router-dom';
 import 'font-awesome/css/font-awesome.min.css';
 import Collapsible from 'react-collapsible';
-import { ThemeProvider, Tooltip } from '@material-ui/core';
+import {  Tooltip } from '@material-ui/core';
 import { requestJoin } from '../../actions/teamActions';
 import Avatar from '@material-ui/core/Avatar';
 import beforeClap from '../../static/beforeClap.svg';

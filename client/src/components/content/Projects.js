@@ -28,8 +28,6 @@ import Chip from '@material-ui/core/Chip';
 import afterClap from '../../static/afterClap.svg';
 import comment from '../../static/comment.svg';
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
-import Fab from '@material-ui/core/Fab';
-import AddIcon from '@material-ui/icons/Add';
 import NavbarHome from '../layout/Navbar';
 import { requestJoin } from '../../actions/teamActions';
 

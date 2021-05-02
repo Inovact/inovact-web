@@ -7,7 +7,8 @@ import {
   SUBSCRIBERS_IDEAS,
 } from './types';
 
-const baseURL = 'http://inovact.herokuapp.com';
+const baseURL = 'http://localhost:80';
+//const baseURL = 'http://inovact.herokuapp.com';
 
 export const postIdea = (ideaData) => (dispatch) => {
   axios

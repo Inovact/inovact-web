@@ -82,9 +82,7 @@ const LandingNew = () => {
               pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
               culpa qui officia deserunt mollit anim id est laborum."
             </p>
-            <a href='#' className='btn'>
-              Read Our story
-            </a>
+           
           </div>
         </div>
       </section>
@@ -239,27 +237,9 @@ const LandingNew = () => {
               </div>
             </form>
           </div>
-          <div className='sci'>
-            <ul>
-              <li>
-                <a href='#'>
-                  <img src='' alt='' />
-                </a>
-              </li>
-              <li>
-                <a href='#'>
-                  <img src='' alt='' />
-                </a>
-              </li>
-              <li>
-                <a href='#'>
-                  <img src='' alt='' />
-                </a>
-              </li>
-            </ul>
-          </div>
+         
           <p className='copyright'>
-            Design and Developed By <a href=''>Afif</a>
+            Design and Developed By <a href='www.google.com'>Afif</a>
           </p>
         </div>
       </section>

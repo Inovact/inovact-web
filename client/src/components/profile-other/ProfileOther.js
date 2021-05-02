@@ -18,7 +18,8 @@ const orangeTheme = createMuiTheme({
   palette: { primary: orange, secondary: orange },
 });
 
-const baseURL = 'https://inovact.herokuapp.com';
+const baseURL = 'http://localhost:80';
+//const baseURL = 'https://inovact.herokuapp.com';
 
 class ProfileOther extends Component {
   constructor() {

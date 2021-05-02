@@ -8,8 +8,8 @@ import {
   USER_LOADING,
 } from './types';
 
-// const baseURL = 'http://localhost:5000';
-const baseURL = 'http://inovact.herokuapp.com';
+const baseURL = 'http://localhost:80';
+//const baseURL = 'http://inovact.herokuapp.com';
 
 export const confirmUser = (userData) => (dispatch) => {
   axios

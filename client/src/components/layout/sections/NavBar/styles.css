@@ -1,0 +1,83 @@
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    background-color:#020652;
+    width:100%;
+    margin:0px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding: 20px 20px;
+    z-index:1000;
+    transition:0.6s;
+}
+header :hover {
+    color:#FFA500;
+}
+header.sticky{
+    padding:5px 100px;
+    background: white;
+    border-bottom: 1px solid (0,0,0,0.1);
+}
+
+header .logo{
+    margin-left:80px;
+    margin-top:10px;
+    position:relative;
+    font-weight:500;
+    color:#fff;
+    text-decoration:none;
+    font-size:2rem;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    transition:0.6s;
+}
+header .logo .logoname{
+  margin-left:30px;
+  position: relative;
+  top:-10px;
+}
+header ul{
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-bottom:0;
+}
+
+header ul li{
+    position:relative;
+    list-style:none;
+    color:#fff;
+}
+header ul li {
+    color:#FFA500;
+}
+header ul li a{
+    position:relative;
+    margin:0 15px;
+    text-decoration:none;
+    color:#fff;
+    letter-spacing:2px;
+    font-weight:300;
+    transition:0.6s;
+} 
+
+header.sticky .logo,
+header.sticky ul li a{
+  margin-left:-10px;
+    color:#000;
+    top:-5px;
+    left:15px;
+}
+
+header.sticky .logo .logoname,
+header.sticky ul li a{
+    color:#000;
+    margin-left:10px;
+    top:-15px;
+}
+header.sticky ul li :hover{
+  color:#FFA500;
+}
