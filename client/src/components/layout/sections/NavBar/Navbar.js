@@ -5,18 +5,19 @@ import logo from './../../assets/img/logo.png';
 
 import  './styles.css';
 const NavBar =()=>{
-    window.addEventListener('scroll', function () {
-        let header = document.querySelector('header');
-        header.classList.toggle('sticky', window.scrollY > 0);
-      });
-    
-      function toggle() {
-        let header = document.querySelector('header');
-        header.classList.toggle('active');
-      }
+
+  window.addEventListener('scroll', function () {
+    let header = document.querySelector('header');
+    header.classList.toggle('sticky', window.scrollY > 0);
+  });
+
+  function toggle() {
+    let header = document.querySelector('header');
+    header.classList.toggle('active');
+  }
+
 return (
-  <>
-    <header>
+    <header id='header' >
       
     <Link to='/' className='logo'>
        <img src={logo} alt="Logo" width="60" height="60px" style={{position:'relative',top:'10px'}}/>
@@ -57,9 +58,8 @@ return (
       </li>
     </ul>
     <div className='toggle' onClick={toggle} />
-  </header>
+</header>
 
-    </>
 ); 
 }
 export default NavBar;

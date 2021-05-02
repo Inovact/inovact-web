@@ -62,6 +62,7 @@ const LandingNew = () => {
         </ul>
         <div className='toggle' onClick={toggle} />
       </header>
+      
       <section className='banner' id='home'>
         <h2>
           Carca
