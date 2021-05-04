@@ -5,8 +5,8 @@ import Banner from './sections/Banner/banner';
 import About from './sections/About/aboutUs';
 import Goals from './sections/Goals/Goals';
 import Features from './sections/Features/Features'
-import Achivements from './sections//Achivement/achivements';
-import Testimonial from './sections/Testimonials/testimoials'
+import Achivements from './sections/Achivement/Achivements';
+import Testimonial from './sections/Testimonials/Testimonials'
 
 import Footer from './sections/Footer/Footer';
 
@@ -48,29 +48,25 @@ const Landing = () => {
                         scroll-behavior:smooth;
                     }
                 
-                  
                     
-                    .banner{
-                        position:relative;
-                        margin-top:30px;
-                        width:100%;
-                        min-height:100vh;
-                        transition:0.5s;
-                        display:flex;
-                        flex-wrap:wrap;
-                        justify-content:space-evenly;
-                        align-items:center;
+                     ul .react-multi-carousel-track li .react-multi-carousel-item{
+
+                          -webkit-text-size-adjust: 100%;
+                        line-height: 1.5;
+                        font-weight: normal;
+                        color: rgba(0,0,0,0.87);
+                        font-size: 14px;
+                        font-family: Poppins !important;
+                        -webkit-font-smoothing: antialiased;
+                        box-sizing: inherit;
+                        list-style-type: none;
+                        flex: 1 1 auto;
+                        position: relative;
+                        width: 600px;
                     }
-                    
-                    .banner h2{
-                        color:#222;
-                        font-size:50px;
-                        text-transform:uppercase;  
-                    }
-                    
-                    .banner h2 span{
-                        font-size:20px;
-                    }
+                 
+                 
+                   
                    
                         
                     p{
@@ -167,20 +163,19 @@ const Landing = () => {
                             height:30px;
                             cursor:pointer;
                         }
-                        
-                        .toggle:before{
+                        header.sticky .toggle:before{
                             content:'';
                             position:absolute;
                             top:4px;
                             width:100%;
                             height:2px;
+                            color:#000;
                             background: #000;
                             z-index:1;
                             box-shadow: 0 10px 0 #000;
                             transition: 0.5s;
                         }
-                        
-                        .toggle:after{
+                        header.sticky .toggle:after{
                             content:'';
                             position:absolute;
                             bottom:4px;
@@ -190,8 +185,35 @@ const Landing = () => {
                             z-index:1;
                             transition: 0.5s;
                         }
+                        .toggle:before{
+                            content:'';
+                            position:absolute;
+                            top:4px;
+                            width:100%;
+                            height:2px;
+                            color:#fff;
+                            background: #fff;
+                            z-index:1;
+                            box-shadow: 0 10px 0 #fff;
+                            transition: 0.5s;
+                        }
+                        
+                        .toggle:after{
+                            content:'';
+                            position:absolute;
+                            bottom:4px;
+                            width:100%;
+                            height:2px;
+                            background: #fff;
+                            z-index:1;
+                            transition: 0.5s;
+                        }
                     
-                        header,
+                        header,{
+                            padding: 5px 50px;
+                            background-color:#020652;
+                            
+                        }
                         header.sticky{
                             padding: 5px 50px;
                             background:#fff;
@@ -222,22 +244,18 @@ const Landing = () => {
                             margin:10px 0;
                             font-size: 20px;
                         }
-                        
+                        header .logoname {
+                            color:#fff;
+                        }
                         header .logo,
                         header ul li a{
-                            color: #000;
+                            color:#000;
                            
                             margin:0px;
                         }
                         
-                        .banner{
-                            background-position:center;
-                        }
-                        
-                        .banner h2{
-                            font-size: 60px;
-                            padding:0 50px;
-                        }
+                    
+                     
                         
                         .sec{
                             padding: 100px 50px 50px 50px;

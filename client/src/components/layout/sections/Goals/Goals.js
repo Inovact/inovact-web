@@ -1,8 +1,10 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui';
 import { Container, Grid, Box, Text } from 'theme-ui';
-
+import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 import {Typography} from '@material-ui/core';
+
+import styles from './styles';
 
 const data = [
   {
@@ -27,76 +29,26 @@ const data = [
 
 export default function Goals() {
   return (
-    <section sx={{ variant: 'section.workflow' }}>
+   
       <Container sx={styles.container}>
 
         <Box>
-          <Typography as="h2" sx ={styles.title}>What we want to do?</Typography>
-          <Typography as="p" sx ={styles.description}>INOVACT has three major goals:</Typography>
+          <Typography as="h2" sx ={styles.webtitle}>What we want to do?</Typography>
         </Box>
 
           <Grid gap={1} columns={[3, null, 4]} sx={styles.grid}>
           {data.map((item) => (
                       <Box sx={styles.card} key={item.id}>
                         <Box sx={styles.iconBox}>{`0${item.id}`}</Box>
+                       
                         <Box sx={styles.wrapper}>
-                          <Text sx={styles.wrapper.description}>{item.text}</Text>
+                       <Text sx={styles.wrapper.description}><FiberManualRecordIcon sx={styles.iconBox2}/>{item.text}  </Text>
                         </Box>
                       </Box>
                     ))}
           </Grid>
 
       </Container>
-    </section>
   );
 }
 
-const styles = {
-  container: {
-    background: '#ECF4FF',
-        mt: "150px",
-        mb:"70px",
-        py: "100px",
-        pb:"150px"
-  },
-  title:{
-    fontSize: '50px',
-    fontWeight: 300,
-  },
-  card: {
-    display: 'flex',
-    flexDirection: ['column', null, null, 'row'],
-    textAlign: ['center', null, 'left'],
-    px: [0, 5, 0],
-  },
-grid :{
-  display:['grid'],
-  gridTemplateColumns: ['repeat(1, 1fr)','repeat(3, 1fr)'],
-mx:"30px",
-mt:"20px",
-pt:"30px",
-px:"20px"
-
-},
-  iconBox: {
-    flexShrink: 0,
-    mb: [4, null, null, 0],
-    fontSize: '40px',
-    letterSpacing: 'heading',
-    mx: '30px'
-  },
-  wrapper: {
-    width: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-    mt: '-5px',
-    heading:{
-      fontSize: '28px',
-    },
-    description: {
-      fontSize: '15px',
-      fontWeight: 'body',
-      pt: 2,
-    },
-  },
-};

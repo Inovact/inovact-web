@@ -6,7 +6,8 @@ export default  makeStyles({
         pb: '0',
         '@media screen and (max-width:1200px)':
         {
-          padding:'50px'
+          padding:'50px',
+          paddingTop:'150px'
         }
       },
       container: {
@@ -27,7 +28,12 @@ export default  makeStyles({
         mb: ['60px', null, null, null, 0],
         mx: [0, 'auto'],
         textAlign: ['center', null, null, null, 'left'],
-       
+        '@media screen and (max-width:1200px)':{
+          paddingBottom:'10px',
+          paddingTop:'20px',
+          marginTop:'10px',
+marginBottom:'10px'
+        }
       },
       webTitle: {
         fontSize: '60px',

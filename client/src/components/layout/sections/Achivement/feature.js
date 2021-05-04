@@ -14,7 +14,6 @@ const Feature = ({ feature }) => {
     </Box>
   );
 };
-
 export default Feature;
 
 const styles = {
@@ -37,14 +36,17 @@ const styles = {
       '0 59px',
     ],
     textAlign: 'center',
-    minHeight: [200, 150, 150, 185, 240, 280, 320],
-    width: ['auto', 'auto', 'auto', 177, 225, 258, 300],
+    minHeight: [100, 150, 150, 185, 240, 280, 320],
+    width: ['auto', 'auto', 'auto', 127, 225, 258, 300],
   },
   value: {
     fontWeight: 700,
     fontSize: [40, 30, 30, 30, 50, 60, 92],
     lineHeight: [1.83, 0.76],
     letterSpacing: '-1.5px',
+    '@media screen and (max-width:600px )':{
+      fontSize:'24px'
+    },
   },
   title: {
     fontSize: ['14px', '16px', '16px', '15px', '17px'],
@@ -52,5 +54,8 @@ const styles = {
     letterSpacing: '-0.2px',
     mt: ['1px', '20px'],
     color: rgba('#0F2137', 0.7),
+    '@media screen and (max-width:600px )':{
+      fontSize:'12px'
+    },
   },
 };

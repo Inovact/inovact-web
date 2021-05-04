@@ -1,6 +1,6 @@
 import React from 'react';
 import Box from '@material-ui/core/Box';
-import BannerThumb from './banner-thumb.png';
+import BannerThumb from './../../assets/img/banner-thumb.png';
 import {Container,Typography,Grid} from '@material-ui/core';
 import useStyles from './styles';
 

@@ -8,27 +8,35 @@ export default  makeStyles({
          marginBottom:'100px',
          justifyContent: ['flex-Start', null, null, 'space-between'],
          flexWrap: ['wrap', null, null, 'nowrap'],
-         '@media screen and (max-width :1200px)':{
+         '@media screen and (max-width :700px)':{
           flexDirection : 'column',
+         marginTop:'30px',
+          marginBottom:'0px',
                   },
       },
       thumbnail: {
        position: 'relative',
-       margin:' 0 50px 0px 0px'
-       
-      },
-      contentBox:{
-        margin:'30px',
-        marginRight:'50px'
+       margin:' 0 50px 0px 0px',
+      
       },
       img: {
         float: 'left',
         height: 'auto',
         width:'100%',
         padding:' 0px 0px 0px 60px',
-    
+        '@media screen and (max-width :700px)':{
+          padding:'0px'
+        }
       },
+      contentBox:{
+        margin:'30px',
+        marginRight:'50px',
+        textAlign:'left',
+        '@media screen and (max-width :700px)':{
+          marginRight:'30px',
 
+        }
+      },
       webTitle: {
         display: 'flex',
         justifyContent: 'center',
@@ -40,9 +48,8 @@ export default  makeStyles({
         '@media screen and (max-width :1200px)':{
           fontSize: '30px',
           margin: '20px 10px 0 20px',
-                  },
+        },
       },
-  
       webText:{
           margin: '40px 0 70px 0',
           fontSize: '16px',
@@ -52,12 +59,10 @@ export default  makeStyles({
           letterSpacing: '2'
       },
       webPoint :{
-      
         fontSize: '16px',
         textAlign:'left'
       },
       icon:{
-       
         position:'relative',
         top:'6px'
       },
@@ -68,6 +73,6 @@ export default  makeStyles({
         display: ['none', null, null, null, null, null, null, 'block'],
         '@media screen and (max-width :1200px)':{
           display:'none'
-                  },
+        },
       },
 });
