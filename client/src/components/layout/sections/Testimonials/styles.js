@@ -1,11 +1,16 @@
 const styles = {
+  testimonials :{
+    marginTop:'40px',
+    paddingTop:'30px',
+  },
     carouselWrapper: {
       display: 'flex',
       justifyContent: 'flex-end',
       flexDirection: 'row',
       alignItems: 'flex-end',
-      mt: '-35px',
+      mt: '35px',
       px: '15px',
+     
       '.carousel-container': {
         width: '100%',
         maxWidth: [
@@ -18,8 +23,7 @@ const styles = {
           null,
           'calc(50% + 865px)',
         ],
-        mr: ['auto', null, null, null, null, null, null, '-220px'],
-        ml: 'auto',
+        mr:'40px',
         '.react-multi-carousel-item': {
           transition: 'all 0.25s',
         },
@@ -34,6 +38,7 @@ const styles = {
     reviewCard: {
       boxShadow: '0px 6px 47px rgba(38, 78, 118, 0.1)',
       transition: 'all 0.3s',
+      maxWidth:'400px',
       borderRadius: '15%',
       alignItems:'center',
       p: [
@@ -60,15 +65,21 @@ const styles = {
        
         mb: [1, null, null, 1],
         ul: {
-          pl: '110px',
+          pl: '120px',
           listStyle: 'none',
           mb: 0,
           mt:'30px',
           display: 'flex',
-          '@media screen and (max-width:1200px)':{
+          '@media screen and (max-width:400px)':{
+             pl:'110px',
              
-             pl:'80px',
-          }
+          },
+          '@media screen and (min-width:400px) and (max-width:1000px)':{
+            pl:'0px',
+            mx:'auto',
+            px:'auto',
+            
+         }
         },
         svg: {
           marginRight: '5px',
@@ -114,7 +125,7 @@ const styles = {
       justifyContent:'center',
       mt:['10px'],
       '@media screen and (max-width: 600px)':{
-      mt:['-10px'],
+      mt:['10px'],
       },
     },
     description: {

@@ -1,7 +1,8 @@
 import { makeStyles} from '@material-ui/core/styles';
 export default  makeStyles({
     containerBox: {
-         marginTop:'-50px',
+         marginTop:'-100px',
+         paddingTop:'10px',
          display: 'flex',
          alignItems: 'center',
          flexDirection : 'row',
@@ -23,7 +24,7 @@ export default  makeStyles({
         float: 'left',
         height: 'auto',
         width:'100%',
-        padding:' 0px 0px 0px 60px',
+        padding:' 100px 0px 0px 60px',
         '@media screen and (max-width :700px)':{
           padding:'0px'
         }
@@ -31,6 +32,7 @@ export default  makeStyles({
       contentBox:{
         margin:'30px',
         marginRight:'50px',
+        padding:'30px',
         textAlign:'left',
         '@media screen and (max-width :700px)':{
           marginRight:'30px',
@@ -52,20 +54,16 @@ export default  makeStyles({
       },
       webText:{
           margin: '40px 0 70px 0',
-          fontSize: '16px',
-          alignItems: 'left',
+          fontSize: '18px',
+          alignItems: 'center',
           paddingTop:'30px',
-          justifyContent: 'left',
-          letterSpacing: '2'
+          justifyContent: 'center',
+          letterSpacing: '2',
+          '@media screen and (max-width :600px)':{
+            fontSize: '16px',
+          }
       },
-      webPoint :{
-        fontSize: '16px',
-        textAlign:'left'
-      },
-      icon:{
-        position:'relative',
-        top:'6px'
-      },
+  
       bottomArrow: {
         position: 'absolute',
         bottom: -185,

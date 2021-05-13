@@ -1,17 +1,23 @@
  
-.sec{
-    background:#fff;
+.contact {
     padding:100px 50px 0px 50px ;
     height: auto;
     display:flex;
     justify-content:center;
     align-content:center;   
+    margin-top: 150px;
+    background:#05072d;
+    color: #fff;
 }
-    
 @media screen and (max-width:1200px){
-    .sec {padding-top: 30px;}
+    .contact {
+        margin-top: 80px;
+        padding-top:30px;
+    }
+
 }
-.sec .content{
+
+.contact .content{
     position:relative;
     text-align:center;
     width:100%;
@@ -27,21 +33,9 @@ h3{
     font-size:40px;
     font-weight:200;
     margin-bottom:10px;
-    color:#222;
-}
-.contact {
-    margin-top: 150px;
-    background:#05072d;
-    color: #FFA500;
-}
-@media screen and (max-width:1200px){
-    .contact {margin-top: 80px;}
+    color:#fff
 }
 
-.contact h3{
-    color:#fff;
-   
-}
 
 .contact p{
     color:#fff;
@@ -79,8 +73,8 @@ h3{
 .contactForm .row100 textarea{
     position:relative;
     border:none;
-    border-bottom:1px solid #fff;
-    color: #FFA500;
+    border-bottom:1px solid #FFA500;
+    color: #fff;
     background:transparent;
     width:100%;
     padding:10px 0;
@@ -91,6 +85,14 @@ h3{
     resize:none;
 }
 
+.inputBx50 input[type=text]:focus{
+    border-bottom:1px solid #FFA500;
+  
+}
+input[type=text]:not(.browser-default):focus:not([readonly]){
+    border-bottom:1px solid #FFA500;
+    box-shadow:none ;
+}
 .contactForm .row100 textarea{
     height:100px;
 }
@@ -111,22 +113,20 @@ h3{
     font-weight:500;
     
 }
-.sec .social .btn{
+.contact .social .btn{
     background:transparent;
     color:#fff;
 }  
-.sec .social .btn a{
+.contact .social .btn a{
  background:transparent;
  color:#fff;
  padding:0px 0px;
 }  
-.sec  .social .btn a i{
+.contact  .social .btn a i{
  background:transparent;
  color:#fff;
  padding:10px ;
-}  
-
- 
+}   
 .copyright p{
     color: #fff;
     font: size 12px;

@@ -24,7 +24,6 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    // maxWidth: 300,
     flexDirection: 'column',
     padding: [
       '0 5px',
@@ -37,7 +36,7 @@ const styles = {
     ],
     textAlign: 'center',
     minHeight: [100, 150, 150, 185, 240, 280, 320],
-    width: ['auto', 'auto', 'auto', 127, 225, 258, 300],
+    width: ['auto', 'auto', 'auto', 227, 225, 258, 300],
   },
   value: {
     fontWeight: 700,

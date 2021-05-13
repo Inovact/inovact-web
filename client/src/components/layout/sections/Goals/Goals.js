@@ -9,21 +9,18 @@ import styles from './styles';
 const data = [
   {
     id: 1,
-    title: 'Connect with support',
     text:
-      'To help students from across the country socialise and connect with like-minded students.',
+      'Help students to expand their network with students , mentors and Investors.',
   },
   {
     id: 2,
-    title: 'Explain you business idea',
     text:
-      'Aid in developing the latest skills required in the industry, and innovate the process of learning through webinars workshop and online courses',
+      'Enable students in developing latest tools and skills as per industry requirements through various technical training programs and placement training programs.',
   },
   {
     id: 3,
-    title: 'Be partner & earn money',
     text:
-      'Aid in developing the latest skills required in the industry, and innovate the process of learning through webinars workshop and online courses',
+      'Build a community inside engineering colleges which encourage students to develop their soft skills and hard skills.',
   },
 ];
 

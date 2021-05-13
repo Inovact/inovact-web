@@ -32,7 +32,7 @@ export default  makeStyles({
           paddingBottom:'10px',
           paddingTop:'20px',
           marginTop:'10px',
-marginBottom:'10px'
+          marginBottom:'10px'
         }
       },
       webTitle: {
@@ -56,7 +56,7 @@ marginBottom:'10px'
       borderBottom: '2px solid #DCDCDC',
       width:'150px',
       borderRadius:'25%',
-      marginTop:'30px',
+      marginTop:'10px',
       marginBottom:'20px',
       marginLeft:'-60px',
       '@media screen and (max-width:1200px)':{

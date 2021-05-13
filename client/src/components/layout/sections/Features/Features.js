@@ -7,12 +7,14 @@ import styles from './styles';
 
 const Features = () => {
     return (
-  <Box sx={styles.features} id="services">
+      <section>
+      <Box sx={styles.features}  >
         <Heading 
         as="h3" 
         sx={styles.title}>Our Exciting Features</Heading>
-          <Container css={{padding:'10px'}}>
-            <Grid sx={styles.social} columns={[2, 'fr fr']}>
+          <Container css={{padding:'20px'}}>
+            <Grid sx={styles.social} columns={[2,'fr fr']}>
+              
               <Container>
                   <Heading 
                     as="h4" 
@@ -53,11 +55,12 @@ const Features = () => {
                                   </Card>
                               </Box>
                             ))}
-                        </Grid>  
+                    </Grid>  
               </Container>
            </Grid>
     </Container>
   </Box>
+  </section>
 );
 };
 

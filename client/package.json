@@ -40,6 +40,7 @@
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.0",
+    "react-scroll": "^1.8.2",
     "react-strap": "0.0.1",
     "react-style-tag": "^2.0.1",
     "react-swipeable-views": "^0.13.9",
@@ -52,7 +53,7 @@
     "taggle": "^1.15.0",
     "theme-ui": "^0.7.5"
   },
-  "proxy": "http://localhost:5000",
+  "proxy": "http://localhost:80",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

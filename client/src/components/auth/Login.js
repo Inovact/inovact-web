@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import Modal from './Modal';
 import { connect } from 'react-redux';
 import { loginUser } from '../../actions/authActions';
 import { confirmUser } from '../../actions/authActions';
@@ -19,7 +20,7 @@ class Login extends Component {
       errors: {},
     };
   }
-
+ 
   componentDidMount() {
     // If logged in and user navigates to Login page, should redirect them to dashboard
     if (this.props.auth.isAuthenticated) {
@@ -51,17 +52,25 @@ class Login extends Component {
     // this.props.confirmUser(userData);
   };
   render() {
+    let params = new URLSearchParams(this.props.location.search); //pars query parametes
+
     const { errors } = this.state;
     return (
-      <section className='section'>
+      params.get('login') && <Modal
+     >
+<section className="section">
         <div className='register-container'>
+  
           <div className='user signinBx'>
-            <div className='imgBx'>
-              <img src={signupImage} alt='signup' />
-            </div>
+          
             <div className='formBx'>
               <form onSubmit={this.onSubmit}>
-                <h2>Sign In</h2>
+              <div class="modal-header">
+                  <h2>Sign In</h2>
+                  <button type="button" class="close" data-dismiss="modal"  onClick={() => {
+                  this.props.history.push(this.props.location.pathname);
+                  }}>&times;</button>
+              </div>
                 <input
                   style={{ padding: '0 10px', margin: '8px 0' }}
                   type='text'
@@ -113,6 +122,7 @@ class Login extends Component {
             </div>
           </div>
         </div>
+
         <style>
           {`
                     .other-signup{
@@ -121,9 +131,7 @@ class Login extends Component {
                         align-items:center;
                         }
                     
-                    .signup-icons{
-                        
-                        }
+                     
                     
                     .signup-icons img  {
                         width:25px;
@@ -141,16 +149,18 @@ class Login extends Component {
                     .section{
                         position: relative;
                         min-height: 100vh;
-                        background: #d1c4e9;
                         display: flex;
                         justify-content: center;
                         align-items: center;
                         padding: 20px;
+                        top:30px;
+                        z-index:300;
+                      
                     }
                     
                     section .register-container{
                         position: relative;
-                        width: 800px;
+                        width: 400px;
                         height: 500px;
                         background: #fff;
                         box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
@@ -167,26 +177,11 @@ class Login extends Component {
                         display: flex;
                     }
                     
-                    section .register-container .user .imgBx{
-                        position: relative;
-                        width: 50%;
-                        height: 100%;
-                        background: #ff0;
-                        transition: 0.5s;
-                    }
-                    
-                    section .register-container .user .imgBx img{
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 100%;
-                        object-fit: cover;
-                    }
+                
                     
                     section .register-container .user .formBx{
                         position: relative;
-                        width: 50%;
+                        width: 100%;
                         height: 100%;
                         background: #fff;
                         display: flex;
@@ -197,14 +192,33 @@ class Login extends Component {
                         transition: 0.5s;
                     }
                     
+                    .modal-header{
+                      display:inline-block;
+                      font-size: 18px;
+                      font-weight: 600;
+                      text-transform: uppercase;
+                      letter-spacing: 2px;
+                      text-align: center;
+                      width: 100%;
+                      margin-bottom: 10px;
+                      color: #555;
+                    }
+                    .close {
+                      position:relative;
+                      top:30px;
+                      font-size: 18px;
+                      display:inline-block;
+                      float:right;
+                      border:none;
+                      background:none;
+                    }
                     section .register-container .user .formBx form h2{
+                      display:inline-block;
                         font-size: 18px;
                         font-weight: 600;
                         text-transform: uppercase;
                         letter-spacing: 2px;
                         text-align: center;
-                        width: 100%;
-                        margin-bottom: 10px;
                         color: #555;
                     }
                     
@@ -265,7 +279,9 @@ class Login extends Component {
                         text-decoration: none;
                         color: #677eff;
                     }
-                    
+                    section .register-container .imgBx {
+                     // display:none;
+                    }
                     @media (max-width: 991px) {
                         section .register-container {
                             max-width: 400px;
@@ -279,7 +295,8 @@ class Login extends Component {
                     }
                     `}
         </style>
-      </section>
+        </section>
+     </Modal>
     );
   }
 }

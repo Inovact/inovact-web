@@ -2,7 +2,7 @@ import React from 'react';
 import './styles.css';
 const Footer=()=>{
     return(
-        <section className='sec contact ' id='contact'>
+        <section className='contact ' >
         <div className='content'>
           <div className='contact-heading'>
             <h3>Contact Us</h3>

@@ -34,10 +34,10 @@ const responsive = {
 
 export default function TestimonialCard() {
   return (
-    <section id="testimonial" sx={{ variant: 'section.testimonial' }}>
-      <Typography sx={styles.webTitle} >Testimonials
-    </Typography>
-     <Box style={{margin:'40px'}}>
+    <section >
+     
+     <Box sx={styles.testimonials} >
+     <Typography sx={styles.webTitle} >Testimonials</Typography>
         <Carousel
        additionalTransfrom={0}
        arrows={false}

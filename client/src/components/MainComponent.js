@@ -52,7 +52,7 @@ const MainComponent = () => {
       <BrowserRouter>
         <Route exact path='/' component={Landing} />
         <Route exact path='/register' component={Register} />
-        <Route exact path='/login' component={Login} />
+        <Route path="/" component={Login} />
         <Route exact path='/reset' component={Reset} />
         <Route exact path='/reset/:token' component={NewPassword} />
         <Route exact path='/serialize/:jwtToken' component={serializeUser} />

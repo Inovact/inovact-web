@@ -1,7 +1,7 @@
 const  styles = {
     container: {
       background: '#ECF4FF',
-          mt: "150px",
+          mt: "100px",
           mb:"70px",
           py: "100px",
           pb:"150px",
@@ -13,6 +13,9 @@ const  styles = {
       webtitle:{
         fontSize: '50px',
         fontWeight: 400,
+        display:'flex',
+        justifyContent:'center',       
+        textAlign:'centre',
         '@media screen and (max-width :900px)':{
           fontSize: '30px',
           fontWeight: 450,
@@ -22,10 +25,10 @@ const  styles = {
       grid :{
         display:['grid'],
         gridTemplateColumns: ['repeat(1, 1fr)','repeat(3, 1fr)'],
-      mx:"30px",
-      mt:"20px",
-      pt:"30px",
-      px:"20px"
+        mx:"30px",
+        mt:"20px",
+        pt:"10px",
+        px:"20px"
       },
       card: {
         display: 'flex',
